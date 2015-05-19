@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 node_modules/
 bower_components/
 .idea/
 .sass-cache/
 .DS_Store
+=======
+node_modules/
+bower_components/
+.idea/
+.sass-cache/
+.DS_Store
+>>>>>>> 9f12d926e01b8d86e98f1760e6a7ed72bfe5a029

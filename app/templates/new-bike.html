@@ -1,49 +1,57 @@
+
 <h2 class='title'>New Bike</h2>
-<form>
-  <table class='newTable'>
-    <tr>
-      <td> <label>Ready? &nbsp</label>
-        Yes<input type="radio" ng-model='bk.ready' value='yes' checked>
-        No<input type="radio" ng-model='bk.ready' value='no'>
-      </td>
 
-      <td> ID <input type="text" size='8' ng-model='bk.ident'></td>
-    </tr>
+<form class="newForm">
+  <div class="newColumn">
+    <fieldset>
+    <legend>Ready?</legend>
+      <ul>
+        <li>Yes:<input type="radio" ng-model='bk.ready' value='yes'></li>
+        <li>No:<input type="radio" ng-model='bk.ready' value='no'></li>
+      </ul>
+    </fieldset>
 
-    <tr>    
-      <td> SN <input type="text" ng-model='bk.sn'></td>      
-      <td> Year <input type="text" ng-model='bk.year'></td>
-    </tr>
+    <label>Year:</label>
+    <input name='year' type="text" ng-model='bk.year'>
 
-    <tr>
-      <td> Make 
-        <select class='dropdown' ng-model='bk.make'>
-          <option value="Honda"> Honda </option>
-          <option value="Kawasaki"> Kawasaki </option>
-          <option value="Suzuki"> Suzuki </option>
-          <option value="Yamaha"> Yamaha </option>
-          <option value="Other"> Other </option>
-        </select>
-      </td>
-      <td> Model <input type="text" ng-model='bk.model'></td>
-    </tr>
+    <label>Make:</label>
+    <select class='dropdown' ng-model='bk.make'>
+      <option value="Honda"> Honda </option>
+      <option value="Kawasaki"> Kawasaki </option>
+      <option value="Suzuki"> Suzuki </option>
+      <option value="Yamaha"> Yamaha </option>
+      <option value="Other"> Other </option>
+    </select>
 
-    <tr>    
-      <td> Color <input type="text" ng-model='bk.maincolor'></td>
-      <td> Type 
-        <select class='dropdown' ng-model='bk.maintype'>
-          <option value="Standard"> Standard </option>
-          <option value="Sport"> Sport </option>
-          <option value="Cruiser"> Cruiser </option>
-          <option value="Dual"> Dual </option>
-        </select>
-      </td>
-    </tr>
+    <label >Model:</label>
+    <input name='model' type="text" ng-model='bk.model'>
 
-    <tr class='notesTable'>    
-      <td colspan='2' > Notes <input type="text" class='notesBox' ng-model='bk.notes'></td>
-    </tr>    
-  </table
-</form> 
-<div><button class="fa fa-plus-square-o" ng-click="addbike()">Add Bike</button></div>
+  </div>
+  <div class="newColumn">
+    <label>ID:</label>
+    <input name='id' type="text" ng-model='bk.ident'>
 
+    <label>SN:</label>
+    <input name='sn' type="text" ng-model='bk.sn'>
+
+    <label class='newLabel'>Color:</label>
+    <input name='color' type="text" ng-model='bk.maincolor'>
+
+    <fieldset>
+    <legend>Type:</legend>
+      <ul>
+        <li>Standard:<input type="radio" ng-model='bk.maintype' value='Standard'></li>
+        <li>Sport:<input type="radio" ng-model='bk.maintype' value='Sport'></li>
+        <li>Cruiser:<input type="radio" ng-model='bk.maintype' value='Cruiser'></li>
+        <li>Dual:<input type="radio" ng-model='bk.maintype' value='Dual'></li>
+      </ul>
+    </fieldset>
+  </div>
+  <div>
+    <label >Notes:</label>
+    <textarea ng-model='bk.notes'></textarea>
+  </div>
+  <div class="button">
+    <button ng-click="addbike()">Add Bike</button>
+  </div>
+</form>

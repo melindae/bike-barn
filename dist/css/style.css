@@ -10,7 +10,7 @@ body {
   font-size: 35px;
   text-align: center;
   clear: both;
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 10px; }
 
 /*top navigation buttons*/
@@ -27,30 +27,36 @@ body {
   padding: 5px 5px;
   width: 95px;
   height: 50px;
-  background: #CF7C00;
+  background: linear-gradient(to bottom, #ffad33 0%, #ff9900 65%, #b26b00 100%);
   color: #F0F0F0;
   float: left;
   text-align: center;
+  border-radius: 5px;
   border-top: 2px solid #D99633;
   border-right: 2px solid #915700;
   border-bottom: 2px solid #7C4A00;
-  border-left: 2px solid #D99633; }
+  border-left: 2px solid #D99633;
+  margin: 10px; }
 
 .nav-buttons li a:hover {
-  background: #E7BE80;
   color: #000000; }
 
 /* new bike form */
 .newForm {
-  width: 80%;
-  font-size: 16px;
+  width: 60%;
+  font-size: 17px;
   margin-right: auto;
   margin-left: auto; }
 
-.newForm input {
+.newForm input, select {
   width: 98%;
   padding: 5px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px black; }
+
+.newForm input:hover, select:hover, textarea:hover {
+  background: #E7BE80; }
 
 .newForm fieldset {
   width: 98%;
@@ -66,9 +72,6 @@ body {
   margin-bottom: 5px;
   margin-right: 15px; }
 
-.newForm select {
-  width: 100%; }
-
 .newForm input[type="radio"] {
   padding: 0;
   width: auto;
@@ -83,7 +86,7 @@ body {
 
 .newForm .newColumn label, fieldset {
   display: block;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 3px; }
 
 .newForm .newColumn label:first-child, fieldset:first-child {
@@ -94,9 +97,11 @@ body {
   resize: vertical;
   margin-top: 4px;
   height: 100px;
-  width: 98%;
+  width: 100%;
   padding: 5px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px black; }
 
 .newForm .button {
   text-align: center;
@@ -107,4 +112,29 @@ body {
 .newForm .button button {
   cursor: pointer;
   width: 250px;
-  font-size: 24px; }
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  background: linear-gradient(to bottom, #ffad33 0%, #ff9900 65%, #b26b00 100%);
+  color: #F0F0F0;
+  border-radius: 5px;
+  border-top: 2px solid #D99633;
+  border-right: 2px solid #915700;
+  border-bottom: 2px solid #7C4A00;
+  border-left: 2px solid #D99633; }
+
+.newForm .button button:hover {
+  color: #000000; }
+
+.DOT {
+  box-shadow: 0 0 10px gray;
+  text-transform: uppercase;
+  cursor: pointer;
+  min-width: 100px;
+  max-width: 600px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 7px;
+  text-shadow: 0 -2px 1px #8a8a8a;
+  background: #a90329;
+  background: linear-gradient(to bottom, #a90329 0%, #8f0222 44%, #6d0019 100%); }

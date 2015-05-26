@@ -12,7 +12,7 @@ body {
   font-size: 35px;
   text-align: center;
   clear: both;
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 10px;
 }
 
@@ -33,34 +33,46 @@ body {
   padding: 5px 5px;
   width: 95px;
   height: 50px;
-  background: #CF7C00;
+  background: linear-gradient(to bottom,  rgba(255, 173, 51, 1) 0%,rgba(255, 153, 0, 1) 65%,rgba(178, 107, 0, 1) 100%);
   color: #F0F0F0;
   float: left;
   text-align: center;
+  border-radius: 5px;
   border-top: 2px solid #D99633;
   border-right: 2px solid #915700;
   border-bottom: 2px solid #7C4A00;
   border-left: 2px solid #D99633;
+  margin: 10px;
+
+
 }
 
 .nav-buttons li a:hover {
-  background: #E7BE80;
   color: #000000
 }
 
 
 /* new bike form */
 .newForm {
-  width: 80%;
-  font-size: 16px;
+  width: 60%;
+  font-size: 17px;
   margin-right: auto;
   margin-left: auto;
 }
 
-.newForm input {
+.newForm input, select {
   width: 98%;
   padding: 5px;
   box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px black;
+}
+
+.newForm 
+  input:hover, 
+  select:hover, 
+  textarea:hover, {
+    background: #E7BE80;
 }
 
 .newForm fieldset {
@@ -80,10 +92,6 @@ body {
   margin-right: 15px;
 }
 
-.newForm select {
-  width: 100%;
-}
-
 .newForm input[type="radio"] {
   padding: 0;
   width: auto;
@@ -101,7 +109,7 @@ body {
 
 .newForm .newColumn label, fieldset {
   display: block;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 3px;
 }
 
@@ -114,9 +122,11 @@ body {
   resize: vertical;
   margin-top: 4px;
   height: 100px;
-  width: 98%;
+  width: 100%;
   padding: 5px;
   box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px black;
 }
 
 .newForm .button {
@@ -130,4 +140,36 @@ body {
   cursor: pointer;
   width: 250px;
   font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  background: linear-gradient(to bottom,  rgba(255, 173, 51, 1) 0%,rgba(255, 153, 0, 1) 65%,rgba(178, 107, 0, 1) 100%);
+  color: #F0F0F0;  
+  border-radius: 5px;
+  border-top: 2px solid #D99633;
+  border-right: 2px solid #915700;
+  border-bottom: 2px solid #7C4A00;
+  border-left: 2px solid #D99633;
+}
+
+.newForm .button button:hover {
+  color: #000000;
+}
+
+.DOT{
+  box-shadow: 0 0 10px gray;
+text-transform: uppercase;
+cursor: pointer;
+min-width: 100px;
+max-width: 600px;
+color: white;
+font-weight: bold;
+letter-spacing: 7px;
+text-shadow: 0 -2px 1px #8a8a8a;
+background: rgb(169,3,41);
+background: -moz-linear-gradient(top,  rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,3,41,1)), color-stop(44%,rgba(143,2,34,1)), color-stop(100%,rgba(109,0,25,1)));
+background: -webkit-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+background: -o-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+background: -ms-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+background: linear-gradient(to bottom,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
 }

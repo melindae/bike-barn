@@ -1,45 +1,59 @@
 body {
-  background-image: url("/dist/images/gun_metal.png");
-  background-color: #1C4F4F;
+  /*  background-image: url("/dist/images/gun_metal.png");*/
+  background-color: #0B0B0A;
   font-family: "Tahoma", Geneva, sans-serif;
   font-size: 20px;
   color: white; }
 
-.title {
-  color: #FF9900;
-  font-size: 35px;
-  text-align: center;
-  clear: both;
-  margin-top: 50px;
-  margin-bottom: 10px; }
+/*top navigation frame*/
+.nav-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-image: url("/dist/images/gun_metal.png");
+  background-color: #0B0B0A;
+  height: 70px; }
 
-/*top navigation buttons*/
-.nav-buttons {
+.nav-frame .bb-logo {
+  float: left;
+  margin: 20px 0 0 40px; }
+
+.nav-frame .nav-buttons {
   list-style: none;
-  margin: 20px;
-  font-size: 20px; }
+  font-size: 18px; }
 
-.nav-buttons li {
+.nav-frame .nav-buttons li {
   display: inline; }
 
-.nav-buttons li a {
+.nav-frame .nav-buttons li a {
   text-decoration: none;
-  padding: 5px 5px;
-  width: 95px;
-  height: 50px;
+  padding: 5px 5px 7px 5px;
+  width: 80px;
+  height: 20px;
   background: linear-gradient(to bottom, #ffad33 0%, #ff9900 65%, #b26b00 100%);
   color: #F0F0F0;
-  float: left;
+  float: right;
   text-align: center;
   border-radius: 5px;
   border-top: 2px solid #D99633;
   border-right: 2px solid #915700;
   border-bottom: 2px solid #7C4A00;
   border-left: 2px solid #D99633;
-  margin: 10px; }
+  margin: 1px;
+  margin-right: 20px; }
 
-.nav-buttons li a:hover {
+.nav-frame .nav-buttons li a:hover {
   color: #000000; }
+
+/* page title */
+.title {
+  color: #FF9900;
+  font-size: 35px;
+  text-align: center;
+  clear: both;
+  margin-top: 100px;
+  margin-bottom: 10px; }
 
 /* new bike form */
 .newForm {

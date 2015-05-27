@@ -16,14 +16,17 @@
   
   <body>
     <header></header>
-    <nav class="nav-buttons">
-      <ul>
-        <li><a ui-sref="home">Home</a></li>
-        <li><a ui-sref="newBike">Add New Bike</a></li>
-        <li><a ui-sref="quickInv">Quick Inventory</a></li>
-        <li><a ui-sref="detailInv">Detailed Inventory</a></li>
-      </ul>        
-    </nav>
+    <div class="nav-frame">
+      <div class="bb-logo">Bike-Barn Logo</div>
+      <nav class="nav-buttons">
+        <ul>
+          <li><a ui-sref="newBike">Add Bike</a></li>
+          <li><a ui-sref="detailInv">Full List</a></li>
+          <li><a ui-sref="quickInv">Quick List</a></li>          
+          <li><a ui-sref="home">Home</a></li>
+        </ul>        
+      </nav>
+    </div>  
     <div ui-view></h2>
     </div>
   </body>

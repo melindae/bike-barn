@@ -18,17 +18,22 @@ $locationProvider.html5Mode(true);
     url: '/new-bike',
     controller:'addCtrl',
     templateUrl: 'templates/new-bike.html',
-   })
+  })
   .state('quickInv', {
     url: '/quick-inventory',
-    controller:'addCtrl',
+    //controller:'addCtrl',
     templateUrl: 'templates/quick-inventory.html',
-   })
+  })
   .state('detailInv', {
     url: '/detailed-inventory',
-    controller:'addCtrl',
+    controller:'detailCtrl',
     templateUrl: 'templates/detailed-inventory.html',
-   })
+  })
+  .state('editBike', {
+    url: '/edit-bike',
+    //controller:'detailCtrl',
+    templateUrl: 'templates/edit-bike.html',
+  })
   .state('otherwise', {
     url: '*path',
     //controller:'someController',
@@ -61,29 +66,28 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
       'empty4': 0,
     });
   };
+})
 
-  //console.log($scope.bikes)
+bikeBarn.controller('detailCtrl', function($scope, $firebaseArray) {
+  var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
+
+  $scope.bikes = $firebaseArray(bikeArray);
  
 })
 
-  // $scope.addBike = function() {
-  //   $scope.bikes.push({
-  //     'ready': $scope.bike.ready,
-  //     'ident': $scope.bike.ident,
-  //     'year': $scope.bike.year,
-  //     'make': $scope.bike.make,
-  //     'model': $scope.bike.model,
-  //     'maincolor': $scope.bike.maincolor,
-  //     'maintype': $scope.bike.maintype,
-  //     'sn': $scope.bike.sn,
-  //     'notes': $scope.bike.notes,
-  //     'empty1': 0,
-  //     'empty2': 0,
-  //     'empty3': 0,
-  //     'empty4': 0,
-  //   });
-  // };
 
+bikeBarn.directive('editNote', function() {
+  return {
+    restrict: 'A',
+    template: "<td><button class='edit-button' ng-click='edit(bike)'>Edit note</button>{{bike.notes}}</td>",
 
+    link: function($scope, element, attrs) {
+      $scope.edit = function(bike) {
+        var bikeIndex = $scope.bikes.indexOf(bike);
+        // edit and save note
+      }
+    }
+  }
+})
 
 },{}]},{},[1]);

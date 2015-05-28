@@ -1,26 +1,27 @@
 <h2 class='title'>Detailed Inventory</h2>
-
-<table>
+<div class="detail-table">
+  <table>
     <tr>
-        <th>ready?</th>
-        <th>ID</th>
-        <th>year</th>
-        <th>make</th>
-        <th>model</th>
-        <th>maincolor</th>
-        <th>maintype</th>
-        <th>sn</th>
-        <th>notes</th>
+      <th>Ready?</th>
+      <th>ID</th>
+      <th>Year</th>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Color</th>
+      <th>Type</th>
+      <th>SN</th>
+      <th>Notes</th>
     </tr>                                
     <tr ng-repeat="bike in bikes"> 
-        <td>{{bike.ready}}</td>
-        <td>{{bike.ident}}</td>
-        <td>{{bike.year}}</td>
-        <td>{{bike.make}}</td>
-        <td>{{bike.model}}</td>
-        <td>{{bike.maincolor}}</td>
-        <td>{{bike.maintype}}</td>
-        <td>{{bike.sn}}</td>
-        <td>{{bike.notes}}</td>
+      <td>{{bike.ready}}</td>
+      <td>{{bike.ident}}</td>
+      <td>{{bike.year}}</td>
+      <td>{{bike.make}}</td>
+      <td>{{bike.model}}</td>
+      <td>{{bike.maincolor}}</td>
+      <td>{{bike.maintype}}</td>
+      <td>{{bike.sn}}</td>
+      <td>{{bike.notes}}</td>
     </tr>
-</table>
+  </table>
+</div>

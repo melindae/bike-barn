@@ -5,7 +5,7 @@ body {
   font-size: 20px;
   color: white; }
 
-/*top navigation frame*/
+/****** top navigation frame ******/
 .nav-frame {
   position: absolute;
   top: 0;
@@ -17,7 +17,7 @@ body {
 
 .nav-frame .bb-logo {
   float: left;
-  margin: 20px 0 0 40px; }
+  margin: 10px 0 0 30px; }
 
 .nav-frame .nav-buttons {
   list-style: none;
@@ -46,16 +46,16 @@ body {
 .nav-frame .nav-buttons li a:hover {
   color: #000000; }
 
-/* page title */
+/****** page title ******/
 .title {
   color: #FF9900;
   font-size: 35px;
   text-align: center;
   clear: both;
   margin-top: 100px;
-  margin-bottom: 10px; }
+  margin-bottom: 40px; }
 
-/* new bike form */
+/****** new bike form ******/
 .newForm {
   width: 60%;
   font-size: 17px;
@@ -140,15 +140,43 @@ body {
 .newForm .button button:hover {
   color: #000000; }
 
-.DOT {
-  box-shadow: 0 0 10px gray;
-  text-transform: uppercase;
-  cursor: pointer;
-  min-width: 100px;
-  max-width: 600px;
-  color: white;
-  font-weight: bold;
-  letter-spacing: 7px;
-  text-shadow: 0 -2px 1px #8a8a8a;
-  background: #a90329;
-  background: linear-gradient(to bottom, #a90329 0%, #8f0222 44%, #6d0019 100%); }
+/****** detailed list/inventory page ******/
+.detail-table {
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+  max-width: 90%;
+  min-width: 50%; }
+
+.detail-table table, th, td {
+  border: 1px solid #4B4B4B;
+  border-collapse: collapse;
+  padding: 3px 6px 3px 6px;
+  font-size: 14px;
+  font-family: "ariel" sans-serif;
+  color: white; }
+
+.detail-table th {
+  color: #FF9900; }
+
+/****** misc ******/
+.edit-button {
+  padding: 1px 1px 1px 1px;
+  background: linear-gradient(to bottom, #ffad33 0%, #ff9900 65%, #b26b00 100%);
+  color: #F0F0F0;
+  text-align: center;
+  border-radius: 2px;
+  border-top: 1px solid #D99633;
+  border-right: 1px solid #915700;
+  border-bottom: 1px solid #7C4A00;
+  border-left: 1px solid #D99633; }
+
+.edit-button a {
+  text-decoration: none;
+  color: #000000;
+  padding-right: 10px;
+  margin-right: 10px; }
+
+.edit-button a:hover {
+  color: #F0F0F0; }

@@ -11,7 +11,7 @@
       <th>Type</th>
       <th>SN</th>
       <th>Notes</th>
-    </tr>                                
+    </tr>                             
     <tr ng-repeat="bike in bikes"> 
       <td>{{bike.ready}}</td>
       <td>{{bike.ident}}</td>
@@ -21,7 +21,7 @@
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td>{{bike.sn}}</td>
-      <td>{{bike.notes}}</td>
+      <td> {{bike.notes}}<button class='edit-button' ng-click='edit(bike)'> <a ui-sref='editBike'>edit</a> </button> </td>
     </tr>
   </table>
-</div>
+</div> 

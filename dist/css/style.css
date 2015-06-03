@@ -2,7 +2,7 @@ body {
   /*  background-image: url("/dist/images/gun_metal.png");*/
   background-color: #0B0B0A;
   font-family: "Tahoma", Geneva, sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   color: white; }
 
 /****** top navigation frame ******/
@@ -13,24 +13,25 @@ body {
   width: 100%;
   background-image: url("/dist/images/gun_metal.png");
   background-color: #0B0B0A;
-  height: 70px; }
+  height: 80px; }
 
 .nav-frame .bb-logo {
   float: left;
-  margin: 10px 0 0 30px; }
+  margin: 15px 0 0 30px; }
 
 .nav-frame .nav-buttons {
   list-style: none;
-  font-size: 18px; }
+  font-size: 20px;
+  font-weight: bold; }
 
 .nav-frame .nav-buttons li {
   display: inline; }
 
 .nav-frame .nav-buttons li a {
   text-decoration: none;
-  padding: 5px 5px 7px 5px;
-  width: 80px;
-  height: 20px;
+  padding: 6px 5px 6px 5px;
+  width: 105px;
+  height: 25px;
   background: linear-gradient(to bottom, #ffad33 0%, #ff9900 65%, #b26b00 100%);
   color: #F0F0F0;
   float: right;
@@ -153,11 +154,31 @@ body {
   border: 1px solid #4B4B4B;
   border-collapse: collapse;
   padding: 3px 6px 3px 6px;
-  font-size: 14px;
+  font-size: 18px;
   font-family: "ariel" sans-serif;
   color: white; }
 
 .detail-table th {
+  color: #FF9900; }
+
+/****** quick list/inventory page ******/
+.quick-table {
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+  max-width: 90%;
+  min-width: 50%; }
+
+.quick-table table, th, td {
+  border: 1px solid #4B4B4B;
+  border-collapse: collapse;
+  padding: 3px 6px 3px 6px;
+  font-size: 18px;
+  font-family: "ariel" sans-serif;
+  color: white; }
+
+.quick-table th {
   color: #FF9900; }
 
 /****** misc ******/

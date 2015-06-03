@@ -20,7 +20,7 @@ $locationProvider.html5Mode(true);
   })
   .state('quickInv', {
     url: '/quick-inventory',
-    //controller:'addCtrl',
+    controller:'detailCtrl',
     templateUrl: 'templates/quick-inventory.html',
   })
   .state('detailInv', {
@@ -75,23 +75,12 @@ bikeBarn.controller('detailCtrl', function($scope, $firebaseArray) {
     var bikeIndex = $scope.bikes.indexOf(bike);
       console.log(bikeIndex);
   };
- 
 })
 
 bikeBarn.controller('editCtrl', function($scope, $firebaseArray) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
 
   $scope.bikes = $firebaseArray(bikeArray);
-
-
-//         //$scope.model = $scope.bikes[bikeIndex].model;
-         var qqq = $scope.bikes[bikeIndex].notes
-//         $scope.notes = qqq;
-//         console.log();
-         console.log(qqq);
-//         $scope.model = 'murgle'  
-
-
 
   $scope.savebike = function() {
     $scope.bikes.$add({
@@ -112,18 +101,9 @@ bikeBarn.controller('editCtrl', function($scope, $firebaseArray) {
   };
 })
 
-bikeBarn.service = ('GetBikeIndex', function() {
-  var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
-  $scope.bikes = $firebaseArray(bikeArray);
-  
-}
 
-var myModule = angular.module('myModule', []);
-myModule.factory('serviceId', function() {
-  var shinyNewServiceInstance;
-  // factory function body that constructs shinyNewServiceInstance
-  return shinyNewServiceInstance;
-});
+
+
 
 // bikeBarn.directive('editBike', function() {
 //   return {

@@ -69,28 +69,56 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray) {
 
   $scope.editNote = function(bike) {
     var bikeIndex = $scope.bikes.indexOf(bike);
-    console.log(bike)
-    console.log(bikeIndex)
   }
-  // var taskIndex = $scope.tasks.indexOf(task);
-  // $scope.tasks[taskIndex].done = "Yes!";
-  // $scope.tasks.$save(taskIndex).then(function(fireRef) {
-  //   fireRef.key() === $scope.tasks[taskIndex].$id;
 
   $scope.saveNote = function(bike) {
     var bikeIndex = $scope.bikes.indexOf(bike);
-    //$scope.newBikeNote = angular.copy(bike);
     $scope.bikes[bikeIndex].notes = bike.notes;
     $scope.bikes.$save(bikeIndex).then(function(bikeArray) {
-    bikeArray.key() === $scope.bikes[bikeIndex].$id;
-  })
+      bikeArray.key() === $scope.bikes[bikeIndex].$id;
+    })
   }
 
   $scope.bikeReady = function(ready) {
     if (ready === 'yes') {
       return true;
     }; 
-
   }
 })
+
+
+bikeBarn.directive('buttonToggle', function() {
+   return {
+    restrict: 'A',
+    template: "<button class='ready-button' ng-click='readyToggle(bike)'>{{bike.ready}}</button>",
+
+    link: function($scope, element, attrs) {
+      $scope.readyToggle = function(bike) {
+        var bikeIndex = $scope.bikes.indexOf(bike);
+
+        if ($scope.bikes[bikeIndex].ready === 'yes') {
+            $scope.bikes[bikeIndex].ready = 'no';
+          }
+        else {
+            $scope.bikes[bikeIndex].ready = 'yes';
+          }
+
+        $scope.bikes[bikeIndex].ready = bike.ready;
+        $scope.bikes.$save(bikeIndex).then(function(bikeArray) {
+          bikeArray.key() === $scope.bikes[bikeIndex].$id;
+        });
+      }
+    }
+  }
+});
+
+        // playing with color changes
+        // if ($scope.bikes[bikeIndex].ready === 'yes') {
+        //   $('button').removeClass('red-button');
+        //   $('button').addClass('green-button');
+        // }
+        // else {
+        //   $('button').removeClass('green-button');
+        //   $('button').addClass('red-button');
+        // }
 },{}]},{},[1]);

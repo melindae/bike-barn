@@ -11,7 +11,7 @@
       <th>Type</th>
     </tr>
     <tr ng-repeat="bike in bikes" ng-show="bikeReady(bike.ready)"> 
-      <td>{{bike.ready}}</td>
+      <td button-toggle></td>
       <td>{{bike.ident}}</td>
       <td>{{bike.model}}</td>
       <td>{{bike.maincolor}}</td>
@@ -34,7 +34,7 @@
       <th>Type</th>
     </tr>                             
     <tr ng-repeat="bike in bikes" ng-hide="bikeReady(bike.ready)"> 
-      <td>{{bike.ready}}</td>
+      <td button-toggle></td>
       <td>{{bike.ident}}</td>
       <td>{{bike.model}}</td>
       <td>{{bike.maincolor}}</td>

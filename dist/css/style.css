@@ -200,6 +200,55 @@ body {
 .quick-table .edit-note-field {
   height: 60px; }
 
+/* red*/
+.table-online .ready-button {
+  background: linear-gradient(to bottom, #008c00 0%, #006e00 65%, #005000 100%);
+  border-top: 1px solid #33A333;
+  border-right: 1px solid #004000;
+  border-bottom: 1px solid #003000;
+  border-left: 1px solid #33A333; }
+
+/* green*/
+.table-offline .ready-button {
+  background: linear-gradient(to bottom, #e10000 0%, #af0000 65%, #7d0000 100%);
+  border-top: 1px solid #CC0000;
+  border-right: 1px solid #7A0000;
+  border-bottom: 1px solid #660000;
+  border-left: 1px solid #CC0000; }
+
+/* ready common*/
+.quick-table .ready-button {
+  padding: 2px 3px 2px 3px;
+  color: white;
+  text-align: center;
+  border-radius: 2px; }
+
+/* playing with button color change*/
+.red-button {
+  background: linear-gradient(to bottom, #008c00 0%, #006e00 65%, #005000 100%);
+  border-top: 1px solid #33A333;
+  border-right: 1px solid #004000;
+  border-bottom: 1px solid #003000;
+  border-left: 1px solid #33A333;
+  /*common*/
+  padding: 2px 3px 2px 3px;
+  color: white;
+  text-align: center;
+  border-radius: 2px; }
+
+/* playing with button color change*/
+.green-button {
+  background: linear-gradient(to bottom, #e10000 0%, #af0000 65%, #7d0000 100%);
+  border-top: 1px solid #CC0000;
+  border-right: 1px solid #7A0000;
+  border-bottom: 1px solid #660000;
+  border-left: 1px solid #CC0000;
+  /*common*/
+  padding: 2px 3px 2px 3px;
+  color: white;
+  text-align: center;
+  border-radius: 2px; }
+
 /****** misc ******/
 .edit-button {
   padding: 1px 1px 1px 1px;

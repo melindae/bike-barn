@@ -1,4 +1,4 @@
-<h2 class='title'>Detailed Inventory</h2>
+<h2 class='title'>Detailed List</h2>
 <div class="detail-table">
   <table>
     <tr>
@@ -11,6 +11,7 @@
       <th>Type</th>
       <th>SN</th>
       <th>Notes</th>
+      <th>Edit</th>     
     </tr>                             
     <tr ng-repeat="bike in bikes"> 
       <td>{{bike.ready}}</td>
@@ -21,7 +22,14 @@
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td>{{bike.sn}}</td>
-      <td> {{bike.notes}}<button class='edit-button' ng-click='edit(bike)'> <a ui-sref='editBike'>edit</a> </button> </td>
+      <td>
+        <span ng-hide='editMe'>{{bike.notes}}</span>
+        <input type='text' ng-show='editMe' ng-model='bike.notes'/>
+      </td>
+      <td>
+        <button class='edit-button' type="submit" ng-click='editMe = true; editNotes()' ng-hide='editMe'>Edit</button>  
+        <button class='edit-button' type="submit" ng-click='editMe = false' ng-show='editMe'>Save</button>
+      </td>
     </tr>
   </table>
 </div> 

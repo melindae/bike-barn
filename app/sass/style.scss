@@ -172,7 +172,7 @@ body {
 }
 
 
-/****** detailed list/inventory page ******/
+/****** detail list/inventory page ******/
 
 .detail-table{
   margin-top: 30px;
@@ -199,13 +199,10 @@ body {
 
 /****** quick list/inventory page ******/
 
-.quick-table{
+.quick-table {
+  float: left;
   margin-top: 30px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 80%;
-  max-width: 90%;
-  min-width: 50%;
+  width: 37%;
 }
 
 .quick-table table, th, td {
@@ -221,6 +218,30 @@ body {
   color: #FF9900;
 }
 
+.quick-table caption {
+  font-size: 26px;
+  font-weight: bold;
+  margin-right: 15%;
+  margin-bottom: 5px;
+}
+
+.table-online{
+  margin-right: 3%;
+  margin-left: 10%;
+}
+
+.table-offline{
+  margin-right: 10%;
+  margin-left: 3%;
+}
+
+.quick-table .edit-column {
+  border: 0px;
+}
+
+.quick-table .edit-note-field {
+  height: 60px;
+}
 
 /****** misc ******/ 
 
@@ -228,7 +249,7 @@ body {
 
   padding: 1px 1px 1px 1px;
   background: linear-gradient(to bottom,  rgba(255, 173, 51, 1) 0%,rgba(255, 153, 0, 1) 65%,rgba(178, 107, 0, 1) 100%);
-  color: #F0F0F0;
+  color: #000000;
   text-align: center;
   border-radius: 2px;
   border-top: 1px solid #D99633;
@@ -244,6 +265,6 @@ body {
   margin-right: 10px;
 }
 
-.edit-button a:hover {
+.edit-button:hover {
   color: #F0F0F0;
 }

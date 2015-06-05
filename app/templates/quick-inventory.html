@@ -1,7 +1,31 @@
-<h2 class='title'>Quick Inventory</h2>
+<h2 class='title'>Quick List</h2>
 
-<div class="quick-table">
-  <table>
+<div>
+  <table class="quick-table table-online">
+    <caption>Ready</caption>
+    <tr>
+      <th>Ready?</th>
+      <th>ID</th>
+      <th>Model</th>
+      <th>Color</th>
+      <th>Type</th>
+    </tr>
+    <tr ng-repeat="bike in bikes" ng-show="bikeReady(bike.ready)"> 
+      <td>{{bike.ready}}</td>
+      <td>{{bike.ident}}</td>
+      <td>{{bike.model}}</td>
+      <td>{{bike.maincolor}}</td>
+      <td>{{bike.maintype}}</td>
+      <td class="edit-column">
+        <input class="edit-note-field" type='text' ng-show='editMe' ng-model='bike.notes'/>
+        <button class='edit-button' type="submit" ng-click='editMe = true; editNotes()' ng-hide='editMe'>Edit Notes</button>  
+        <button class='edit-button' type="submit" ng-click='editMe = false' ng-show='editMe'>Save Notes</button>
+      </td>
+    </tr>
+  </table>
+
+  <table class="quick-table table-offline">
+    <caption>Waiting</caption>
     <tr>
       <th>Ready?</th>
       <th>ID</th>
@@ -9,16 +33,17 @@
       <th>Color</th>
       <th>Type</th>
     </tr>                             
-    <tr ng-repeat="bike in bikes"> 
+    <tr ng-repeat="bike in bikes" ng-hide="bikeReady(bike.ready)"> 
       <td>{{bike.ready}}</td>
       <td>{{bike.ident}}</td>
       <td>{{bike.model}}</td>
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
-     <td class="edit-column">
+      <td class="edit-column">
         <input class="edit-note-field" type='text' ng-show='editMe' ng-model='bike.notes'/>
         <button class='edit-button' type="submit" ng-click='editMe = true; editNotes()' ng-hide='editMe'>Edit Notes</button>  
         <button class='edit-button' type="submit" ng-click='editMe = false' ng-show='editMe'>Save Notes</button>
+      </td>
     </tr>
   </table>
 </div> 

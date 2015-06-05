@@ -70,4 +70,11 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray) {
     $scope.bikeIndex = $scope.bikes.indexOf(bike);
     $scope.newBikeNote = angular.copy(bike);
   }
+
+  $scope.bikeReady = function(ready) {
+    if (ready === 'yes') {
+      return true;
+    }; 
+
+  }
 })

@@ -67,9 +67,23 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray) {
 
   $scope.bikes = $firebaseArray(bikeArray);
 
-  $scope.editNotes = function(bike) {
-    $scope.bikeIndex = $scope.bikes.indexOf(bike);
-    $scope.newBikeNote = angular.copy(bike);
+  $scope.editNote = function(bike) {
+    var bikeIndex = $scope.bikes.indexOf(bike);
+    console.log(bike)
+    console.log(bikeIndex)
+  }
+  // var taskIndex = $scope.tasks.indexOf(task);
+  // $scope.tasks[taskIndex].done = "Yes!";
+  // $scope.tasks.$save(taskIndex).then(function(fireRef) {
+  //   fireRef.key() === $scope.tasks[taskIndex].$id;
+
+  $scope.saveNote = function(bike) {
+    var bikeIndex = $scope.bikes.indexOf(bike);
+    //$scope.newBikeNote = angular.copy(bike);
+    $scope.bikes[bikeIndex].notes = bike.notes;
+    $scope.bikes.$save(bikeIndex).then(function(bikeArray) {
+    bikeArray.key() === $scope.bikes[bikeIndex].$id;
+  })
   }
 
   $scope.bikeReady = function(ready) {

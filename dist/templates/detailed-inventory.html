@@ -27,8 +27,8 @@
         <input type='text' ng-show='editMe' ng-model='bike.notes'/>
       </td>
       <td>
-        <button class='edit-button' type="submit" ng-click='editMe = true; editNotes()' ng-hide='editMe'>Edit</button>  
-        <button class='edit-button' type="submit" ng-click='editMe = false' ng-show='editMe'>Save</button>
+        <button class='edit-button' type="submit" ng-click='editMe = true; editNote(bike)' ng-hide='editMe'>Edit Notes</button>  
+        <button class='edit-button' type="submit" ng-click='editMe = false; saveNote(bike)' ng-show='editMe'>Save</button>
       </td>
     </tr>
   </table>

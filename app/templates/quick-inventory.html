@@ -8,7 +8,6 @@
       <th>Model</th>
       <th>Color</th>
       <th>Type</th>
-      <th>Notes</th>
     </tr>                             
     <tr ng-repeat="bike in bikes"> 
       <td>{{bike.ready}}</td>
@@ -16,7 +15,10 @@
       <td>{{bike.model}}</td>
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
-      <td> {{bike.notes}}<button class='edit-button' ng-click='edit(bike)'> <a ui-sref='editBike'>edit</a> </button> </td>
+     <td class="edit-column">
+        <input class="edit-note-field" type='text' ng-show='editMe' ng-model='bike.notes'/>
+        <button class='edit-button' type="submit" ng-click='editMe = true; editNotes()' ng-hide='editMe'>Edit Notes</button>  
+        <button class='edit-button' type="submit" ng-click='editMe = false' ng-show='editMe'>Save Notes</button>
     </tr>
   </table>
 </div> 

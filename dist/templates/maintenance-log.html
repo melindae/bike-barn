@@ -1,0 +1,40 @@
+
+<h2 class='title'>Maintenance Log</h2>
+
+<div>
+	<table ng-repeat="(bikeIndex, bike) in bikes ">
+		<tr ng-repeat='mlog in bike.mlogs' ng-show="showSingleBike(bikeIndex)">
+			<td colspan="2">{{mlog.date}}</td>
+			<td colspan="2">{{mlog.note}}</td>
+		</tr>
+	</table>
+</div>
+
+
+<h2 class='title'>Maintenance Log</h2>
+
+<div>
+	<table>
+	 	<tr>
+	    <th>ID</th>
+	    <th>Model</th>
+	    <th>Color</th>
+	    <th>Type</th>
+	    <th>go button</th>
+	  </tr>
+	</table>
+
+	<table ng-repeat="(bikeIndex, bike) in bikes ">
+		<tr>
+			<td>{{bike.color}}</td>
+			<td>{{bike.name}}</td>
+			<td>{{bike.type}}</td>
+			<td>{{bike.year}}</td>
+			<td><button class='edit-button' type='submit' ng-click="showBikeIndex(bikeIndex)">click me!</button></td>
+		</tr> 
+		<tr ng-repeat='mlog in bike.mlogs' ng-show="showSingleBike(bikeIndex)">
+			<td colspan="2">{{mlog.date}}</td>
+			<td colspan="2">{{mlog.note}}</td>
+		</tr>
+	</table>
+</div>

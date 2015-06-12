@@ -28,8 +28,9 @@
 
   </div>
   <div class="newColumn">
+
     <label>ID:</label>
-    <input name='id' type="text" ng-model='ident'>
+    <input name='id' type="text" ng-model='bk.ident'>
 
     <label>SN:</label>
     <input name='sn' type="text" ng-model='bk.sn'>
@@ -47,10 +48,12 @@
       </ul>
     </fieldset>
   </div>
-  <div>
-    <label >Notes:</label>
-    <textarea ng-model='notes'></textarea>
-  </div>
+<!--   <div>
+
+    <label >Inital Log:</label>
+    <textarea ng-model='bk.mlogs.note'></textarea>
+
+  </div> -->
   <div class="button">
     <button ng-click="addbike()">Add Bike</button>
   </div>

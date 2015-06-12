@@ -70,6 +70,7 @@ body {
 /****** new bike form ******/
 .newForm {
   width: 60%;
+  max-width: 700px;
   font-size: 17px;
   margin-right: auto;
   margin-left: auto;
@@ -132,6 +133,10 @@ body {
 
 .newForm .newColumn label:first-child, fieldset:first-child {
   margin-top: 0;
+}
+
+.newForm .newColumn fieldset {
+  margin-bottom: 30px;
 }
 
 .newForm textarea {

@@ -1,0 +1,48 @@
+<h2 class='title'>Maintenance Log</h2>
+
+<div>
+	<table ng-repeat="(bikeIndex, bike) in bikes ">
+		<tr ng-repeat='mlog in bike.mlogs' ng-show="showSingleBike(bikeIndex)">
+			<td>{{mlog.date}}</td>
+			<td>{{mlog.note}}</td>
+		</tr>
+		<tr  ng-show="showSingleBike(bikeIndex)">
+			<td><input type="date" ngmodel="bk.bike.mlogs.date"> </td>
+			<td><input type="test" ngmodel="bk.bike.mlogs.note"> </td>
+			<td><button ng-click="addLog(bikeIndex)">Add Log</button></td>
+		</tr>
+	</table>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+	<table ng-repeat="(bikeIndex, bike) in bikes ">
+		<tr ng-repeat='mlog in bike.mlogs' ng-show="showSingleBike(bikeIndex)">
+			<td colspan="2">{{mlog.date}}</td>
+			<td colspan="2">{{mlog.note}}</td>
+		</tr>
+	</table>
+</div> -->
+

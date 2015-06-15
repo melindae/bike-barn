@@ -42,31 +42,30 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
   var bikeTime = Firebase.ServerValue.TIMESTAMP;
   $scope.bikes = $firebaseArray(bikeArray);
 
+var myDate = new Date(bikeTime*1000);
+var formatedTime=myDate.toJSON();
+
   $scope.addbike = function() {
 
     $scope.bikes.$add({
-
-      'cycle': [{
-        'timestamp': bikeTime,
-        'ready': $scope.bk.ready,
-        'ident': $scope.bk.ident,
-        'year': $scope.bk.year,
-        'make': $scope.bk.make,
-        'model': $scope.bk.model,
-        'maincolor': $scope.bk.maincolor,
-        'maintype': $scope.bk.maintype,
-        'sn': $scope.bk.sn,
-        'extra1': 0,
-        'extra2': 0
-      }],
-
-      'logs': [{
+      
+      'timestamp': bikeTime,
+      'ready': $scope.bk.ready,
+      'ident': $scope.bk.ident,
+      'year': $scope.bk.year,
+      'make': $scope.bk.make,
+      'model': $scope.bk.model,
+      'maincolor': $scope.bk.maincolor,
+      'maintype': $scope.bk.maintype,
+      'sn': $scope.bk.sn,
+      'extra1': 0,
+      'extra2': 0,
+      'mlogs': [{
         'timestamp': bikeTime,
         'date': '8/8',
-        'note': 'qstuff qstuff qstuff'
+        'note': 'bikes.mlogs:stuff'
       }]
     });
-
   };
 });
 
@@ -91,14 +90,17 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
   };
 
   $scope.addLog = function () {
-    GotoLogs.giveIndex;  //returns activeBikeIndex
+      //returns activeBikeIndex
+    GotoLogs.giveIndex;  
     var bikeIndex = activeBikeIndex;
-    var bikekey = $scope.bikes[bikeIndex].$id;
-    var logArray = bikeArray.child('-JrYpaJhc_8s1lDMNrq9/mlogs');
+      // gets bike id from index
+    var bikekey = $scope.bikes[bikeIndex].$id; 
+      // converts id and gchild folder into string for .child to use
+    var somestring = String(bikekey + '/mlogs'); 
+    var logArray = bikeArray.child(somestring);
+
     $scope.logs = $firebaseArray(logArray);
     
-      console.log(bikekey);
-
     $scope.logs.$add({
       'date': $scope.bk.date,
       'note': $scope.bk.note
@@ -142,71 +144,4 @@ bikeBarn.directive('buttonToggle', function() {
     }
   };
 });
-
-
-
-
-// bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
-//   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
-//   var cycleArray =bikeArray.child('cycles')
-//   var logArray =bikeArray.child('logs')
-//   var bikeTime = Firebase.ServerValue.TIMESTAMP;
-
-//   $scope.bikes = $firebaseArray(bikeArray);
-//   $scope.cycles = $firebaseArray(cycleArray);
-//   $scope.logs = $firebaseArray(logArray);
-
-//   $scope.addbike = function() {
-
-//     $scope.cycles.$add({
-
-//         'timestamp': bikeTime,
-//         'ready': $scope.bk.ready,
-//         'ident': $scope.bk.ident,
-//         'year': $scope.bk.year,
-//         'make': $scope.bk.make,
-//         'model': $scope.bk.model,
-//         'maincolor': $scope.bk.maincolor,
-//         'maintype': $scope.bk.maintype,
-//         'sn': $scope.bk.sn,
-//         'extra1': 0,
-//         'extra2': 0
-//     });
-
-//     $scope.logs.$add({
-//       'timestamp': bikeTime, 
-//       'logs': [{
-//         'date': '8/8',
-//         'note': 'qstuff qstuff qstuff'
-//       }]
-//     });
-//   };
-
-// });
-
-
-
-
-  // **********test data
-  // $scope.bikes = [
-  //   bike1 = {
-  //     name: 'klr',
-  //     color: 'black',
-  //     type: 'rad',
-  //     year: '1999',
-  //     mlogs: [
-  //        { date: '4', note: 'four' },
-  //        { date: '2', note: 'two' },
-  //        { date: '1', note: 'one' }
-  //     ]},
-  //   bike2 = {
-  //     name: 'ta',
-  //     color: 'white',
-  //     type: 'old',
-  //     year: '1888',
-  //     mlogs: [
-  //        { date: '5', note: 'five' },
-  //        { date: '2', note: 'two' },
-  //        { date: '6', note: 'six' }
-  // ]}]
 },{}]},{},[1]);

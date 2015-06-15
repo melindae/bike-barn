@@ -1,23 +1,52 @@
 <h2 class='title'>Maintenance Log</h2>
 
-<div>
+<!-- <div>
 	<table ng-repeat="(bikeIndex, bike) in bikes ">
 		<tr ng-repeat='mlog in bike.mlogs' ng-show="showSingleBike(bikeIndex)">
 			<td>{{mlog.date}}</td>
 			<td>{{mlog.note}}</td>
 		</tr>
-		<tr  ng-show="showSingleBike(bikeIndex)">
-			<td><input type="date" ngmodel="bk.bike.mlogs.date"> </td>
-			<td><input type="test" ngmodel="bk.bike.mlogs.note"> </td>
-			<td><button ng-click="addLog(bikeIndex)">Add Log</button></td>
+	</table>
+	<table>
+		<tr>
+			<td><input name='date' type="text" ng-model="bk.date"> </td>
+			<td><input name='note' type="text" ng-model="bk.note"> </td>
+		</tr>
+	</table>
+	<div><button ng-click="addLog(bikeIndex)">Add Log</button></div>
+
+</div> -->
+
+
+
+<div>
+
+ <table class="quick-table table-online" ng-repeat="(bikeIndex, bike) in bikes" ng-show="showSingleBike(bikeIndex)">
+    <tr>
+      <td button-toggle></td>
+      <td>{{bike.ident}}</td>
+      <td>{{bike.model}}</td>
+      <td>{{bike.maincolor}}</td>
+    </tr>
+  </table>
+
+	<table class="quick-table">
+    <tr>
+			<td><input name='date' type="text" ng-model="bk.date"> </td>
+			<td><input name='note' type="text" ng-model="bk.note"> </td>
+			<td><button ng-click="addLog(bikeIndex)">Add Log</button> </td>
 		</tr>
 	</table>
 
-</div>
+  <table class="quick-table table-online" ng-repeat="(bikeIndex, bike) in bikes" ng-show="showSingleBike(bikeIndex)">
+	  <tr ng-repeat='mlog in bike.mlogs'>
+			<td colspan="2" >{{mlog.date}}</td>
+			<td colspan="3">{{mlog.note}}</td>
+		</tr>
+  </table>
 
 
-
-
+</div> 
 
 
 

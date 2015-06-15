@@ -38,26 +38,34 @@ bikeBarn.config(['$stateProvider', '$locationProvider', function($stateProvider,
 
 bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
-
+  var bikeTime = Firebase.ServerValue.TIMESTAMP;
   $scope.bikes = $firebaseArray(bikeArray);
 
   $scope.addbike = function() {
+
     $scope.bikes.$add({
-      'ready': $scope.bk.ready,
-      'ident': $scope.bk.ident,
-      'year': $scope.bk.year,
-      'make': $scope.bk.make,
-      'model': $scope.bk.model,
-      'maincolor': $scope.bk.maincolor,
-      'maintype': $scope.bk.maintype,
-      'sn': $scope.bk.sn,
-      'mlogs': [{
-        'date': '4/4',
-        'note': 'stuff stuff stuff'
+
+      'cycle': [{
+        'timestamp': bikeTime,
+        'ready': $scope.bk.ready,
+        'ident': $scope.bk.ident,
+        'year': $scope.bk.year,
+        'make': $scope.bk.make,
+        'model': $scope.bk.model,
+        'maincolor': $scope.bk.maincolor,
+        'maintype': $scope.bk.maintype,
+        'sn': $scope.bk.sn,
+        'extra1': 0,
+        'extra2': 0
       }],
-      'extra1': 0,
-      'extra2': 0
+
+      'logs': [{
+        'timestamp': bikeTime,
+        'date': '8/8',
+        'note': 'qstuff qstuff qstuff'
+      }]
     });
+
   };
 });
 
@@ -81,35 +89,23 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
     return (activeBikeIndex === index);
   };
 
-  $scope.addLog = function (bike) {
-    console.log(bike);
-    var bikeIndex = (bike);
-    console.log(bikeIndex);
+  $scope.addLog = function () {
+    GotoLogs.giveIndex;  //returns activeBikeIndex
+    var bikeIndex = activeBikeIndex;
+    var bikekey = $scope.bikes[bikeIndex].$id;
+    var logArray = bikeArray.child('-JrYpaJhc_8s1lDMNrq9/mlogs');
+    $scope.logs = $firebaseArray(logArray);
+    
+      console.log(bikekey);
 
-    bikeArray.key(bikeIndex) === $scope.bikes[bikeIndex].$id;
-
-    console.log(bikeArray.key);
-    $scope.bikes.$add({
-        'mlogs': [{
-        'date': '5/4',
-        'note': '5stuff 5stuff 5stuff'
-      }],
+    $scope.logs.$add({
+      'date': $scope.bk.date,
+      'note': $scope.bk.note
     })  
   }
 });
-//  ng-click='taskDone(task)'
 
-//         $scope.tasks[taskIndex].done = "Yes!";
-//         $scope.tasks.$save(taskIndex).then(function(fireRef) {
-//           fireRef.key() === $scope.tasks[taskIndex].$id;
-//         });
-//       }
-//     }
-//   }
-// });
 //*************************************
-
-
 bikeBarn.service('GotoLogs', function() {
 
   this.getIndex = function(index) {
@@ -145,6 +141,49 @@ bikeBarn.directive('buttonToggle', function() {
     }
   };
 });
+
+
+
+
+// bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
+//   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
+//   var cycleArray =bikeArray.child('cycles')
+//   var logArray =bikeArray.child('logs')
+//   var bikeTime = Firebase.ServerValue.TIMESTAMP;
+
+//   $scope.bikes = $firebaseArray(bikeArray);
+//   $scope.cycles = $firebaseArray(cycleArray);
+//   $scope.logs = $firebaseArray(logArray);
+
+//   $scope.addbike = function() {
+
+//     $scope.cycles.$add({
+
+//         'timestamp': bikeTime,
+//         'ready': $scope.bk.ready,
+//         'ident': $scope.bk.ident,
+//         'year': $scope.bk.year,
+//         'make': $scope.bk.make,
+//         'model': $scope.bk.model,
+//         'maincolor': $scope.bk.maincolor,
+//         'maintype': $scope.bk.maintype,
+//         'sn': $scope.bk.sn,
+//         'extra1': 0,
+//         'extra2': 0
+//     });
+
+//     $scope.logs.$add({
+//       'timestamp': bikeTime, 
+//       'logs': [{
+//         'date': '8/8',
+//         'note': 'qstuff qstuff qstuff'
+//       }]
+//     });
+//   };
+
+// });
+
+
 
 
   // **********test data

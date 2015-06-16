@@ -1,28 +1,30 @@
 <h2 class='title'>Maintenance Log</h2>
 
-<div>
+<div class="maint-table">
 
- <table class="quick-table table-online" ng-repeat="(bikeIndex, bike) in bikes" ng-show="showSingleBike(bikeIndex)">
+ <table class="table-online maint-table-bike" ng-repeat="(bikeIndex, bike) in bikes" ng-show="showSingleBike(bikeIndex)">
     <tr>
       <td button-toggle></td>
-      <td>{{bike.ident}}</td>
+      <td>{{bike.year}}</td>
+      <td>{{bike.maincolor}}</td>      
+      <td>{{bike.make}}</td>
       <td>{{bike.model}}</td>
-      <td>{{bike.maincolor}}</td>
     </tr>
   </table>
 
-	<table class="quick-table">
+	<table class="maint-table-input">
     <tr>
-			<td><input name='date' type="text" ng-model="bk.date"> </td>
-			<td><input name='note' type="text" ng-model="bk.note"> </td>
-			<td><button ng-click="addLog(bikeIndex)">Add Log</button> </td>
+			<td class='mt-input-date'><input name='date' type="date" ng-model="bk.date"></td>
+			<td class='mt-input-note'><input name='note' type="text" placeholder='New Note' ng-model="bk.note"></td>
+			<td class='mt-input-button'><button class='edit-button' ng-click="addLog(bikeIndex)">Add</button> </td>
 		</tr>
 	</table>
 
-  <table class="quick-table table-online" ng-repeat="(bikeIndex, bike) in bikes" ng-show="showSingleBike(bikeIndex)">
+  <table class="maint-table-logs" ng-repeat="(bikeIndex, bike) in bikes" ng-show="showSingleBike(bikeIndex)">
 	  <tr ng-repeat='mlog in bike.mlogs'>
-			<td colspan="2" >{{mlog.date}}</td>
-			<td colspan="3">{{mlog.note}}</td>
+			<td class='mt-logs-date'>{{mlog.date}}</td>
+			<td>{{mlog.note}}</td>
+			<td>Del</td>
 		</tr>
   </table>
 

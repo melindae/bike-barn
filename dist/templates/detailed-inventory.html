@@ -22,10 +22,10 @@
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td>{{bike.sn}}</td>
-      <td>
+<!--       <td>
         <span ng-hide='editMe'>{{bike.mlogs}}</span>
         <input type='text' ng-show='editMe' ng-model='bike.notes'/>
-      </td>
+      </td> -->
       <td>
         <button class='edit-button' type="submit" ng-click='editMe = true; editNote(bike)' ng-hide='editMe'>Edit Notes</button>  
         <button class='edit-button' type="submit" ng-click='editMe = false; saveNote(bike)' ng-show='editMe'>Save</button>

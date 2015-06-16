@@ -75,7 +75,7 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
   $scope.bikes = $firebaseArray(bikeArray);
 
   $scope.bikeReady = function(ready) {
-    if (ready === 'yes') {
+    if (ready === 'ready') {
       return true;
     }
   };
@@ -130,10 +130,10 @@ bikeBarn.directive('buttonToggle', function() {
       $scope.readyToggle = function(bike) {
         var bikeIndex = $scope.bikes.indexOf(bike);
 
-        if ($scope.bikes[bikeIndex].ready === 'yes') {
-          $scope.bikes[bikeIndex].ready = 'no';
+        if ($scope.bikes[bikeIndex].ready === 'ready') {
+          $scope.bikes[bikeIndex].ready = 'offline';
         } else {
-          $scope.bikes[bikeIndex].ready = 'yes';
+          $scope.bikes[bikeIndex].ready = 'ready';
         }
 
         $scope.bikes[bikeIndex].ready = bike.ready;

@@ -88,11 +88,11 @@ body {
   border: 1px black;
 }
 
-.newForm 
+.newForm {
   input:hover, 
   select:hover, 
-  textarea:hover, {
-    background: #E7BE80;
+  textarea:hover,
+  background: #E7BE80;
 }
 
 .newForm fieldset {
@@ -299,6 +299,11 @@ body {
   height: 24px;
   font-size: 18px;
 }
+
+.ui-datepicker { 
+  font-size: 9pt !important; 
+}
+
 
 .maint-table .maint-table-input .mt-input-note {
   display:table-cell; 

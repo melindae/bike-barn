@@ -12,9 +12,17 @@
     </tr>
   </table>
 
+
+<!-- <div id="wrapper" ng-app="myApp">
+  <p>{{datePicker || "00/00/0000"}}</p>
+  <input type="text" ng-model="datePicker" datepicker />
+</div> -->
+
+
+
 	<table class="maint-table-input">
     <tr>
-			<td class='mt-input-date'><input name='date' type="date" ng-model="bk.date"></td>
+			<td class='mt-input-date'><input class='datepickr' name='date' type="text" placeholder='Date' ng-model="bk.date" datepicker></td>
 			<td class='mt-input-note'><input name='note' type="text" placeholder='New Note' ng-model="bk.note"></td>
 			<td class='mt-input-button'><button class='edit-button' ng-click="addLog(bikeIndex)">Add</button> </td>
 		</tr>
@@ -29,31 +37,3 @@
   </table>
 
 </div> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div>
-	<table ng-repeat="(bikeIndex, bike) in bikes ">
-		<tr ng-repeat='mlog in bike.mlogs' ng-show="showSingleBike(bikeIndex)">
-			<td colspan="2">{{mlog.date}}</td>
-			<td colspan="2">{{mlog.note}}</td>
-		</tr>
-	</table>
-</div> -->
-

@@ -1,6 +1,7 @@
 <h2 class='title'>Detailed List</h2>
-<div class="detail-table">
-  <table>
+
+<div>
+  <table class="detail-table">
     <tr>
       <th>Ready?</th>
       <th>ID</th>
@@ -10,10 +11,8 @@
       <th>Color</th>
       <th>Type</th>
       <th>SN</th>
-      <th>Notes</th>
-      <th>Edit</th>     
     </tr>                             
-    <tr ng-repeat="bike in bikes"> 
+    <tr ng-repeat="(bikeIndex, bike) in bikes"> 
       <td button-toggle></td>
       <td>{{bike.ident}}</td>
       <td>{{bike.year}}</td>
@@ -22,13 +21,10 @@
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td>{{bike.sn}}</td>
-<!--       <td>
-        <span ng-hide='editMe'>{{bike.mlogs}}</span>
-        <input type='text' ng-show='editMe' ng-model='bike.notes'/>
-      </td> -->
-      <td>
-        <button class='edit-button' type="submit" ng-click='editMe = true; editNote(bike)' ng-hide='editMe'>Edit Notes</button>  
-        <button class='edit-button' type="submit" ng-click='editMe = false; saveNote(bike)' ng-show='editMe'>Save</button>
+      <td class="edit-column">
+        <button class='edit-button' type='submit' ng-click="showBikeIndex(bikeIndex)">
+          <a ui-sref='maintLog'>View Log</a>
+        </button>
       </td>
     </tr>
   </table>

@@ -88,11 +88,11 @@ body {
   border: 1px black;
 }
 
-.newForm {
+.newForm 
   input:hover, 
   select:hover, 
-  textarea:hover,
-  background: #E7BE80;
+  textarea:hover, {
+    background: #E7BE80;
 }
 
 .newForm fieldset {
@@ -169,7 +169,7 @@ body {
   letter-spacing: 1px;
   font-weight: bold;
   background: linear-gradient(to bottom,  rgba(255, 173, 51, 1) 0%,rgba(255, 153, 0, 1) 65%,rgba(178, 107, 0, 1) 100%);
-  color: #F0F0F0;  
+  color: #000000;  
   border-radius: 5px;
   border-top: 2px solid #D99633;
   border-right: 2px solid #915700;
@@ -178,7 +178,7 @@ body {
 }
 
 .newForm .button button:hover {
-  color: #000000;
+  color: #F0F0F0;
 }
 
 
@@ -186,11 +186,10 @@ body {
 
 .detail-table{
   margin-top: 30px;
+  width: 70%;
   margin-right: auto;
   margin-left: auto;
-  width: 80%;
-  max-width: 90%;
-  min-width: 50%;
+
 }
 
 .detail-table td, .detail-table th {
@@ -204,6 +203,14 @@ body {
 
 .detail-table th {
   color: #FF9900;
+}
+
+.detail-table .edit-column {
+  border: 0px;
+}
+
+.detail-table button {
+  
 }
 
 
@@ -300,9 +307,10 @@ body {
   font-size: 18px;
 }
 
+
 .ui-datepicker { 
-  font-size: 9pt !important; 
-}
+  font-size: 9pt !important; }
+
 
 
 .maint-table .maint-table-input .mt-input-note {

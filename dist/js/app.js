@@ -42,10 +42,13 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
   var bikeTime = Firebase.ServerValue.TIMESTAMP;
   $scope.bikes = $firebaseArray(bikeArray);
 
-var myDate = new Date(bikeTime*1000);
-var formatedTime=myDate.toJSON();
-
   $scope.addbike = function() {
+
+    var now = new Date()
+    var m = now.getMonth();
+    var d = now.getDay();
+    var y = now.getFullYear();
+    var wholedate = String( m + '/' + d + '/' + y )
 
     $scope.bikes.$add({
       
@@ -62,10 +65,12 @@ var formatedTime=myDate.toJSON();
       'extra2': 0,
       'mlogs': [{
         'timestamp': bikeTime,
-        'date': '8/8',
-        'note': 'bikes.mlogs:stuff'
+        'date': wholedate,
+        'note': 'Log created'
       }]
     });
+
+    $scope.bk = "";
   };
 });
 
@@ -90,12 +95,12 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
   };
 
   $scope.addLog = function () {
-      //returns activeBikeIndex
+        //returns activeBikeIndex
     GotoLogs.giveIndex;  
     var bikeIndex = activeBikeIndex;
-      // gets bike id from index
+        // gets bike id from index
     var bikekey = $scope.bikes[bikeIndex].$id; 
-      // converts id and gchild folder into string for .child to use
+        // converts id and gchild folder into string for .child to use
     var somestring = String(bikekey + '/mlogs'); 
     var logArray = bikeArray.child(somestring);
 
@@ -105,12 +110,37 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
       'date': $scope.bk.date,
       'note': $scope.bk.note
     })  
+
+    $scope.bk = "";
+    var now = new Date()
+    var m = now.getMonth();
+    var d = now.getDay();
+    var y = now.getFullYear();
+    var wholedate = String( m + '/' + d + '/' + y )
+    console.log(wholedate)
+
+    
   }
+
+  $scope.reset = function() {
+    getElementsByClassName("datepickr").value = "";
+  }
+
+
+  $scope.logDelete = function(bike,log) {
+    var removeLog = String(bike + '/mlogs/' + log);
+        //console.log(removeLog);
+    var removeLogArray = bikeArray.child(removeLog);
+        //console.log(removeLogArray);
+    $scope.logs = $firebaseArray(removeLogArray);
+
+    $scope.logs.$remove();
+  };
+
 });
 
 //*************************************
 bikeBarn.service('GotoLogs', function() {
-
   this.getIndex = function(index) {
     activeBikeIndex = index;
   };
@@ -144,6 +174,28 @@ bikeBarn.directive('buttonToggle', function() {
     }
   };
 });
+
+
+// bikeBarn.directive('logDelete', function() {
+//    return {
+//     restrict: 'A',
+//     link: function($scope, element, attrs) {
+//       $scope.logDelete = function(bike,log) {
+//         var removeLog = String(bike/log);
+//         var removeLogArray = bikeArray.child(removeLog)
+
+//         $scope.logs = $firebaseArray(removeLogArray);
+ 
+//         $scope.logs.$remove()
+
+
+        
+//       }
+//     }
+//   }
+// });
+
+
 
   // this calendar directive comes from
   // codepen.io/tutorialab/pen/JDxkn'

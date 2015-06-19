@@ -38,8 +38,10 @@ bikeBarn.config(['$stateProvider', '$locationProvider', function($stateProvider,
 
 bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
+  var partArray = new Firebase("https://bike-barn.firebaseio.com/parts");
   var bikeTime = Firebase.ServerValue.TIMESTAMP;
   $scope.bikes = $firebaseArray(bikeArray);
+  $scope.parts = $firebaseArray(partArray);
 
   $scope.addbike = function() {
 
@@ -74,11 +76,15 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
 });
 
 
-bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
+bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, ThingStates) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
   var partArray = new Firebase("https://bike-barn.firebaseio.com/parts");
+  var testArray = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsBSXmJi0ZSaxuH_qA5/mlogs/-JsBS_f9jAIIpFw6wo16");
+  
+  var bikeTime = Firebase.ServerValue.TIMESTAMP;
   $scope.bikes = $firebaseArray(bikeArray);
   $scope.parts = $firebaseArray(partArray);
+  $scope.testt = $firebaseArray(testArray)
 
     $scope.bikeReady = function(ready) {
     return ThingStates.readyThing(ready);
@@ -98,10 +104,15 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
   };
 
   $scope.bikeArchive = function (index) {
-    $scope.bikes[index].archive = true;
-    $scope.bikes.$save(index).then(function(bikeArray) {
-      bikeArray.key() === $scope.bikes[index].$id;
-    });
+    console.log(index);
+
+    console.log($scope.testt);
+
+
+    // $scope.bikes[index].archive = true;
+    // $scope.bikes.$save(index).then(function(bikeArray) {
+    //   bikeArray.key() === $scope.bikes[index].$id;
+    // });
   }
 
   // $scope.bikeReady = function(ready) {
@@ -111,26 +122,28 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
   // };
 
 //*************************************************************
-  $scope.logArchive = function (logIndex, mlogIndex) {
-    var logArchIndex = $scope.logs[logIndex].$id;
-        console.log(logIndex, mlogIndex);
-    var somestring = String(logArchIndex + '/mlogs'); 
-        console.log(somestring);
-    var newLogArray = logArray.child(somestring);
-        console.log(newLogArray);
-    $scope.newArchlogs = $firebaseArray(newLogArray);
-    $scope.newArchlogs[2].archive = true;
-        console.log('nla',$scope.newArchlogs);
+  $scope.logArchive = function (bikeIndex, mlogIndex) {
+    // var logArchIndex = $scope.bikes[bikeIndex].$id;
+    //     console.log(bikeIndex, mlogIndex);
+    // var somestring = String(logArchIndex + '/mlogs/' + mlogIndex  + '/0'); 
+    //     console.log(somestring);
+    // var newLogArray = bikeArray.child(somestring);
+    // $scope.newArchlogs = $firebaseArray(newLogArray);
+
+    // $scope.newArchlogs.archive = true;
+    //     console.log('nla',$scope.newArchlogs);
         
-        console.log($scope.newArchlogs[2]);
+    //     console.log($scope.newArchlogs.date);
 
+    console.log($scope.testt);
+    $scope.testt[0].archive = true;
 
-    // $scope.newlogs.$add({
-    //   'timestamp': bikeTime,
-    //   "archive": false,
-    //   'date': $scope.bk.date,
-    //   'note': $scope.bk.note
-    // })
+    $scope.bikes.$save(index).then(function(bikeArray) {
+       bikeArray.key() === $scope.bikes[index].$id;
+     });
+
+         //$scope.bikes[bikeIndex].ready = bike.ready;
+    
   }
 
 
@@ -163,7 +176,7 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
 
 //******************************************
   $scope.logDelete = function(bike,log) {
-    var removeLog = String(bike + '/mlogs/' + log);
+    var removeLog = String(bike + '/mlogs/' + log + '/0');
         //console.log(removeLog);
     var removeLogArray = bikeArray.child(removeLog);
         //console.log(removeLogArray);

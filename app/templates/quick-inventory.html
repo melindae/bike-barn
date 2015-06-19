@@ -10,7 +10,7 @@
       <th>Color</th>
       <th>Type</th>
     </tr>
-    <tr ng-repeat="(bikeIndex, bike) in bikes" ng-show="bikeReady(bike.ready)">
+    <tr ng-repeat="(bikeIndex, bike) in bikes" ng-show="bikeReady(bike.ready) && !archived(bike.archive)">
       <td button-toggle></td>
       <td>{{bike.ident}}</td>
       <td>{{bike.model}}</td>
@@ -32,7 +32,7 @@
       <th>Color</th>
       <th>Type</th>
     </tr>
-    <tr ng-repeat="(bikeIndex, bike) in bikes" ng-hide="bikeReady(bike.ready)">
+    <tr ng-repeat="(bikeIndex, bike) in bikes" ng-hide="bikeReady(bike.ready) || archived(bike.archive)">
       <td button-toggle></td>
       <td>{{bike.ident}}</td>
       <td>{{bike.model}}</td>

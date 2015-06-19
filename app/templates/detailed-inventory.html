@@ -12,7 +12,7 @@
       <th>Type</th>
       <th>SN</th>
     </tr>                             
-    <tr ng-repeat="(bikeIndex, bike) in bikes"> 
+    <tr ng-repeat="(bikeIndex, bike) in bikes" ng-hide='archived(bike.archive)'> 
       <td button-toggle></td>
       <td>{{bike.ident}}</td>
       <td>{{bike.year}}</td>
@@ -25,6 +25,8 @@
         <button class='edit-button' type='submit' ng-click="showBikeIndex(bikeIndex)">
           <a ui-sref='maintLog'>View Log</a>
         </button>
+
+        <button class='edit-button' ng-click='cycleArchive(cycleIndex)'>[ X ]</button>
       </td>
     </tr>
   </table>

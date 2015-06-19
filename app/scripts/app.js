@@ -76,12 +76,16 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
 
 bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
+  var partArray = new Firebase("https://bike-barn.firebaseio.com/parts");
   $scope.bikes = $firebaseArray(bikeArray);
+  $scope.parts = $firebaseArray(partArray);
 
-  $scope.bikeReady = function(ready) {
-    if (ready === 'ready') {
-      return true;
-    }
+    $scope.bikeReady = function(ready) {
+    return ThingStates.readyThing(ready);
+  };
+
+  $scope.archived = function(bike) {
+    return ThingStates.archiveThing(bike);
   };
 
   $scope.showBikeIndex = function (index) {
@@ -92,6 +96,43 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
     GotoLogs.giveIndex(index);
     return (activeBikeIndex === index);
   };
+
+  $scope.bikeArchive = function (index) {
+    $scope.bikes[index].archive = true;
+    $scope.bikes.$save(index).then(function(bikeArray) {
+      bikeArray.key() === $scope.bikes[index].$id;
+    });
+  }
+
+  // $scope.bikeReady = function(ready) {
+  //   if (ready === 'ready') {
+  //     return true;
+  //   }
+  // };
+
+//*************************************************************
+  $scope.logArchive = function (logIndex, mlogIndex) {
+    var logArchIndex = $scope.logs[logIndex].$id;
+        console.log(logIndex, mlogIndex);
+    var somestring = String(logArchIndex + '/mlogs'); 
+        console.log(somestring);
+    var newLogArray = logArray.child(somestring);
+        console.log(newLogArray);
+    $scope.newArchlogs = $firebaseArray(newLogArray);
+    $scope.newArchlogs[2].archive = true;
+        console.log('nla',$scope.newArchlogs);
+        
+        console.log($scope.newArchlogs[2]);
+
+
+    // $scope.newlogs.$add({
+    //   'timestamp': bikeTime,
+    //   "archive": false,
+    //   'date': $scope.bk.date,
+    //   'note': $scope.bk.note
+    // })
+  }
+
 
   $scope.addLog = function () {
         //returns activeBikeIndex
@@ -106,18 +147,13 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
     $scope.logs = $firebaseArray(logArray);
     
     $scope.logs.$add({
+      'timestamp': bikeTime,
+      "archive": false,      
       'date': $scope.bk.date,
       'note': $scope.bk.note
     })  
 
-    $scope.bk = "";
-    var now = new Date()
-    var m = now.getMonth();
-    var d = now.getDay();
-    var y = now.getFullYear();
-    var wholedate = String( m + '/' + d + '/' + y )
-    console.log(wholedate)
-
+     $scope.bk = "";
     
   }
 
@@ -125,7 +161,7 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs) {
     getElementsByClassName("datepickr").value = "";
   }
 
-
+//******************************************
   $scope.logDelete = function(bike,log) {
     var removeLog = String(bike + '/mlogs/' + log);
         //console.log(removeLog);
@@ -149,6 +185,18 @@ bikeBarn.service('GotoLogs', function() {
   };
 });
 
+bikeBarn.service('ThingStates', function() {
+  this.readyThing = function(ready) {
+    if (ready === 'ready') {
+      return true;
+    }
+  };
+  this.archiveThing = function(bike) {
+    if (bike === true) {
+        return  true;
+    }
+  }
+})
 
 bikeBarn.directive('buttonToggle', function() {
   return {
@@ -209,7 +257,7 @@ bikeBarn.directive("datepicker", function () {
         });
       };
       var options = {
-        dateFormat: "dd/mm/yy",
+        dateFormat: "mm/dd/yyyy",
         onSelect: function (dateText) {
           updateModel(dateText);
         }

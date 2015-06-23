@@ -22,9 +22,9 @@
 
   <table class="maint-table-logs" ng-repeat="(bikeIndex, bike) in bikes" ng-show="showSingleBike(bikeIndex)">
 	  <tr ng-repeat='(mlogIndex, mlog) in bike.mlogs'>
-			<td class='mt-logs-date'>{{mlog.date}}{{mlog.archive}}</td>
+			<td class='mt-logs-date'>{{mlog.date}}</td>
 			<td>{{mlog.note}}</td>
-			<td><button name='logArchive' ng-click='logArchive(bikeIndex,mlogIndex)'>[ X ]</td>
+<!-- 			<td><button name='logArchive' ng-click='logDelete(bikeIndex, $index)'>[ X ]</td> -->
 		</tr>
   </table>
 

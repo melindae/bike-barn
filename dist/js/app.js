@@ -44,13 +44,20 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
   $scope.bikes = $firebaseArray(bikeArray);
   $scope.parts = $firebaseArray(partArray);
 
-  $scope.addbike = function() {
+  $scope.bk = {
+    ready: 'ready'
+  };
+
+
+  $scope.submitForm = function(isValid) {
 
     var now = new Date()
     var m = now.getMonth();
     var d = now.getDay();
     var y = now.getFullYear();
     var wholedate = String( m + '/' + d + '/' + y )
+
+
 
     $scope.bikes.$add({
       'archive': false,
@@ -72,8 +79,17 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
         'note': 'Log created'
       }]
     });
-
+    
+    if (isValid) {
+      alert('Motorcycle added to Barn.');
+       $scope.newBikeForm.$setPristine();
+    };
+    
     $scope.bk = "";
+
+    $scope.bk = {
+    ready: 'ready'
+    };
   };
 });
 
@@ -86,6 +102,7 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   $scope.parts = $firebaseArray(partArray);
   // var testArray1 = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsCOuI3zpWRPsPhgrZd/mlogs");
   // $scope.testme1 = $firebaseArray(testArray1);
+
 
   $scope.bikeReady = function(ready) {
     return ThingStates.readyThing(ready);
@@ -149,6 +166,7 @@ bikeBarn.service('GotoLogs', function() {
   };
 });
 
+
 bikeBarn.service('ThingStates', function() {
   this.readyThing = function(ready) {
     if (ready === 'ready') {
@@ -200,7 +218,7 @@ bikeBarn.directive("datepicker", function () {
         });
       };
       var options = {
-        dateFormat: "mm/dd/yyyy",
+        dateFormat: "mm/dd/yy",
         onSelect: function (dateText) {
           updateModel(dateText);
         }

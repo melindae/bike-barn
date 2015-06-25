@@ -43,13 +43,20 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
   $scope.bikes = $firebaseArray(bikeArray);
   $scope.parts = $firebaseArray(partArray);
 
-  $scope.addbike = function() {
+  $scope.bk = {
+    ready: 'ready'
+  };
+
+
+  $scope.submitForm = function(isValid) {
 
     var now = new Date()
     var m = now.getMonth();
     var d = now.getDay();
     var y = now.getFullYear();
     var wholedate = String( m + '/' + d + '/' + y )
+
+
 
     $scope.bikes.$add({
       'archive': false,
@@ -71,8 +78,17 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
         'note': 'Log created'
       }]
     });
-
+    
+    if (isValid) {
+      alert('Motorcycle added to Barn.');
+       $scope.newBikeForm.$setPristine();
+    };
+    
     $scope.bk = "";
+
+    $scope.bk = {
+    ready: 'ready'
+    };
   };
 });
 
@@ -86,14 +102,14 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   // var testArray1 = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsCOuI3zpWRPsPhgrZd/mlogs");
   // $scope.testme1 = $firebaseArray(testArray1);
 
-  // this is done in html, keeping code for a bit,
-  // $scope.bikeReady = function(ready) {
-  //   return ThingStates.readyThing(ready);
-  // };
 
-  // $scope.archived = function(bike) {
-  //   return ThingStates.archiveThing(bike);
-  // };
+  $scope.bikeReady = function(ready) {
+    return ThingStates.readyThing(ready);
+  };
+
+  $scope.archived = function(bike) {
+    return ThingStates.archiveThing(bike);
+  };
 
   $scope.showBikeIndex = function (index) {
     GotoLogs.getIndex(index);
@@ -149,19 +165,19 @@ bikeBarn.service('GotoLogs', function() {
   };
 });
 
-// this is done in html, keeping code for a bit,
-// bikeBarn.service('ThingStates', function() {
-//   this.readyThing = function(ready) {
-//     if (ready === 'ready') {
-//       return true;
-//     }
-//   };
-//   this.archiveThing = function(bike) {
-//     if (bike === true) {
-//         return  true;
-//     }
-//   }
-// });
+
+bikeBarn.service('ThingStates', function() {
+  this.readyThing = function(ready) {
+    if (ready === 'ready') {
+      return true;
+    }
+  };
+  this.archiveThing = function(bike) {
+    if (bike === true) {
+        return  true;
+    }
+  }
+});
 
 bikeBarn.directive('buttonToggle', function() {
   return {
@@ -201,7 +217,7 @@ bikeBarn.directive("datepicker", function () {
         });
       };
       var options = {
-        dateFormat: "mm/dd/yyyy",
+        dateFormat: "mm/dd/yy",
         onSelect: function (dateText) {
           updateModel(dateText);
         }

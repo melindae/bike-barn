@@ -88,10 +88,27 @@ body {
   border: 1px black;
 }
 
+// .newForm input.ng-invalid {
+//   border: 1px solid red;
+// }
+
+form.ng-submitted .ng-invalid {
+  border-color: red;
+  border-width: 2px;
+  background-color: #CCFF99;
+}
+
 .newForm 
   input:hover, 
   select:hover, 
   textarea:hover, {
+    background: #E7BE80;
+}
+
+.newForm 
+  input:focus, 
+  select:focus, 
+  textarea:focus, {
     background: #E7BE80;
 }
 

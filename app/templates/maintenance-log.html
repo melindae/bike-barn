@@ -12,11 +12,11 @@
     </tr>
   </table>
 
-	<table class="maint-table-input">
+	<table class="maint-table-input" ng-submit="addLog(bikeIndex.$valid)" novalidate>
     <tr>
-			<td class='mt-input-date'><input class='datepickr' name='date' type="text" placeholder='Date' ng-model="bk.date" datepicker></td>
-			<td class='mt-input-note'><input name='note' type="text" placeholder='New Note' ng-model="bk.note"></td>
-			<td class='mt-input-button'><button class='edit-button' ng-click="addLog(bikeIndex)">Add</button> </td>
+			<td class='mt-input-date'><input class='datepickr' name='date' type="text" placeholder='Date' ng-model="bk.date" datepicker required></td>
+			<td class='mt-input-note'><input name='note' type="text" placeholder='New Note' ng-model="bk.note" required></td>
+			<td class='mt-input-button'><button class='edit-button' ng-click="addLog(bikeIndex.$valid)">Add</button> </td>
 		</tr>
 	</table>
 

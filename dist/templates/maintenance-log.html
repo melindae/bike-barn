@@ -15,13 +15,13 @@
   <form name="logForm" ng-submit="logForm.$valid && addLog(logForm.$valid)" novalidate>
   	<table class="maint-table-input"  ng-form="logForm" ng-submit="addLog()"  novalidate>  
       <tr >
-  			<td class='mt-input-date'><input class='datepicker' name='date' type="text" placeholder='Date' ng-model="bk.date" datepicker required></td>
+  			<td class='mt-input-date'><input id='datepicker' name='date' type="text" placeholder='Date' ng-model="bk.date" required></td>
   			<td class='mt-input-note'><input class='note' name='note' type="text" placeholder='New Note' ng-model="bk.note" required></td>
   			<td class='mt-input-button'><button class='edit-button' type="submit" >Add</button> </td>
   		</tr>
   	</table>
   </form>
-{{bk.date}}
+
   <table class="maint-table-logs" ng-repeat="(bikeIndex, bike) in bikes" ng-show="showSingleBike(bikeIndex)">
 	  <tr ng-repeat='(mlogIndex, mlog) in bike.mlogs'>
 			<td class='mt-logs-date'>{{mlog.date}}</td>

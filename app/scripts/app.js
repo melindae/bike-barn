@@ -149,10 +149,15 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
      $scope.bk = "";
     
   }
+  
+  $(function() {
+    $( "#datepicker" ).datepicker();
+    defaultDate: null;
+  }); 
 
-  $scope.reset = function() {
-    getElementsByClassName("datepickr").value = "";
-  }
+  // $scope.reset = function() {
+  //   getElementsByClassName("datepicker").value = "";
+  // }
 
 });
 
@@ -209,26 +214,26 @@ bikeBarn.directive('buttonToggle', function() {
 
   // this calendar directive comes from
   // codepen.io/tutorialab/pen/JDxkn
-bikeBarn.directive("datepicker", function () {
-  return {
-    restrict: "A",
-    require: "ngModel",
-    link: function (scope, elem, attrs, ngModelCtrl) {
-      var updateModel = function (dateText) {
-        scope.$apply(function () {
-          ngModelCtrl.$setViewValue(dateText);
-        });
-      };
-      var options = {
-        dateFormat: "mm/dd/yy",
-        onSelect: function (dateText) {
-          updateModel(dateText);
-        }
-      };
-      elem.datepicker(options);
-    }
-  }
-});
+// bikeBarn.directive("datepicker", function () {
+//   return {
+//     restrict: "A",
+//     require: "ngModel",
+//     link: function (scope, elem, attrs, ngModelCtrl) {
+//       var updateModel = function (dateText) {
+//         scope.$apply(function () {
+//           ngModelCtrl.$setViewValue(dateText);
+//         });
+//       };
+//       var options = {
+//         dateFormat: "mm/dd/yy",
+//         onSelect: function (dateText) {
+//           updateModel(dateText);
+//         }
+//       };
+//       elem.datepicker(options);
+//     }
+//   }
+// });
 
 
 

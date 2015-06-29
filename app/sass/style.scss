@@ -319,12 +319,16 @@ form.newForm.ng-submitted .ng-invalid {
   font-size: 18px;
 }
 
-
 .ui-datepicker { 
-  font-size: 9pt !important; 
+  font-size: 10pt !important; 
 }
 
-
+.ui-widget-content .ui-state-highlight {
+  background-image: none !important;
+  background-color: #FF9900 !important;
+  border-color: black !important;
+  color: black !important;
+}
 
 .maint-table .maint-table-input .mt-input-note {
   display:table-cell; 

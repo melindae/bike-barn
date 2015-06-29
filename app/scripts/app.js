@@ -56,8 +56,6 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
     var y = now.getFullYear();
     var wholedate = String( m + '/' + d + '/' + y )
 
-
-
     $scope.bikes.$add({
       'archive': false,
       'timestamp': bikeTime,
@@ -102,6 +100,11 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   // var testArray1 = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsCOuI3zpWRPsPhgrZd/mlogs");
   // $scope.testme1 = $firebaseArray(testArray1);
 
+  var now = new Date()
+  var m = now.getMonth();
+  var d = now.getDay();
+  var y = now.getFullYear();
+  var wholedate = String( m + '/' + d + '/' + y )
 
   $scope.bikeReady = function(ready) {
     return ThingStates.readyThing(ready);
@@ -205,7 +208,7 @@ bikeBarn.directive('buttonToggle', function() {
 
 
   // this calendar directive comes from
-  // codepen.io/tutorialab/pen/JDxkn'
+  // codepen.io/tutorialab/pen/JDxkn
 bikeBarn.directive("datepicker", function () {
   return {
     restrict: "A",

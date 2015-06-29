@@ -1,7 +1,8 @@
 
 <h2 class="title">Add New Bike</h2>
 
-<form name="newBikeForm" class="newForm" ng-submit="submitForm(newBikeForm.$valid)" novalidate>
+<!-- <form name="newBikeForm" class="newForm" ng-submit="submitForm(newBikeForm.$valid)" novalidate> -->
+<form name="newBikeForm" class="newForm" ng-submit="newBikeForm.$valid && submitForm(newBikeForm.$valid)" novalidate>
   <div class="newColumn">
     <fieldset>
     <legend>Ready?</legend>
@@ -36,24 +37,23 @@
     <input name="id"  type="text" ng-model="bk.ident" required>
 
     <label>SN:</label>
-    <input name="sn" type="text" ng-model="bk.sn" required>
+    <input name="sn" type="text" ng-model="bk.sn" required >
 
     <label class="newLabel">Color:</label>
     <input name="color" type="text" ng-model="bk.maincolor" required>
 
-    <fieldset>
+    <fieldset ng-class="{'light-up': !newBikeForm.maintype.$valid && newBikeForm.maintype.$pristine && newBikeForm.$submitted}">
     <legend>Type:</legend>
       <ul>
-        <li>Standard:<input type="radio" name="maintype" ng-model='bk.maintype' value='Standard' ng-required="!bk.maintype" ></li>
-        <li>Sport:<input type="radio" name="maintype" ng-model='bk.maintype' value='Sport' ng-required="!bk.maintype"></li>
-        <li>Cruiser:<input type="radio" name="maintype" ng-model='bk.maintype' value='Cruiser' ng-required="!bk.maintype"></li>
-        <li>Dual:<input type="radio" name="maintype" ng-model='bk.maintype' value='Dual' ng-required="!bk.maintype"></li>
+        <li>Standard:<input type="radio" name="maintype" ng-model='bk.maintype' value='Standard' required ></li>
+        <li>Sport:<input type="radio" name="maintype" ng-model='bk.maintype' value='Sport' required></li>
+        <li>Cruiser:<input type="radio" name="maintype" ng-model='bk.maintype' value='Cruiser' required></li>
+        <li>Dual:<input type="radio" name="maintype" ng-model='bk.maintype' value='Dual' required></li>
       </ul>
     </fieldset>
   </div>
 
   <div class="button">
-    <button type="submit" ng-submit="submitForm(newBikeForm.$valid)">Add Bike</button>  
-<!--     <button type="submit" ng-disabled="newBikeForm.$invalid">Add Bike</button> -->
+    <button type="submit">Add Bike</button>
   </div>
 </form>

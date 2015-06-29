@@ -71,16 +71,11 @@ body {
   border-radius: 5px;
   border: 1px black; }
 
-form.ng-submitted .ng-invalid {
-  border-color: red;
-  border-width: 2px;
-  background-color: #CCFF99; }
-
 .newForm input:hover, select:hover, textarea:hover {
   background: #E7BE80; }
 
 .newForm input:focus, select:focus, textarea:focus {
-  background: #E7BE80; }
+  background: #EF9900; }
 
 .newForm fieldset {
   width: 98%;
@@ -121,17 +116,6 @@ form.ng-submitted .ng-invalid {
 .newForm .newColumn fieldset {
   margin-bottom: 30px; }
 
-.newForm textarea {
-  clear: both;
-  resize: vertical;
-  margin-top: 4px;
-  height: 100px;
-  width: 100%;
-  padding: 5px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  border: 1px black; }
-
 .newForm .button {
   text-align: center;
   margin-top: 20px;
@@ -154,6 +138,15 @@ form.ng-submitted .ng-invalid {
 
 .newForm .button button:hover {
   color: #F0F0F0; }
+
+/*** new bike form validation alerts ***/
+form.newForm.ng-submitted .ng-invalid {
+  background-color: #CCFF99;
+  font-weight: 66; }
+
+.light-up {
+  border: solid #CCFF99;
+  color: #CCFF99; }
 
 /****** detail list/inventory page ******/
 .detail-table {

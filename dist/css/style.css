@@ -177,7 +177,7 @@ form.newForm.ng-submitted .ng-invalid {
   color: white;
   text-decoration: none; }
 
-.detail-table a {
+.detail-table th, a {
   color: #FF9900;
   text-decoration: none; }
 
@@ -199,7 +199,8 @@ form.newForm.ng-submitted .ng-invalid {
   color: white; }
 
 .quick-table th {
-  color: #FF9900; }
+  color: #FF9900;
+  text-decoration: none; }
 
 .quick-table caption {
   font-size: 26px;

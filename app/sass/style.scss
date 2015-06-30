@@ -231,7 +231,7 @@ form.newForm.ng-submitted .ng-invalid {
   text-decoration: none;
 }
 
-.detail-table a {
+.detail-table th, a {
   color: #FF9900;
   text-decoration: none;
 }
@@ -264,6 +264,7 @@ form.newForm.ng-submitted .ng-invalid {
 
 .quick-table th {
   color: #FF9900;
+  text-decoration: none;
 }
 
 .quick-table caption {

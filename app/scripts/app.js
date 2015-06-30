@@ -297,8 +297,8 @@ bikeBarn.service('ThingStates', function() {
 
 bikeBarn.directive('buttonToggle', function() {
   return {
-    restrict: 'A',
-    template: "<button class='ready-button' ng-click='readyToggle(bike)'>{{bike.ready}}</button>",
+    restrict: 'A',      
+    template: "<button ng-class=\"bike.ready === 'offline' ? 'green-button' : 'red-button'\" ng-click='readyToggle(bike)'>{{bike.ready}}</button>",
 
     link: function($scope, element, attrs) {
       $scope.readyToggle = function(bike) {

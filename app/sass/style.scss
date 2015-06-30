@@ -228,10 +228,12 @@ form.newForm.ng-submitted .ng-invalid {
   font-size: 18px;
   font-family: "ariel" sans-serif;
   color: white;
+  text-decoration: none;
 }
 
-.detail-table th {
+.detail-table a {
   color: #FF9900;
+  text-decoration: none;
 }
 
 .detail-table .edit-column {

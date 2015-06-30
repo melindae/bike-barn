@@ -31,7 +31,7 @@ bikeBarn.config(['$stateProvider', '$locationProvider', function($stateProvider,
   });
   $stateProvider.state('otherwise', {
     url: '*path',
-    //controller:'someController',
+    controller:'homeCtrl',
     templateUrl: 'templates/home.html'
   });
 }]);

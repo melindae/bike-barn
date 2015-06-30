@@ -5,8 +5,8 @@ bikeBarn.config(['$stateProvider', '$locationProvider', function($stateProvider,
   $locationProvider.html5Mode(true);
 
   $stateProvider.state('home', {
-    url: '',
-    //controller:'someController',
+    url: '/home',
+    controller:'homeCtrl',
     templateUrl: 'templates/home.html'
   });
   $stateProvider.state('newBike', {
@@ -36,6 +36,102 @@ bikeBarn.config(['$stateProvider', '$locationProvider', function($stateProvider,
   });
 }]);
 
+
+bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
+  var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
+  $scope.bikes = $firebaseArray(bikeArray);
+
+  $scope.bikes.$loaded().then(function(bikes) {
+    var num = bikes.length;
+    var numReady = 0;
+    var numOffline = 0;
+
+    for (i = 0; i < num; i++ ) {
+      var test = $scope.bikes[i].ready;
+      if (test === 'ready') {
+          numReady++;
+      }
+      else numOffline++;
+    };
+
+    var dataset = [
+      { label: numReady, count: numReady }, 
+      { label: numOffline, count: numOffline }
+    ];
+
+    // synthesized from http://zeroviscosity.com/d3-js-step-by-step/step-2-a-basic-donut-chart
+    (function(d3) {
+      'use strict';
+
+      var width = 360;
+      var height = 360;
+      var radius = Math.min(width, height) / 2;
+
+      var color = d3.scale.ordinal()
+        .range(['#FF8800', '#3C3C3B']);
+
+      var donutWidth = 75;
+      var legendRectSize = 18;
+      var legendSpacing = 4;  
+
+      var svg = d3.select('#chart')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+        .append('g')
+        .attr('transform', 'translate(' + (width / 2) + 
+          ',' + (height / 2) + ')');
+
+      var arc = d3.svg.arc()
+        .innerRadius(radius - donutWidth)
+        .outerRadius(radius);
+
+      var pie = d3.layout.pie()
+        .value(function(d) { return d.count; })
+        .sort(null);
+
+      var path = svg.selectAll('path')
+        .data(pie(dataset))
+        .enter()
+        .append('path')
+        .attr('d', arc)
+        .attr('fill', function(d, i) { 
+          return color(d.data.label);
+        });
+
+      var legend = svg.selectAll('.legend')
+          .data(color.domain())
+          .enter()
+          .append('g')
+          .attr('class', 'legend')
+          .attr('transform', function(d, i) {
+            var height = legendRectSize + legendSpacing;
+            var offset =  height * color.domain().length / 2;
+            var horz = -1 * legendRectSize;
+            var vert = i * height - offset;
+            return 'translate(' + horz + ',' + vert + ')';
+          });
+
+        legend.append('rect')
+          .attr('width', legendRectSize)
+          .attr('height', legendRectSize)
+          .style('fill', color)
+          .style('stroke', color);
+          
+        legend.append('text')
+          .attr('x', legendRectSize + legendSpacing)
+          .attr('y', legendRectSize - legendSpacing)
+          .style('fill', 'white')
+          .text(function(d) { return d; });
+
+
+      })(window.d3);
+
+
+
+  });
+
+});
 
 bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
@@ -266,4 +362,51 @@ bikeBarn.directive('buttonToggle', function() {
   //     bikeArray.key() === $scope.bikes[bikeIndex].$id;
   //   });
   // };
+
+
+
+
+
+  // (function(d3) {
+  //     'use strict';
+
+  //     var width = 360;
+  //     var height = 360;
+  //     var radius = Math.min(width, height) / 2;
+
+  //     //var color = d3.scale.category20b();
+  //     var color = d3.scale.ordinal()
+  //       .range(['#006E00', '#990000']);
+
+  //     var donutWidth = 75;
+
+  //     var svg = d3.select('#chart')
+  //       .append('svg')
+  //       .attr('width', width)
+  //       .attr('height', height)
+  //       .append('g')
+  //       .attr('transform', 'translate(' + (width / 2) + 
+  //         ',' + (height / 2) + ')');
+
+  //     var arc = d3.svg.arc()
+  //       .innerRadius(radius - donutWidth)
+  //       .outerRadius(radius);
+
+  //     var pie = d3.layout.pie()
+  //       .value(function(d) { return d.count; })
+  //       .sort(null);
+
+  //     var path = svg.selectAll('path')
+  //       .data(pie(dataset))
+  //       .enter()
+  //       .append('path')
+  //       .attr('d', arc)
+  //       .attr('fill', function(d, i) { 
+  //         return color(d.data.label);
+  //       });
+
+  //     })(window.d3);
+
+
+
 },{}]},{},[1]);

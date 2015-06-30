@@ -68,7 +68,24 @@ body {
   margin-top: 100px;
   margin-bottom: 40px;
 }
+ 
+  /****** home page ******/
 
+
+.legend text{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#chart {
+  margin-left: auto;
+  margin-right: auto;
+  width: 360px;
+}
+
+rect {
+  stroke-width: 2;
+}
 
   /****** new bike form ******/
 
@@ -371,7 +388,7 @@ form.newForm.ng-submitted .ng-invalid {
 }
 
 
-  /* red button*/
+  /* green button*/
 
 .table-online .ready-button {  
   background: linear-gradient(to bottom, rgba(0, 140, 0, 1) 0%,rgba(0, 110, 0, 1) 65%,rgba(0, 80, 0, 1) 100%);
@@ -381,7 +398,7 @@ form.newForm.ng-submitted .ng-invalid {
   border-left: 1px solid #33A333;
 
 }
-  /* green button*/
+  /* red button*/
 
 .table-offline .ready-button {  
   background: linear-gradient(to bottom, rgba(225, 0, 0, 1) 0%,rgba(175, 0, 0, 1) 65%,rgba(125, 0, 0, 1) 100%);
@@ -471,3 +488,6 @@ form.newForm.ng-submitted .ng-invalid {
 .edit-button a:hover {
   color: #F0F0F0;
 }
+
+
+

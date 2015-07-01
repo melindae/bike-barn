@@ -33,7 +33,7 @@
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td class="edit-column">
-        <button class='edit-button' type='submit' ng-click="showBikeIndex(bikeIndex)">
+        <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
           <a ui-sref="maintLog">View Log</a>
         </button>
       </td>
@@ -71,7 +71,7 @@
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td class="edit-column">
-        <button class='edit-button' type='submit' ng-click="showBikeIndex(bikeIndex)">
+        <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
           <a ui-sref='maintLog'>View Log</a>
         </button>
       </td>

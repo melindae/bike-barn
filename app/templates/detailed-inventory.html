@@ -49,11 +49,12 @@
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td>{{bike.sn}}</td>
+      <td>{{bike.archive}}</td>
       <td class="edit-column">
-      <button class='edit-button' type='submit' ng-click="showBikeIndex(bikeIndex)">
+      <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
         <a ui-sref='maintLog'>View Log</a>
       </button>
-      <button class='edit-button' ng-click='bikeArchive(bikeIndex)'>[ Archive ]</button>
+      <button class='edit-button' ng-click='bikeArchive(bike.timestamp)'>[ Archive ]</button>
       </td>
     </tr>
   </table>

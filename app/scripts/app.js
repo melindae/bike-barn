@@ -102,30 +102,30 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
         });
 
       var legend = svg.selectAll('.legend')
-          .data(color.domain())
-          .enter()
-          .append('g')
-          .attr('class', 'legend')
-          .attr('transform', function(d, i) {
-            var height = legendRectSize + legendSpacing;
-            var offset =  height * color.domain().length / 2;
-            var horz = -1 * legendRectSize;
-            var vert = i * height - offset;
-            return 'translate(' + horz + ',' + vert + ')';
-          });
+        .data(color.domain())
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', function(d, i) {
+          var height = legendRectSize + legendSpacing;
+          var offset =  height * color.domain().length / 2;
+          var horz = -1 * legendRectSize;
+          var vert = i * height - offset;
+          return 'translate(' + horz + ',' + vert + ')';
+        });
 
-        legend.append('rect')
-          .attr('width', legendRectSize)
-          .attr('height', legendRectSize)
-          .style('fill', color)
-          .style('stroke', color);
-          
-        legend.append('text')
-          .attr('x', legendRectSize + legendSpacing)
-          .attr('y', legendRectSize - legendSpacing)
-          .style('fill', 'white')
-          .text(function(d) { return d; });
-      })(window.d3);
+      legend.append('rect')
+        .attr('width', legendRectSize)
+        .attr('height', legendRectSize)
+        .style('fill', color)
+        .style('stroke', color);
+        
+      legend.append('text')
+        .attr('x', legendRectSize + legendSpacing)
+        .attr('y', legendRectSize - legendSpacing)
+        .style('fill', 'white')
+        .text(function(d) { return d; });
+    })(window.d3);
   });
 });
 
@@ -205,22 +205,30 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
     return ThingStates.archiveThing(bike);
   };
 
-  $scope.showBikeIndex = function (index) {
-    GotoLogs.getIndex(index);
+  $scope.showBikeIndex = function (time) {
+    for (i = 0; i < $scope.bikes.length; i++) {
+      if ($scope.bikes[i].timestamp === time) {
+        GotoLogs.getIndex(i);
+      }
+    }
   };
+
 
   $scope.showSingleBike = function (index) {
     GotoLogs.giveIndex(index);
     return (activeBikeIndex === index);
   };
 
-  $scope.bikeArchive = function (bike) {
+  $scope.bikeArchive = function (time) {
     var doIt = confirm('Archive this bike?');
     if (doIt === true) {
-      $scope.bikes[bike].archive = true;
-      $scope.bikes.$save(bike).then(function(bikeArray) {
-      bikeArray.key() === $scope.bikes[bike].$id;
-      })
+
+      for (i = 0; i < $scope.bikes.length; i++) {
+        if ($scope.bikes[i].timestamp === time) {
+          $scope.bikes[i].archive = true;
+          $scope.bikes.$save(i);
+        }
+      }
     }
   };
 
@@ -243,44 +251,27 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
      $scope.bk = "";
   }
   
-  $scope.sortIt = function(index) {
-    GotoLogs.giveIndex;   //returns activeBikeIndex
-    var bikeIndex = activeBikeIndex;
-    //var qq = $scope.mlogs[index].note;
-    console.log(bikeIndex);
-    //console.log(qq);
-   return bike.mlogs[1].note
-   // return $scope.bikes.mlogs[index].note;
-  }
-
   // list sorting
   $scope.sortMe = 'maincolor';
   $scope.sortToggle  = false;
-
 
   $(function() {
     $( "#datepicker" ).datepicker();
     defaultDate: null;
   }); 
-
-  // $scope.reset = function() {
-  //   getElementsByClassName("datepicker").value = "";
-  // }
-
 });
 
 //*************************************
 
 bikeBarn.service('GotoLogs', function() {
-  this.getIndex = function(index) {
-    activeBikeIndex = index;
+  this.getIndex = function(i) {
+    activeBikeIndex = i;
   };
 
   this.giveIndex = function() {
     return activeBikeIndex;
   };
 });
-
 
 bikeBarn.service('ThingStates', function() {
   this.readyThing = function(ready) {

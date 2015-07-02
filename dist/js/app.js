@@ -141,13 +141,18 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
     ready: 'ready'
   };
 
-
   $scope.submitForm = function(isValid) {
 
     var now = new Date()
     var m = now.getMonth();
     var d = now.getDay();
     var y = now.getFullYear();
+    if (m < 10) { 
+      m = String('0' + m)
+    }
+    if (d < 10) { 
+      d = String('0' + d)
+    }
     var wholedate = String( m + '/' + d + '/' + y )
 
     $scope.bikes.$add({
@@ -192,10 +197,19 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   $scope.bikes = $firebaseArray(bikeArray);
   $scope.parts = $firebaseArray(partArray);
 
+
+
+
   var now = new Date()
   var m = now.getMonth();
   var d = now.getDay();
   var y = now.getFullYear();
+    if (m < 10) { 
+      m = String('0' + m)
+    }
+    if (d < 10) { 
+      d = String('0' + d)
+    }
   var wholedate = String( m + '/' + d + '/' + y )
 
   $scope.bikeReady = function(ready) {
@@ -214,7 +228,6 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
     }
   };
 
-
   $scope.showSingleBike = function (index) {
     GotoLogs.giveIndex(index);
     return (activeBikeIndex === index);
@@ -232,6 +245,29 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
       }
     }
   };
+
+  $scope.newLogz = function () {
+  
+    // var logArray = bikeArray.child("-JsWeTyYWPod0svrSH4n/mlogs")
+    // console.log(logArray)
+    // $scope.logs = $firebaseArray(logArray);
+    // return $scope.logs;
+    // GotoLogs.giveIndex;   //returns activeBikeIndex
+    // var bikeIndex = activeBikeIndex;
+    // console.log('bI',bikeIndex);
+    // var bikekey = $scope.bikes[bikeIndex].$id; 
+    // console.log('bk',bikekey);
+    // var somestring = String(bikekey + '/mlogs'); 
+    // console.log(somestring);
+     var logArray = bikeArray.child("-JsWeTyYWPod0svrSH4n/mlogs");
+     $scope.logs = $firebaseArray(logArray);
+    
+      //var logArray = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsWeTyYWPod0svrSH4n/mlogs");
+  //$scope.logs = $firebaseArray(logArray);
+    console.log('go');
+    return $scope.logs;
+
+  }
 
   $scope.addLog = function () {
     GotoLogs.giveIndex;   //returns activeBikeIndex
@@ -252,9 +288,7 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
      $scope.bk = "";
   }
   
-  // list sorting
-  $scope.sortMe = 'maincolor';
-  $scope.sortToggle  = false;
+
 
   $(function() {
     $( "#datepicker" ).datepicker();
@@ -409,7 +443,6 @@ bikeBarn.directive('buttonToggle', function() {
   //       });
 
   //     })(window.d3);
-
 
 
 },{}]},{},[1]);

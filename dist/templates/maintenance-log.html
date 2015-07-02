@@ -23,7 +23,7 @@
   </form>
 
   <table class="maint-table-logs" ng-repeat="(bikeIndex, bike) in bikes " ng-show="showSingleBike(bikeIndex)">
-	  <tr ng-repeat="mlog in bike.mlogs | orderBy:'note'">
+	  <tr ng-repeat="mlog in bike.mlogs | orderBy:'date'">
 			<td class='mt-logs-date'>{{mlog.date}}</td>
 			<td>{{mlog.note}}</td>
       <td>{{bikeIndex}}</td>
@@ -32,3 +32,5 @@
 
 </div> 
 
+
+<!-- <tr ng-repeat="log in newLogRepeat() | orderBy: 'date' : false"> -->

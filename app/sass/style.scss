@@ -68,7 +68,24 @@ body {
   margin-top: 100px;
   margin-bottom: 40px;
 }
+ 
+  /****** home page ******/
 
+
+.legend text{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#chart {
+  margin-left: auto;
+  margin-right: auto;
+  width: 360px;
+}
+
+rect {
+  stroke-width: 2;
+}
 
   /****** new bike form ******/
 
@@ -93,6 +110,13 @@ body {
   select:hover, 
   textarea:hover, {
     background: #E7BE80;
+}
+
+.newForm 
+  input:focus, 
+  select:focus, 
+  textarea:focus, {
+    background: #EF9900;
 }
 
 .newForm fieldset {
@@ -143,18 +167,6 @@ body {
   margin-bottom: 30px;
 }
 
-.newForm textarea {
-  clear: both;
-  resize: vertical;
-  margin-top: 4px;
-  height: 100px;
-  width: 100%;
-  padding: 5px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  border: 1px black;
-}
-
 .newForm .button {
   text-align: center;
   margin-top: 20px;
@@ -181,6 +193,17 @@ body {
   color: #F0F0F0;
 }
 
+  /*** new bike form validation alerts ***/
+
+form.newForm.ng-submitted .ng-invalid {
+  background-color: #CCFF99;
+  font-weight: 66;
+}
+
+.light-up {
+  border: solid #CCFF99;
+  color: #CCFF99;
+}
 
   /****** detail list/inventory page ******/
 
@@ -199,10 +222,12 @@ body {
   font-size: 18px;
   font-family: "ariel" sans-serif;
   color: white;
+  text-decoration: none;
 }
 
-.detail-table th {
+.detail-table th, a {
   color: #FF9900;
+  text-decoration: none;
 }
 
 .detail-table .edit-column {
@@ -233,6 +258,7 @@ body {
 
 .quick-table th {
   color: #FF9900;
+  text-decoration: none;
 }
 
 .quick-table caption {
@@ -307,11 +333,16 @@ body {
   font-size: 18px;
 }
 
-
 .ui-datepicker { 
-  font-size: 9pt !important; }
+  font-size: 10pt !important; 
+}
 
-
+.ui-widget-content .ui-state-highlight {
+  background-image: none !important;
+  background-color: #FF9900 !important;
+  border-color: black !important;
+  color: black !important;
+}
 
 .maint-table .maint-table-input .mt-input-note {
   display:table-cell; 
@@ -354,7 +385,7 @@ body {
 }
 
 
-  /* red button*/
+  /* green button*/
 
 .table-online .ready-button {  
   background: linear-gradient(to bottom, rgba(0, 140, 0, 1) 0%,rgba(0, 110, 0, 1) 65%,rgba(0, 80, 0, 1) 100%);
@@ -364,7 +395,7 @@ body {
   border-left: 1px solid #33A333;
 
 }
-  /* green button*/
+  /* red button*/
 
 .table-offline .ready-button {  
   background: linear-gradient(to bottom, rgba(225, 0, 0, 1) 0%,rgba(175, 0, 0, 1) 65%,rgba(125, 0, 0, 1) 100%);
@@ -454,3 +485,6 @@ body {
 .edit-button a:hover {
   color: #F0F0F0;
 }
+
+
+

@@ -4,8 +4,8 @@ bikeBarn.config(['$stateProvider', '$locationProvider', function($stateProvider,
   $locationProvider.html5Mode(true);
 
   $stateProvider.state('home', {
-    url: '',
-    //controller:'someController',
+    url: '/home',
+    controller:'homeCtrl',
     templateUrl: 'templates/home.html'
   });
   $stateProvider.state('newBike', {
@@ -30,11 +30,104 @@ bikeBarn.config(['$stateProvider', '$locationProvider', function($stateProvider,
   });
   $stateProvider.state('otherwise', {
     url: '*path',
-    //controller:'someController',
+    controller:'homeCtrl',
     templateUrl: 'templates/home.html'
   });
 }]);
 
+
+bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
+  var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
+  $scope.bikes = $firebaseArray(bikeArray);
+
+  $scope.bikes.$loaded().then(function(bikes) {
+    var num = bikes.length;
+    var numReady = 0;
+    var numOffline = 0;
+
+    for (i = 0; i < num; i++ ) {
+      var test = $scope.bikes[i].ready;
+      var arch = $scope.bikes[i].archive;
+      if (test === 'ready' && arch === false) {
+          numReady++;
+      }
+      else if (test === 'offline' && arch === false) {
+        numOffline++;
+      } 
+    };
+
+    var dataset = [
+      { label: numReady, count: numReady }, 
+      { label: numOffline, count: numOffline }
+    ];
+
+    // synthesized from http://zeroviscosity.com/d3-js-step-by-step/step-2-a-basic-donut-chart
+    (function(d3) {
+      'use strict';
+
+      var width = 360;
+      var height = 360;
+      var radius = Math.min(width, height) / 2;
+
+      var color = d3.scale.ordinal()
+        .range(['#FF8800', '#3C3C3B']);
+
+      var donutWidth = 75;
+      var legendRectSize = 18;
+      var legendSpacing = 4;  
+
+      var svg = d3.select('#chart')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+        .append('g')
+        .attr('transform', 'translate(' + (width / 2) + 
+          ',' + (height / 2) + ')');
+
+      var arc = d3.svg.arc()
+        .innerRadius(radius - donutWidth)
+        .outerRadius(radius);
+
+      var pie = d3.layout.pie()
+        .value(function(d) { return d.count; })
+        .sort(null);
+
+      var path = svg.selectAll('path')
+        .data(pie(dataset))
+        .enter()
+        .append('path')
+        .attr('d', arc)
+        .attr('fill', function(d, i) { 
+          return color(d.data.label);
+        });
+
+      var legend = svg.selectAll('.legend')
+        .data(color.domain())
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', function(d, i) {
+          var height = legendRectSize + legendSpacing;
+          var offset =  height * color.domain().length / 2;
+          var horz = -1 * legendRectSize;
+          var vert = i * height - offset;
+          return 'translate(' + horz + ',' + vert + ')';
+        });
+
+      legend.append('rect')
+        .attr('width', legendRectSize)
+        .attr('height', legendRectSize)
+        .style('fill', color)
+        .style('stroke', color);
+        
+      legend.append('text')
+        .attr('x', legendRectSize + legendSpacing)
+        .attr('y', legendRectSize - legendSpacing)
+        .style('fill', 'white')
+        .text(function(d) { return d; });
+    })(window.d3);
+  });
+});
 
 bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
@@ -43,7 +136,12 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
   $scope.bikes = $firebaseArray(bikeArray);
   $scope.parts = $firebaseArray(partArray);
 
-  $scope.addbike = function() {
+  $scope.bk = {
+    ready: 'ready'
+  };
+
+
+  $scope.submitForm = function(isValid) {
 
     var now = new Date()
     var m = now.getMonth();
@@ -71,8 +169,17 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
         'note': 'Log created'
       }]
     });
-
+    
+    if (isValid) {
+      alert('Motorcycle added to Barn.');
+       $scope.newBikeForm.$setPristine();
+    };
+    
     $scope.bk = "";
+
+    $scope.bk = {
+    ready: 'ready'
+    };
   };
 });
 
@@ -83,32 +190,46 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   var bikeTime = Firebase.ServerValue.TIMESTAMP;
   $scope.bikes = $firebaseArray(bikeArray);
   $scope.parts = $firebaseArray(partArray);
-  // var testArray1 = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsCOuI3zpWRPsPhgrZd/mlogs");
-  // $scope.testme1 = $firebaseArray(testArray1);
 
-  // this is done in html, keeping code for a bit,
-  // $scope.bikeReady = function(ready) {
-  //   return ThingStates.readyThing(ready);
-  // };
+  var now = new Date()
+  var m = now.getMonth();
+  var d = now.getDay();
+  var y = now.getFullYear();
+  var wholedate = String( m + '/' + d + '/' + y )
 
-  // $scope.archived = function(bike) {
-  //   return ThingStates.archiveThing(bike);
-  // };
-
-  $scope.showBikeIndex = function (index) {
-    GotoLogs.getIndex(index);
+  $scope.bikeReady = function(ready) {
+    return ThingStates.readyThing(ready);
   };
+
+  $scope.archived = function(bike) {
+    return ThingStates.archiveThing(bike);
+  };
+
+  $scope.showBikeIndex = function (time) {
+    for (i = 0; i < $scope.bikes.length; i++) {
+      if ($scope.bikes[i].timestamp === time) {
+        GotoLogs.getIndex(i);
+      }
+    }
+  };
+
 
   $scope.showSingleBike = function (index) {
     GotoLogs.giveIndex(index);
     return (activeBikeIndex === index);
   };
 
-  $scope.bikeArchive = function (bike) {
-    $scope.bikes[bike].archive = true;
-    $scope.bikes.$save(bike).then(function(bikeArray) {
-      bikeArray.key() === $scope.bikes[bike].$id;
-    })
+  $scope.bikeArchive = function (time) {
+    var doIt = confirm('Archive this bike?');
+    if (doIt === true) {
+
+      for (i = 0; i < $scope.bikes.length; i++) {
+        if ($scope.bikes[i].timestamp === time) {
+          $scope.bikes[i].archive = true;
+          $scope.bikes.$save(i);
+        }
+      }
+    }
   };
 
   $scope.addLog = function () {
@@ -128,20 +249,23 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
     })  
 
      $scope.bk = "";
-    
   }
+  
+  // list sorting
+  $scope.sortMe = 'maincolor';
+  $scope.sortToggle  = false;
 
-  $scope.reset = function() {
-    getElementsByClassName("datepickr").value = "";
-  }
-
+  $(function() {
+    $( "#datepicker" ).datepicker();
+    defaultDate: null;
+  }); 
 });
 
 //*************************************
 
 bikeBarn.service('GotoLogs', function() {
-  this.getIndex = function(index) {
-    activeBikeIndex = index;
+  this.getIndex = function(i) {
+    activeBikeIndex = i;
   };
 
   this.giveIndex = function() {
@@ -149,24 +273,23 @@ bikeBarn.service('GotoLogs', function() {
   };
 });
 
-// this is done in html, keeping code for a bit,
-// bikeBarn.service('ThingStates', function() {
-//   this.readyThing = function(ready) {
-//     if (ready === 'ready') {
-//       return true;
-//     }
-//   };
-//   this.archiveThing = function(bike) {
-//     if (bike === true) {
-//         return  true;
-//     }
-//   }
-// });
+bikeBarn.service('ThingStates', function() {
+  this.readyThing = function(ready) {
+    if (ready === 'ready') {
+      return true;
+    }
+  };
+  this.archiveThing = function(bike) {
+    if (bike === true) {
+        return  true;
+    }
+  }
+});
 
 bikeBarn.directive('buttonToggle', function() {
   return {
-    restrict: 'A',
-    template: "<button class='ready-button' ng-click='readyToggle(bike)'>{{bike.ready}}</button>",
+    restrict: 'A',      
+    template: "<button ng-class=\"bike.ready === 'offline' ? 'green-button' : 'red-button'\" ng-click='readyToggle(bike)'>{{bike.ready}}</button>",
 
     link: function($scope, element, attrs) {
       $scope.readyToggle = function(bike) {
@@ -189,27 +312,27 @@ bikeBarn.directive('buttonToggle', function() {
 
 
   // this calendar directive comes from
-  // codepen.io/tutorialab/pen/JDxkn'
-bikeBarn.directive("datepicker", function () {
-  return {
-    restrict: "A",
-    require: "ngModel",
-    link: function (scope, elem, attrs, ngModelCtrl) {
-      var updateModel = function (dateText) {
-        scope.$apply(function () {
-          ngModelCtrl.$setViewValue(dateText);
-        });
-      };
-      var options = {
-        dateFormat: "mm/dd/yyyy",
-        onSelect: function (dateText) {
-          updateModel(dateText);
-        }
-      };
-      elem.datepicker(options);
-    }
-  }
-});
+  // codepen.io/tutorialab/pen/JDxkn
+// bikeBarn.directive("datepicker", function () {
+//   return {
+//     restrict: "A",
+//     require: "ngModel",
+//     link: function (scope, elem, attrs, ngModelCtrl) {
+//       var updateModel = function (dateText) {
+//         scope.$apply(function () {
+//           ngModelCtrl.$setViewValue(dateText);
+//         });
+//       };
+//       var options = {
+//         dateFormat: "mm/dd/yy",
+//         onSelect: function (dateText) {
+//           updateModel(dateText);
+//         }
+//       };
+//       elem.datepicker(options);
+//     }
+//   }
+// });
 
 
 
@@ -241,3 +364,49 @@ bikeBarn.directive("datepicker", function () {
   //     bikeArray.key() === $scope.bikes[bikeIndex].$id;
   //   });
   // };
+
+
+
+
+
+  // (function(d3) {
+  //     'use strict';
+
+  //     var width = 360;
+  //     var height = 360;
+  //     var radius = Math.min(width, height) / 2;
+
+  //     //var color = d3.scale.category20b();
+  //     var color = d3.scale.ordinal()
+  //       .range(['#006E00', '#990000']);
+
+  //     var donutWidth = 75;
+
+  //     var svg = d3.select('#chart')
+  //       .append('svg')
+  //       .attr('width', width)
+  //       .attr('height', height)
+  //       .append('g')
+  //       .attr('transform', 'translate(' + (width / 2) + 
+  //         ',' + (height / 2) + ')');
+
+  //     var arc = d3.svg.arc()
+  //       .innerRadius(radius - donutWidth)
+  //       .outerRadius(radius);
+
+  //     var pie = d3.layout.pie()
+  //       .value(function(d) { return d.count; })
+  //       .sort(null);
+
+  //     var path = svg.selectAll('path')
+  //       .data(pie(dataset))
+  //       .enter()
+  //       .append('path')
+  //       .attr('d', arc)
+  //       .attr('fill', function(d, i) { 
+  //         return color(d.data.label);
+  //       });
+
+  //     })(window.d3);
+
+

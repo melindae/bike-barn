@@ -5,19 +5,35 @@
     <caption>Ready</caption>
     <tr>
       <th>Ready?</th>
-      <th>ID</th>
-      <th>Model</th>
-      <th>Color</th>
-      <th>Type</th>
+      <th>
+        <a href="#" ng-click="sortMe = 'ident'; sortToggle = !sortToggle"> ID
+          <span ng-show="sortMe == 'ident' && !sortToggle"><img src="/images/dntriangle.png"></span>
+          <span ng-show="sortMe == 'ident' && sortToggle"><img src="/images/uptriangle.png"></span>
+      </th>
+      <th>
+        <a href="#" ng-click="sortMe = 'model'; sortToggle = !sortToggle">Model
+          <span ng-show="sortMe == 'model' && !sortToggle"><img src="/images/dntriangle.png"></span>
+          <span ng-show="sortMe == 'model' && sortToggle"><img src="/images/uptriangle.png"></span>
+      </th>
+      <th>
+        <a href="#" ng-click="sortMe = 'maincolor'; sortToggle = !sortToggle">Color
+          <span ng-show="sortMe == 'maincolor' && !sortToggle"><img src="/images/dntriangle.png"></span>
+          <span ng-show="sortMe == 'maincolor' && sortToggle"><img src="/images/uptriangle.png"></span>
+      </th>
+      <th>
+        <a href="#" ng-click="sortMe = 'maintype'; sortToggle = !sortToggle">Type
+          <span ng-show="sortMe == 'maintype' && !sortToggle"><img src="/images/dntriangle.png"></span>
+          <span ng-show="sortMe == 'maintype' && sortToggle"><img src="/images/uptriangle.png"></span>
+      </th>
     </tr>
-    <tr ng-repeat="(bikeIndex, bike) in bikes" ng-show="bike.ready === 'ready' && bike.archive === false " >
+    <tr ng-repeat="(bikeIndex, bike) in bikes | orderBy:sortMe:sortToggle" ng-show="bike.ready === 'ready' && bike.archive === false ">
       <td button-toggle></td>
       <td>{{bike.ident}}</td>
       <td>{{bike.model}}</td>
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td class="edit-column">
-        <button class='edit-button' type='submit' ng-click="showBikeIndex(bikeIndex)">
+        <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
           <a ui-sref="maintLog">View Log</a>
         </button>
       </td>
@@ -27,19 +43,35 @@
     <caption>Waiting</caption>
     <tr>
       <th>Ready?</th>
-      <th>ID</th>
-      <th>Model</th>
-      <th>Color</th>
-      <th>Type</th>
+      <th>
+        <a href="#" ng-click="sortMe = 'ident'; sortToggle = !sortToggle"> ID
+          <span ng-show="sortMe == 'ident' && !sortToggle"><img src="/images/dntriangle.png"></span>
+          <span ng-show="sortMe == 'ident' && sortToggle"><img src="/images/uptriangle.png"></span>
+      </th>
+      <th>
+        <a href="#" ng-click="sortMe = 'model'; sortToggle = !sortToggle">Model
+          <span ng-show="sortMe == 'model' && !sortToggle"><img src="/images/dntriangle.png"></span>
+          <span ng-show="sortMe == 'model' && sortToggle"><img src="/images/uptriangle.png"></span>
+      </th>
+      <th>
+        <a href="#" ng-click="sortMe = 'maincolor'; sortToggle = !sortToggle">Color
+          <span ng-show="sortMe == 'maincolor' && !sortToggle"><img src="/images/dntriangle.png"></span>
+          <span ng-show="sortMe == 'maincolor' && sortToggle"><img src="/images/uptriangle.png"></span>
+      </th>
+      <th>
+        <a href="#" ng-click="sortMe = 'maintype'; sortToggle = !sortToggle">Type
+          <span ng-show="sortMe == 'maintype' && !sortToggle"><img src="/images/dntriangle.png"></span>
+          <span ng-show="sortMe == 'maintype' && sortToggle"><img src="/images/uptriangle.png"></span>
+      </th>
     </tr>
-    <tr ng-repeat="(bikeIndex, bike) in bikes" ng-hide="bikeReady(bike.ready) || archived(bike.archive)">
+    <tr ng-repeat="(bikeIndex, bike) in bikes | orderBy:sortMe:sortToggle" ng-hide="bikeReady(bike.ready) || archived(bike.archive)">
       <td button-toggle></td>
       <td>{{bike.ident}}</td>
       <td>{{bike.model}}</td>
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td class="edit-column">
-        <button class='edit-button' type='submit' ng-click="showBikeIndex(bikeIndex)">
+        <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
           <a ui-sref='maintLog'>View Log</a>
         </button>
       </td>

@@ -1,21 +1,25 @@
 
-<h2 class='title'>Add New Bike</h2>
+<h2 class="title">Add New Bike</h2>
 
-<form class="newForm">
+<!-- <form name="newBikeForm" class="newForm" ng-submit="submitForm(newBikeForm.$valid)" novalidate> -->
+<form name="newBikeForm" class="newForm" ng-submit="newBikeForm.$valid && submitForm(newBikeForm.$valid)" novalidate>
   <div class="newColumn">
     <fieldset>
     <legend>Ready?</legend>
       <ul>
-        <li>Yes:<input type="radio" ng-model='bk.ready' value='ready'></li>
-        <li>No:<input type="radio" ng-model='bk.ready' value='offline'></li>
+        <li>Yes:<input type="radio" name="readyradio" ng-model="bk.ready" value="ready" ></li>
+        <li>No:<input type="radio" name="readyradio" ng-model="bk.ready" value="offline" ></li>
       </ul>
     </fieldset>
 
+
     <label>Year:</label>
-    <input name='year' type="text" ng-model='bk.year'>
+    <input name="year"  type="number"  ng-model="bk.year" ng-minlength=4 ng-maxlength=4 required>
+    <p ng-show="newBikeForm.year.$error.minlength" class="help-block">Please enter 4 digit year.</p>
 
     <label>Make:</label>
-    <select class='dropdown' ng-model='bk.make'>
+    <select class="dropdown" name="make" ng-model="bk.make" required>
+      <option value="" style="display:none"> Choose </option>
       <option value="Honda"> Honda </option>
       <option value="Kawasaki"> Kawasaki </option>
       <option value="Suzuki"> Suzuki </option>
@@ -24,31 +28,32 @@
     </select>
 
     <label >Model:</label>
-    <input name='model' type="text" ng-model='bk.model'>
+    <input name="model" type="text" ng-model="bk.model" required>
 
   </div>
   <div class="newColumn">
 
     <label>ID:</label>
-    <input name='id' type="text" ng-model='bk.ident'>
+    <input name="id"  type="number" ng-model="bk.ident" required>
 
     <label>SN:</label>
-    <input name='sn' type="text" ng-model='bk.sn'>
+    <input name="sn" type="text" ng-model="bk.sn" required >
 
-    <label class='newLabel'>Color:</label>
-    <input name='color' type="text" ng-model='bk.maincolor'>
+    <label class="newLabel">Color:</label>
+    <input name="color" type="text" ng-model="bk.maincolor" required>
 
-    <fieldset>
+    <fieldset ng-class="{'light-up': !newBikeForm.maintype.$valid && newBikeForm.maintype.$pristine && newBikeForm.$submitted}">
     <legend>Type:</legend>
       <ul>
-        <li>Standard:<input type="radio" ng-model='bk.maintype' value='Standard'></li>
-        <li>Sport:<input type="radio" ng-model='bk.maintype' value='Sport'></li>
-        <li>Cruiser:<input type="radio" ng-model='bk.maintype' value='Cruiser'></li>
-        <li>Dual:<input type="radio" ng-model='bk.maintype' value='Dual'></li>
+        <li>Standard:<input type="radio" name="maintype" ng-model='bk.maintype' value='Standard' required ></li>
+        <li>Sport:<input type="radio" name="maintype" ng-model='bk.maintype' value='Sport' required></li>
+        <li>Cruiser:<input type="radio" name="maintype" ng-model='bk.maintype' value='Cruiser' required></li>
+        <li>Dual:<input type="radio" name="maintype" ng-model='bk.maintype' value='Dual' required></li>
       </ul>
     </fieldset>
   </div>
+
   <div class="button">
-    <button ng-click="addbike()">Add Bike</button>
+    <button type="submit">Add Bike</button>
   </div>
 </form>

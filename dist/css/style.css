@@ -11,11 +11,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-<<<<<<< HEAD
-  background-image: url("metallt.png");
-=======
   background-image: url("/images/metallt.png");
->>>>>>> 1e2aae7a55b033dbf96e9eae445ab8817787a890
   background-color: #0B0B0A;
   height: 80px; }
 
@@ -66,6 +62,7 @@ body {
   font-weight: bold; }
 
 #chart {
+  margin-top: 10%;
   margin-left: auto;
   margin-right: auto;
   width: 360px; }

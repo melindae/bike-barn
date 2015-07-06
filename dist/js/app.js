@@ -36,7 +36,6 @@ bikeBarn.config(['$stateProvider', '$locationProvider', function($stateProvider,
   });
 }]);
 
-
 bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
   $scope.bikes = $firebaseArray(bikeArray);
@@ -130,7 +129,7 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
   });
 });
 
-bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
+bikeBarn.controller('addCtrl', function($scope, $firebaseArray, GetTheDate) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
   var partArray = new Firebase("https://bike-barn.firebaseio.com/parts");
   var bikeTime = Firebase.ServerValue.TIMESTAMP;
@@ -143,6 +142,7 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
 
   $scope.submitForm = function(isValid) {
 
+<<<<<<< HEAD
     var now = new Date()
     var m = now.getMonth();
     var d = now.getDay();
@@ -154,6 +154,9 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray) {
       d = String('0' + d)
     }
     var wholedate = String( m + '/' + d + '/' + y )
+=======
+    GetTheDate.now();
+>>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9
 
     $scope.bikes.$add({
       'archive': false,
@@ -197,6 +200,7 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   $scope.bikes = $firebaseArray(bikeArray);
   $scope.parts = $firebaseArray(partArray);
 
+<<<<<<< HEAD
 
 
 
@@ -211,6 +215,10 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
       d = String('0' + d)
     }
   var wholedate = String( m + '/' + d + '/' + y )
+=======
+  var logArray = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsWeTyYWPod0svrSH4n/mlogs");
+  
+>>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9
 
   $scope.bikeReady = function(ready) {
     return ThingStates.readyThing(ready);
@@ -223,13 +231,13 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   $scope.showBikeIndex = function (time) {
     for (i = 0; i < $scope.bikes.length; i++) {
       if ($scope.bikes[i].timestamp === time) {
-        GotoLogs.getIndex(i);
+        GotoLogs.giveIndex(i);
       }
     }
   };
 
   $scope.showSingleBike = function (index) {
-    GotoLogs.giveIndex(index);
+    GotoLogs.getIndex(index);
     return (activeBikeIndex === index);
   };
 
@@ -270,7 +278,7 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   }
 
   $scope.addLog = function () {
-    GotoLogs.giveIndex;   //returns activeBikeIndex
+    GotoLogs.getIndex;   //returns activeBikeIndex
     var bikeIndex = activeBikeIndex;
     var bikekey = $scope.bikes[bikeIndex].$id; 
     var somestring = String(bikekey + '/mlogs'); 
@@ -288,8 +296,11 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
      $scope.bk = "";
   }
   
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9
   $(function() {
     $( "#datepicker" ).datepicker();
     defaultDate: null;
@@ -297,13 +308,29 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
 });
 
 //*************************************
+bikeBarn.service('GetTheDate', function() {
+  this.now = function() {
+    var now = new Date() ;  
+    var m = ((now.getMonth())+1);
+    var d = now.getDate();
+    var y = now.getFullYear();
+    if (m < 10) { 
+      m = String('0' + m);
+    }
+    if (d < 10) { 
+      d = String('0' + d);
+    }
+    wholedate = String( m + '/' + d + '/' + y );
+
+  }
+})
 
 bikeBarn.service('GotoLogs', function() {
-  this.getIndex = function(i) {
+  this.giveIndex = function(i) {
     activeBikeIndex = i;
   };
 
-  this.giveIndex = function() {
+  this.getIndex = function() {
     return activeBikeIndex;
   };
 });
@@ -345,104 +372,31 @@ bikeBarn.directive('buttonToggle', function() {
   };
 });
 
+bikeBarn.directive('createLogArray', [firebase, function(firebase) {
+  return{
+    restrict: 'A',
+    link: function($scope, element, attrs, firebase) {
 
-  // this calendar directive comes from
-  // codepen.io/tutorialab/pen/JDxkn
-// bikeBarn.directive("datepicker", function () {
-//   return {
-//     restrict: "A",
-//     require: "ngModel",
-//     link: function (scope, elem, attrs, ngModelCtrl) {
-//       var updateModel = function (dateText) {
-//         scope.$apply(function () {
-//           ngModelCtrl.$setViewValue(dateText);
-//         });
-//       };
-//       var options = {
-//         dateFormat: "mm/dd/yy",
-//         onSelect: function (dateText) {
-//           updateModel(dateText);
-//         }
-//       };
-//       elem.datepicker(options);
-//     }
-//   }
-// });
+    // GotoLogs.getIndex;   //returns activeBikeIndex
+    // var logIndex = activeBikeIndex;
+    // console.log(logIndex);
+    // var logkey = $scope.bikes[logIndex].$id; 
+    // console.log(logkey);
+    // var somestring = String(logkey + '/mlogs'); 
+    // console.log(somestring);
+    // var logArray = bikeArray.child(somestring);
 
+    //var logArray = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsWeTyYWPod0svrSH4n/mlogs");
+    $scope.logs = $firebase(bikes.child('-JsWeTyYWPod0svrSH4n/mlogs')).$asArray()
 
+    console.log("gg");
 
+<<<<<<< HEAD
+=======
+    }
+  }
+}])
 
-  // $scope.logArchive = function (bikeIndex, index) {
-
-  //   var logArchIndex = $scope.bikes[bikeIndex].$id;
-  //   var somestring = String(logArchIndex + '/mlogs'); 
-  //   var newLogArray = bikeArray.child(somestring);
-  //   $scope.newArchlogs = $firebaseArray(newLogArray);
-
-  //   var test1 = $scope.newArchlogs[index].archive;
-  //   $scope.newArchlogs[index].archive = false;
-
-  //   $scope.testme1.$save(index).then(function(bikeArray) {
-  //       bikeArray.key() === $scope.bikes[bikeIndex].$id;
-  //   });
-  // };
-
-  // $scope.logDelete = function(bikeIndex, index) {
-  //   var bikekey = $scope.bikes[bikeIndex].$id;
-  //   var removeLog = String("https://bike-barn.firebaseio.com/bikes/" + bikekey + '/mlogs');
-  //   var removeLogArray = new Firebase(removeLog);
-  //   $scope.logz = $firebaseArray(removeLogArray);
-  //   var gone = $scope.logz[index];
-  //       console.log(gone);
-
-  //   $scope.logz.$remove(gone).then(function(bikeArray) {
-  //     bikeArray.key() === $scope.bikes[bikeIndex].$id;
-  //   });
-  // };
-
-
-
-
-
-  // (function(d3) {
-  //     'use strict';
-
-  //     var width = 360;
-  //     var height = 360;
-  //     var radius = Math.min(width, height) / 2;
-
-  //     //var color = d3.scale.category20b();
-  //     var color = d3.scale.ordinal()
-  //       .range(['#006E00', '#990000']);
-
-  //     var donutWidth = 75;
-
-  //     var svg = d3.select('#chart')
-  //       .append('svg')
-  //       .attr('width', width)
-  //       .attr('height', height)
-  //       .append('g')
-  //       .attr('transform', 'translate(' + (width / 2) + 
-  //         ',' + (height / 2) + ')');
-
-  //     var arc = d3.svg.arc()
-  //       .innerRadius(radius - donutWidth)
-  //       .outerRadius(radius);
-
-  //     var pie = d3.layout.pie()
-  //       .value(function(d) { return d.count; })
-  //       .sort(null);
-
-  //     var path = svg.selectAll('path')
-  //       .data(pie(dataset))
-  //       .enter()
-  //       .append('path')
-  //       .attr('d', arc)
-  //       .attr('fill', function(d, i) { 
-  //         return color(d.data.label);
-  //       });
-
-  //     })(window.d3);
-
+>>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9
 
 },{}]},{},[1]);

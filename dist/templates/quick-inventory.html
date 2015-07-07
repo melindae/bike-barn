@@ -1,27 +1,33 @@
-<h2 class='title'>Quick List</h2>
+<h2 class='title'>Summary</h2>
 
 <div>
   <table class="quick-table table-online">
-    <caption>Ready</caption>
     <tr>
-      <th>Ready?</th>
+      <th colspan="6" class="ready-title">Ready</th>
+    </tr>
+    <tr>
+      <th></th>
       <th>
         <a href="#" ng-click="sortMe = 'ident'; sortToggle = !sortToggle"> ID
+          <span ng-show="sortMe !== 'ident'"><img src="/images/pale_arrows.png"></span>
           <span ng-show="sortMe == 'ident' && !sortToggle"><img src="/images/dntriangle.png"></span>
           <span ng-show="sortMe == 'ident' && sortToggle"><img src="/images/uptriangle.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'model'; sortToggle = !sortToggle">Model
+          <span ng-show="sortMe !== 'model'"><img src="/images/pale_arrows.png"></span>
           <span ng-show="sortMe == 'model' && !sortToggle"><img src="/images/dntriangle.png"></span>
           <span ng-show="sortMe == 'model' && sortToggle"><img src="/images/uptriangle.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'maincolor'; sortToggle = !sortToggle">Color
+          <span ng-show="sortMe !== 'maincolor'"><img src="/images/pale_arrows.png"></span>
           <span ng-show="sortMe == 'maincolor' && !sortToggle"><img src="/images/dntriangle.png"></span>
           <span ng-show="sortMe == 'maincolor' && sortToggle"><img src="/images/uptriangle.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'maintype'; sortToggle = !sortToggle">Type
+          <span ng-show="sortMe !== 'maintype'"><img src="/images/pale_arrows.png"></span>
           <span ng-show="sortMe == 'maintype' && !sortToggle"><img src="/images/dntriangle.png"></span>
           <span ng-show="sortMe == 'maintype' && sortToggle"><img src="/images/uptriangle.png"></span>
       </th>
@@ -34,32 +40,38 @@
       <td>{{bike.maintype}}</td>
       <td class="edit-column">
         <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
-          <a ui-sref="maintLog">View Log</a>
+          <a ui-sref="maintLog">Log</a>
         </button>
       </td>
     </tr>
   </table>
-  <table class="quick-table table-offline">
-    <caption>Waiting</caption>
+  <table class="quick-table table-offline ">
     <tr>
-      <th>Ready?</th>
+      <th colspan="6" class="ready-title">Offline</th>
+    </tr>
+    <tr>
+      <th></th>
       <th>
         <a href="#" ng-click="sortMe = 'ident'; sortToggle = !sortToggle"> ID
+          <span ng-show="sortMe !== 'ident'"><img src="/images/pale_arrows.png"></span>
           <span ng-show="sortMe == 'ident' && !sortToggle"><img src="/images/dntriangle.png"></span>
           <span ng-show="sortMe == 'ident' && sortToggle"><img src="/images/uptriangle.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'model'; sortToggle = !sortToggle">Model
+          <span ng-show="sortMe !== 'model'"><img src="/images/pale_arrows.png"></span>
           <span ng-show="sortMe == 'model' && !sortToggle"><img src="/images/dntriangle.png"></span>
           <span ng-show="sortMe == 'model' && sortToggle"><img src="/images/uptriangle.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'maincolor'; sortToggle = !sortToggle">Color
+          <span ng-show="sortMe !== 'maincolor'"><img src="/images/pale_arrows.png"></span>
           <span ng-show="sortMe == 'maincolor' && !sortToggle"><img src="/images/dntriangle.png"></span>
           <span ng-show="sortMe == 'maincolor' && sortToggle"><img src="/images/uptriangle.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'maintype'; sortToggle = !sortToggle">Type
+          <span ng-show="sortMe !== 'maintype'"><img src="/images/pale_arrows.png"></span>
           <span ng-show="sortMe == 'maintype' && !sortToggle"><img src="/images/dntriangle.png"></span>
           <span ng-show="sortMe == 'maintype' && sortToggle"><img src="/images/uptriangle.png"></span>
       </th>
@@ -72,7 +84,7 @@
       <td>{{bike.maintype}}</td>
       <td class="edit-column">
         <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
-          <a ui-sref='maintLog'>View Log</a>
+          <a ui-sref='maintLog'>Log</a>
         </button>
       </td>
     </tr>

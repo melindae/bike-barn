@@ -70,7 +70,7 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
       var radius = Math.min(width, height) / 2;
 
       var color = d3.scale.ordinal()
-        .range(['#FF8800', '#3C3C3B']);
+        .range(['#C63D0F', '#3B3738']);
 
       var donutWidth = 75;
       var legendRectSize = 18;
@@ -142,21 +142,7 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray, GetTheDate) {
 
   $scope.submitForm = function(isValid) {
 
-<<<<<<< HEAD
-    var now = new Date()
-    var m = now.getMonth();
-    var d = now.getDay();
-    var y = now.getFullYear();
-    if (m < 10) { 
-      m = String('0' + m)
-    }
-    if (d < 10) { 
-      d = String('0' + d)
-    }
-    var wholedate = String( m + '/' + d + '/' + y )
-=======
     GetTheDate.now();
->>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9
 
     $scope.bikes.$add({
       'archive': false,
@@ -200,25 +186,8 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   $scope.bikes = $firebaseArray(bikeArray);
   $scope.parts = $firebaseArray(partArray);
 
-<<<<<<< HEAD
-
-
-
-  var now = new Date()
-  var m = now.getMonth();
-  var d = now.getDay();
-  var y = now.getFullYear();
-    if (m < 10) { 
-      m = String('0' + m)
-    }
-    if (d < 10) { 
-      d = String('0' + d)
-    }
-  var wholedate = String( m + '/' + d + '/' + y )
-=======
   var logArray = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsWeTyYWPod0svrSH4n/mlogs");
   
->>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9
 
   $scope.bikeReady = function(ready) {
     return ThingStates.readyThing(ready);
@@ -242,7 +211,7 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   };
 
   $scope.bikeArchive = function (time) {
-    var doIt = confirm('Archive this bike?');
+    var doIt = confirm('Are you sure you want to remove this bike?');
     if (doIt === true) {
 
       for (i = 0; i < $scope.bikes.length; i++) {
@@ -253,29 +222,6 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
       }
     }
   };
-
-  $scope.newLogz = function () {
-  
-    // var logArray = bikeArray.child("-JsWeTyYWPod0svrSH4n/mlogs")
-    // console.log(logArray)
-    // $scope.logs = $firebaseArray(logArray);
-    // return $scope.logs;
-    // GotoLogs.giveIndex;   //returns activeBikeIndex
-    // var bikeIndex = activeBikeIndex;
-    // console.log('bI',bikeIndex);
-    // var bikekey = $scope.bikes[bikeIndex].$id; 
-    // console.log('bk',bikekey);
-    // var somestring = String(bikekey + '/mlogs'); 
-    // console.log(somestring);
-     var logArray = bikeArray.child("-JsWeTyYWPod0svrSH4n/mlogs");
-     $scope.logs = $firebaseArray(logArray);
-    
-      //var logArray = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsWeTyYWPod0svrSH4n/mlogs");
-  //$scope.logs = $firebaseArray(logArray);
-    console.log('go');
-    return $scope.logs;
-
-  }
 
   $scope.addLog = function () {
     GotoLogs.getIndex;   //returns activeBikeIndex
@@ -296,11 +242,6 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
      $scope.bk = "";
   }
   
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9
   $(function() {
     $( "#datepicker" ).datepicker();
     defaultDate: null;
@@ -351,7 +292,7 @@ bikeBarn.service('ThingStates', function() {
 bikeBarn.directive('buttonToggle', function() {
   return {
     restrict: 'A',      
-    template: "<button ng-class=\"bike.ready === 'offline' ? 'green-button' : 'red-button'\" ng-click='readyToggle(bike)'>{{bike.ready}}</button>",
+    template: "<button ng-class=\"bike.ready === 'offline' ? 'red-button common-button' : 'green-button common-button'\" ng-click='readyToggle(bike)'>{{bike.ready}}</button>",
 
     link: function($scope, element, attrs) {
       $scope.readyToggle = function(bike) {
@@ -372,31 +313,20 @@ bikeBarn.directive('buttonToggle', function() {
   };
 });
 
-bikeBarn.directive('createLogArray', [firebase, function(firebase) {
-  return{
-    restrict: 'A',
-    link: function($scope, element, attrs, firebase) {
 
-    // GotoLogs.getIndex;   //returns activeBikeIndex
-    // var logIndex = activeBikeIndex;
-    // console.log(logIndex);
-    // var logkey = $scope.bikes[logIndex].$id; 
-    // console.log(logkey);
-    // var somestring = String(logkey + '/mlogs'); 
-    // console.log(somestring);
-    // var logArray = bikeArray.child(somestring);
-
-    //var logArray = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsWeTyYWPod0svrSH4n/mlogs");
-    $scope.logs = $firebase(bikes.child('-JsWeTyYWPod0svrSH4n/mlogs')).$asArray()
-
-    console.log("gg");
-
-<<<<<<< HEAD
-=======
-    }
-  }
-}])
-
->>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9
-
+// kudos to http://justinklemm.com/angularjs-filter-ordering-objects-ngrepeat/ 
+// for explaining filters and walking me throught this piece of code
+bikeBarn.filter('orderObjectBy', function() {
+  return function(items, field, reverse) {
+    var filtered = [];
+    angular.forEach(items, function(item) {
+      filtered.push(item);
+    });
+    filtered.sort(function (a, b) {
+      return (a[field] > b[field] ? 1 : -1);
+    });
+    if(reverse) filtered.reverse();
+    return filtered;
+  };
+});
 },{}]},{},[1]);

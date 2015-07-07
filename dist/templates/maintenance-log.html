@@ -23,29 +23,10 @@
   </form>
 
   <table class="maint-table-logs" ng-repeat="(bikeIndex, bike) in bikes " ng-show="showSingleBike(bikeIndex)">
-<<<<<<< HEAD
-	  <tr ng-repeat="mlog in bike.mlogs | orderBy:'date'">
-			<td class='mt-logs-date'>{{mlog.date}}</td>
-			<td>{{mlog.note}}</td>
-=======
-    <tr ng-repeat="mlog in bike.mlogs | orderBy:'note'">
+    <tr ng-repeat="mlog in bike.mlogs | orderObjectBy:'date':true">
       <td class='mt-logs-date'>{{mlog.date}}</td>
       <td>{{mlog.note}}</td>
->>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9
-      <td>{{bikeIndex}}</td>
     </tr>
   </table>
 
 </div> 
-
-
-<<<<<<< HEAD
-<!-- <tr ng-repeat="log in newLogRepeat() | orderBy: 'date' : false"> -->
-=======
-<!--   <table class="maint-table-logs" create-log-array>
-    <tr ng-repeat="log in logs | orderBy:'date'">
-      <td class='mt-logs-date'>{{log.date}}</td>
-      <td>{{log.note}}</td>
-    </tr>
-  </table> -->
->>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9

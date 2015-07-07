@@ -1,44 +1,56 @@
-<h2 class='title'>Full List</h2>
+<h2 class='title'>Detail</h2>
 
 <div>
   <table class="detail-table">
-    <tr class="tableHeader">
+    <tr>
       <th>
         <a href="#" ng-click="sortMe = 'ready'; sortToggle = !sortToggle"> Ready?
-          <span ng-show="sortMe == 'ready' && !sortToggle"><img src="/images/dntriangle.png"></span>
-          <span ng-show="sortMe == 'ready' && sortToggle"><img src="/images/uptriangle.png"></span>
+          <span ng-show="sortMe !== 'ready'"><img src="/images/pale_arrows.png"></span>
+          <span ng-show="sortMe == 'ready' && !sortToggle"><img src="/images/down_arrows.png"></span>
+          <span ng-show="sortMe == 'ready' && sortToggle"><img src="/images/up_arrows.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'ident'; sortToggle = !sortToggle"> ID
-          <span ng-show="sortMe == 'ident' && !sortToggle"><img src="/images/dntriangle.png"></span>
-          <span ng-show="sortMe == 'ident' && sortToggle"><img src="/images/uptriangle.png"></span>
+          <span ng-show="sortMe !== 'ident'"><img src="/images/pale_arrows.png"></span>
+          <span ng-show="sortMe == 'ident' && !sortToggle"><img src="/images/down_arrows.png"></span>
+          <span ng-show="sortMe == 'ident' && sortToggle"><img src="/images/up_arrows.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'year'; sortToggle = !sortToggle">Year
-          <span ng-show="sortMe == 'year' && !sortToggle"><img src="/images/dntriangle.png"></span>
-          <span ng-show="sortMe == 'year' && sortToggle"><img src="/images/uptriangle.png"></span>
+          <span ng-show="sortMe !== 'year'"><img src="/images/pale_arrows.png"></span>
+          <span ng-show="sortMe == 'year' && !sortToggle"><img src="/images/down_arrows.png"></span>
+          <span ng-show="sortMe == 'year' && sortToggle"><img src="/images/up_arrows.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'make'; sortToggle = !sortToggle">Make
-          <span ng-show="sortMe == 'make' && !sortToggle"><img src="/images/dntriangle.png"></span>
-          <span ng-show="sortMe == 'make' && sortToggle"><img src="/images/uptriangle.png"></span>
+          <span ng-show="sortMe !== 'make'"><img src="/images/pale_arrows.png"></span>
+          <span ng-show="sortMe == 'make' && !sortToggle"><img src="/images/down_arrows.png"></span>
+          <span ng-show="sortMe == 'make' && sortToggle"><img src="/images/up_arrows.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'model'; sortToggle = !sortToggle">Model
-          <span ng-show="sortMe == 'model' && !sortToggle"><img src="/images/dntriangle.png"></span>
-          <span ng-show="sortMe == 'model' && sortToggle"><img src="/images/uptriangle.png"></span>
+          <span ng-show="sortMe !== 'model'"><img src="/images/pale_arrows.png"></span>
+          <span ng-show="sortMe == 'model' && !sortToggle"><img src="/images/down_arrows.png"></span>
+          <span ng-show="sortMe == 'model' && sortToggle"><img src="/images/up_arrows.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'maincolor'; sortToggle = !sortToggle">Color
-          <span ng-show="sortMe == 'maincolor' && !sortToggle"><img src="/images/dntriangle.png"></span>
-          <span ng-show="sortMe == 'maincolor' && sortToggle"><img src="/images/uptriangle.png"></span>
+          <span ng-show="sortMe !== 'maincolor'"><img src="/images/pale_arrows.png"></span>
+          <span ng-show="sortMe == 'maincolor' && !sortToggle"><img src="/images/down_arrows.png"></span>
+          <span ng-show="sortMe == 'maincolor' && sortToggle"><img src="/images/up_arrows.png"></span>
       </th>
       <th>
         <a href="#" ng-click="sortMe = 'maintype'; sortToggle = !sortToggle">Type
-          <span ng-show="sortMe == 'maintype' && !sortToggle"><img src="/images/dntriangle.png"></span>
-          <span ng-show="sortMe == 'maintype' && sortToggle"><img src="/images/uptriangle.png"></span>
+          <span ng-show="sortMe !== 'maintype'"><img src="/images/pale_arrows.png"></span>
+          <span ng-show="sortMe == 'maintype' && !sortToggle"><img src="/images/down_arrows.png"></span>
+          <span ng-show="sortMe == 'maintype' && sortToggle"><img src="/images/up_arrows.png"></span>
       </th>
-      <th>SN</th>
+      <th>
+        <a href="#" ng-click="sortMe = 'sn'; sortToggle = !sortToggle">Serial Number
+          <span ng-show="sortMe !== 'sn'"><img src="/images/pale_arrows.png"></span>
+          <span ng-show="sortMe == 'sn' && !sortToggle"><img src="/images/down_arrows.png"></span>
+          <span ng-show="sortMe == 'sn' && sortToggle"><img src="/images/up_arrows.png"></span>
+      </th>
     </tr>                             
     <tr ng-repeat="(bikeIndex, bike) in bikes | orderBy:sortMe:sortToggle" ng-hide='archived(bike.archive)'> 
       <td button-toggle></td>
@@ -49,15 +61,11 @@
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td>{{bike.sn}}</td>
-<<<<<<< HEAD
-      <td>{{bikeIndex}}</td>
-=======
->>>>>>> 8d4cde3dd93a0e218cb03574b0e8d4ee47a45dc9
       <td class="edit-column">
       <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
-        <a ui-sref='maintLog'>View Log</a>
+        <a ui-sref='maintLog'>Log</a>
       </button>
-      <button class='edit-button' ng-click='bikeArchive(bike.timestamp)'>[ Archive ]</button>
+      <button class='archive-button' ng-click='bikeArchive(bike.timestamp)'>[ X ]</button>
       </td>
     </tr>
   </table>

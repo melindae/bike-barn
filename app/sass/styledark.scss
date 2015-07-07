@@ -1,39 +1,28 @@
-/* colors:
-background #FDF3E7
-yellow:
-orange: #C63D0F
-blue:
-grey: #3B3738
-red: #F6F6F6
-
-ready/not:   /
-
-*/
-
 
 body {
-  background-image: url("/images/simple_dashed_lite.png");
-  background-color: white;
+/*  background-image: url("/dist/images/gun_metal.png");*/
+  background-color: #0B0B0A;
   font-family: "Tahoma", Geneva, sans-serif;
   font-size: 22px;
-  color: #2b2b2b;
+  color: white;
 }
- 
+  
 
 /****** top navigation frame ******/
 
- .nav-frame {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-//   background-image: url("/images/metallt.png");
-//   background-color: #0B0B0A;
-   height: 90px;
- } 
+.nav-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-image: url("/images/metallt.png");
+  background-color: #0B0B0A;
+  height: 80px;
+}
 
 .nav-frame .bb-logo {
-  margin: 0 0 0 0;
+  float: left;
+  margin: 15px 0 0 30px;
 }
 
 .nav-frame .nav-buttons {
@@ -42,38 +31,26 @@ body {
   font-weight: bold;
 }
 
-.nav-frame .nav-buttons ul {
-  width: auto;
-  text-align: center;
-
-}
-
 .nav-frame .nav-buttons li {
-  display: inline-block;
+  display: inline
 }
 
 .nav-frame .nav-buttons li a {
-  display: inline-block;
   text-decoration: none;
   padding: 6px 5px 6px 5px;
   width: 105px;
   height: 25px;
-  background: linear-gradient(to bottom,  
-    rgba(255, 173, 51, 1) 0%,
-    rgba(255, 153, 0, 1) 65%,
-    rgba(178, 107, 0, 1) 100%);
+  background: linear-gradient(to bottom,  rgba(255, 173, 51, 1) 0%,rgba(255, 153, 0, 1) 65%,rgba(178, 107, 0, 1) 100%);
   color: #F0F0F0;
+  float: right;
   text-align: center;
   border-radius: 5px;
   border-top: 2px solid #D99633;
   border-right: 2px solid #915700;
   border-bottom: 2px solid #7C4A00;
   border-left: 2px solid #D99633;
-  margin: 1px 10px 1px 10px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  
+  margin: 1px;
+  margin-right: 20px;
 }
 
 .nav-frame .nav-buttons li a:hover {
@@ -84,7 +61,7 @@ body {
   /****** page title ******/
 
 .title {
-  color: #DE1B1B;
+  color: #FF9900;
   font-size: 35px;
   text-align: center;
   clear: both;
@@ -92,8 +69,8 @@ body {
   margin-bottom: 40px;
 }
  
-
   /****** home page ******/
+
 
 .legend text{
   font-size: 18px;
@@ -119,11 +96,6 @@ rect {
   font-size: 17px;
   margin-right: auto;
   margin-left: auto;
-  color: #2b2b2b;
-    padding: 20px;
-  border: solid 2px black;
-  box-shadow: 5px 5px 5px black;
-  background-color: white;
 }
 
 .newForm input, select {
@@ -131,27 +103,26 @@ rect {
   padding: 5px;
   box-sizing: border-box;
   border-radius: 5px;
-  border: solid 2px #B5CA8D;
+  border: 1px black;
 }
 
 .newForm 
   input:hover, 
   select:hover, 
   textarea:hover, {
-  background: #D3DAC6;
+    background: #E7BE80;
 }
 
 .newForm 
   input:focus, 
   select:focus, 
   textarea:focus, {
-    background: #D3DAC6;
+    background: #EF9900;
 }
 
 .newForm fieldset {
   width: 98%;
   box-sizing: border-box;
-  background-color: white;
 }
 
 .newForm fieldset  ul{
@@ -195,7 +166,6 @@ rect {
 
 .newForm .newColumn fieldset {
   margin-bottom: 30px;
-  border: solid 3px #B5CA8D;
 }
 
 .newForm .button {
@@ -211,16 +181,13 @@ rect {
   font-size: 24px;
   letter-spacing: 1px;
   font-weight: bold;
-  background: linear-gradient(to bottom,  
-    rgba(222, 27, 27, 1) 0%,
-    rgba(178, 22, 22, 1) 65%,
-    rgba(142, 18, 18, 1) 100%);
+  background: linear-gradient(to bottom,  rgba(255, 173, 51, 1) 0%,rgba(255, 153, 0, 1) 65%,rgba(178, 107, 0, 1) 100%);
   color: #000000;  
   border-radius: 5px;
-  border-top: 2px solid #E54949;
-  border-right: 2px solid #E54949;
-  border-bottom: 3px solid #7D0F0F;
-  border-left: 3px solid #B21616;
+  border-top: 2px solid #D99633;
+  border-right: 2px solid #915700;
+  border-bottom: 2px solid #7C4A00;
+  border-left: 2px solid #D99633;
 }
 
 .newForm .button button:hover {
@@ -246,31 +213,26 @@ form.newForm.ng-submitted .ng-invalid {
   width: 70%;
   margin-right: auto;
   margin-left: auto;
-  padding: 20px;
-  border: solid 2px black;
-  box-shadow: 5px 5px 5px black;
-  background-color: white;
+
 }
 
 .detail-table td, .detail-table th {
-  border-bottom: 1px solid #BEBEBE;
+  border: 1px solid #4B4B4B;
+  border-collapse: collapse;
   padding: 3px 6px 3px 6px;
   font-size: 18px;
   font-family: "ariel" sans-serif;
-  color: #2b2b2b;
+  color: white;
   text-decoration: none;
 }
 
-.detail-table th a {
+.detail-table th, a {
   color: #FF9900;
   text-decoration: none;
-  font-size: 20px;
-  text-shadow: 1px 1px 2px #D5D5D5;
 }
 
 .detail-table .edit-column {
-  border: none;
-  width: 70px;
+  border: 0px;
 }
 
 .detail-table button {
@@ -284,30 +246,28 @@ form.newForm.ng-submitted .ng-invalid {
   float: left;
   margin-top: 30px;
   width: 37%;
-  padding: 10px 20px 20px 20px;
-  border: solid 2px black;
-  box-shadow: 5px 5px 5px black;
-  background-color: white;
 }
 
 .quick-table td, .quick-table th   {
-  border-bottom: 1px solid #BEBEBE;
+  border: 1px solid #4B4B4B;
+  border-collapse: collapse;
   padding: 3px 6px 3px 6px;
   font-size: 18px;
   font-family: "ariel" sans-serif;
-  color: #2b2b2b;
+  color: white;
+}
+
+.quick-table th {
+  color: #FF9900;
   text-decoration: none;
 }
 
-.quick-table th a{
-  color: #FF9900;
-  text-decoration: none;
-  color: #FF9900;
-  text-decoration: none;
-  font-size: 20px;
-  text-shadow: 1px 1px 2px #D5D5D5;
+.quick-table caption {
+  font-size: 26px;
+  font-weight: bold;
+  margin-right: 15%;
+  margin-bottom: 5px;
 }
-
 
 .table-online{
   margin-right: 3%;
@@ -327,13 +287,6 @@ form.newForm.ng-submitted .ng-invalid {
   height: 60px;
 }
 
-.quick-table .ready-title {
-  border-bottom: 0px solid #BEBEBE;
-  padding-bottom: 20px;
-  font-size: 26px;
-  color: #2b2b2b;
-  text-shadow: 1px 1px 2px #D5D5D5;
-}
 
   /****** maintenance log page ******/
 
@@ -435,10 +388,7 @@ form.newForm.ng-submitted .ng-invalid {
  /****** ready buttons ******/
 
 .green-button {  
-  background: linear-gradient(to bottom, 
-    rgba(0, 140, 0, 1) 0%,
-    rgba(0, 109, 0, 1) 65%,
-    rgba(0, 80, 0, 1) 100%);
+  background: linear-gradient(to bottom, rgba(0, 140, 0, 1) 0%,rgba(0, 110, 0, 1) 65%,rgba(0, 80, 0, 1) 100%);
   border-top: 1px solid #33A333;
   border-right: 1px solid #004000;
   border-bottom: 1px solid #003000;
@@ -446,20 +396,16 @@ form.newForm.ng-submitted .ng-invalid {
 }
 
 .red-button {  
-  background: linear-gradient(to bottom, 
-    rgba(222, 27, 27, 1) 0%,
-    rgba(178, 22, 22, 1) 65%,
-    rgba(142, 18, 18, 1) 100%);
-  border-top: 2px solid #E54949;
-  border-right: 2px solid #E54949;
-  border-bottom: 2px solid #7D0F0F;
-  border-left: 2px solid #B21616;
+  background: linear-gradient(to bottom, rgba(225, 0, 0, 1) 0%,rgba(175, 0, 0, 1) 65%,rgba(125, 0, 0, 1) 100%);
+  border-top: 1px solid #CC0000;
+  border-right: 1px solid #7A0000;
+  border-bottom: 1px solid #660000;
+  border-left: 1px solid #CC0000;
 }
 
 .common-button {
   padding: 2px 3px 2px 3px;
   color: white;
-  font-weight: bold;
   text-align: center;
   border-radius: 2px;
   margin:auto;
@@ -473,11 +419,8 @@ form.newForm.ng-submitted .ng-invalid {
 /****** misc ******/ 
 
 .edit-button {
-  padding: 2px 4px 4px 2px;
-  background: linear-gradient(to bottom,  
-    rgba(255, 173, 51, 1) 0%,
-    rgba(255, 153, 0, 1) 65%,
-    rgba(178, 107, 0, 1) 100%);
+  padding: 1px 1px 1px 1px;
+  background: linear-gradient(to bottom,  rgba(255, 173, 51, 1) 0%,rgba(255, 153, 0, 1) 65%,rgba(178, 107, 0, 1) 100%);
   color: #000000;
   text-align: center;
   font-weight: bold;
@@ -486,23 +429,6 @@ form.newForm.ng-submitted .ng-invalid {
   border-right: 1px solid #915700;
   border-bottom: 1px solid #7C4A00;
   border-left: 1px solid #D99633;
-}
-
-.archive-button {
-  padding: 2px 2px 4px 2px;
-  background: linear-gradient(to bottom,  
-    rgba(222, 27, 27, 1) 0%,
-    rgba(178, 22, 22, 1) 65%,
-    rgba(142, 18, 18, 1) 100%);
-  color: #000000;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 2px;
-  border-top: 2px solid #E54949;
-  border-right: 2px solid #E54949;
-  border-bottom: 2px solid #7D0F0F;
-  border-left: 2px solid #B21616;
-
 }
 
 .edit-button a {

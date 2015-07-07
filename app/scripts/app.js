@@ -69,7 +69,7 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
       var radius = Math.min(width, height) / 2;
 
       var color = d3.scale.ordinal()
-        .range(['#FF8800', '#3C3C3B']);
+        .range(['#C63D0F', '#3B3738']);
 
       var donutWidth = 75;
       var legendRectSize = 18;
@@ -210,7 +210,7 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   };
 
   $scope.bikeArchive = function (time) {
-    var doIt = confirm('Archive this bike?');
+    var doIt = confirm('Are you sure you want to remove this bike?');
     if (doIt === true) {
 
       for (i = 0; i < $scope.bikes.length; i++) {
@@ -291,7 +291,7 @@ bikeBarn.service('ThingStates', function() {
 bikeBarn.directive('buttonToggle', function() {
   return {
     restrict: 'A',      
-    template: "<button ng-class=\"bike.ready === 'offline' ? 'green-button' : 'red-button'\" ng-click='readyToggle(bike)'>{{bike.ready}}</button>",
+    template: "<button ng-class=\"bike.ready === 'offline' ? 'red-button common-button' : 'green-button common-button'\" ng-click='readyToggle(bike)'>{{bike.ready}}</button>",
 
     link: function($scope, element, attrs) {
       $scope.readyToggle = function(bike) {
@@ -312,26 +312,19 @@ bikeBarn.directive('buttonToggle', function() {
   };
 });
 
-bikeBarn.directive('createLogArray', [firebase, function(firebase) {
-  return{
-    restrict: 'A',
-    link: function($scope, element, attrs, firebase) {
 
-    // GotoLogs.getIndex;   //returns activeBikeIndex
-    // var logIndex = activeBikeIndex;
-    // console.log(logIndex);
-    // var logkey = $scope.bikes[logIndex].$id; 
-    // console.log(logkey);
-    // var somestring = String(logkey + '/mlogs'); 
-    // console.log(somestring);
-    // var logArray = bikeArray.child(somestring);
-
-    //var logArray = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsWeTyYWPod0svrSH4n/mlogs");
-    $scope.logs = $firebase(bikes.child('-JsWeTyYWPod0svrSH4n/mlogs')).$asArray()
-
-    console.log("gg");
-
-    }
-  }
-}])
-
+// kudos to http://justinklemm.com/angularjs-filter-ordering-objects-ngrepeat/ 
+// for explaining filters and walking me throught this piece of code
+bikeBarn.filter('orderObjectBy', function() {
+  return function(items, field, reverse) {
+    var filtered = [];
+    angular.forEach(items, function(item) {
+      filtered.push(item);
+    });
+    filtered.sort(function (a, b) {
+      return (a[field] > b[field] ? 1 : -1);
+    });
+    if(reverse) filtered.reverse();
+    return filtered;
+  };
+});

@@ -20,18 +20,19 @@
   
   <body>
     <header></header>
-    <div class="nav-frame">
-      <img src="/images/bblogo_50.png" class="bb-logo">
-      <nav class="nav-buttons">
-        <ul>
-          <li><a ui-sref="newBike">New Bike</a></li>
-          <li><a ui-sref="detailInv">Full List</a></li>
-          <li><a ui-sref="quickInv">Quick List</a></li>          
-          <li><a ui-sref="home">Home</a></li>
-        </ul>        
-      </nav>
-    </div>  
-    <div ui-view></h2>
-    </div>
+      <div class="nav-frame">
+        
+        <nav class="nav-buttons">
+          <ul>
+            <li><a ui-sref="home">Stats</a></li>
+            <li><a ui-sref="newBike">New</a></li>
+            <li><img src="/images/bblogo_50.png" class="bb-logo"></li>
+            <li><a ui-sref="quickInv">Summary</a></li>          
+            <li><a ui-sref="detailInv">Detail</a></li>
+          </ul>        
+        </nav>
+      </div>  
+      <div ui-view></h2>
+      </div>
   </body>
 </html>

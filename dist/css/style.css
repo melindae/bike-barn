@@ -1,9 +1,20 @@
+/* colors:
+background #FDF3E7
+yellow:
+orange: #C63D0F
+blue:
+grey: #3B3738
+red: #F6F6F6
+
+ready/not:   /
+
+*/
 body {
-  /*  background-image: url("/dist/images/gun_metal.png");*/
-  background-color: #0B0B0A;
+  background-image: url("/images/simple_dashed_lite.png");
+  background-color: white;
   font-family: "Tahoma", Geneva, sans-serif;
   font-size: 22px;
-  color: white; }
+  color: #2b2b2b; }
 
 /****** top navigation frame ******/
 .nav-frame {
@@ -11,45 +22,50 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-image: url("/images/metallt.png");
-  background-color: #0B0B0A;
-  height: 80px; }
+  height: 90px; }
 
 .nav-frame .bb-logo {
-  float: left;
-  margin: 15px 0 0 30px; }
+  margin: 0 0 0 0; }
 
 .nav-frame .nav-buttons {
   list-style: none;
   font-size: 20px;
   font-weight: bold; }
 
+.nav-frame .nav-buttons ul {
+  width: auto;
+  text-align: center; }
+
 .nav-frame .nav-buttons li {
-  display: inline; }
+  display: inline-block; }
 
 .nav-frame .nav-buttons li a {
+  display: inline-block;
   text-decoration: none;
   padding: 6px 5px 6px 5px;
   width: 105px;
   height: 25px;
   background: linear-gradient(to bottom, #ffad33 0%, #ff9900 65%, #b26b00 100%);
   color: #F0F0F0;
-  float: right;
   text-align: center;
   border-radius: 5px;
   border-top: 2px solid #D99633;
   border-right: 2px solid #915700;
   border-bottom: 2px solid #7C4A00;
   border-left: 2px solid #D99633;
-  margin: 1px;
-  margin-right: 20px; }
+  margin: 1px 10px 1px 10px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%); }
 
 .nav-frame .nav-buttons li a:hover {
   color: #000000; }
 
 /****** page title ******/
 .title {
-  color: #FF9900;
+  color: #DE1B1B;
   font-size: 35px;
   text-align: center;
   clear: both;
@@ -76,24 +92,30 @@ rect {
   max-width: 700px;
   font-size: 17px;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;
+  color: #2b2b2b;
+  padding: 20px;
+  border: solid 2px black;
+  box-shadow: 5px 5px 5px black;
+  background-color: white; }
 
 .newForm input, select {
   width: 98%;
   padding: 5px;
   box-sizing: border-box;
   border-radius: 5px;
-  border: 1px black; }
+  border: solid 2px #B5CA8D; }
 
 .newForm input:hover, select:hover, textarea:hover {
-  background: #E7BE80; }
+  background: #D3DAC6; }
 
 .newForm input:focus, select:focus, textarea:focus {
-  background: #EF9900; }
+  background: #D3DAC6; }
 
 .newForm fieldset {
   width: 98%;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-color: white; }
 
 .newForm fieldset ul {
   list-style-type: none;
@@ -128,7 +150,8 @@ rect {
   margin-top: 0; }
 
 .newForm .newColumn fieldset {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  border: solid 3px #B5CA8D; }
 
 .newForm .button {
   text-align: center;
@@ -142,13 +165,13 @@ rect {
   font-size: 24px;
   letter-spacing: 1px;
   font-weight: bold;
-  background: linear-gradient(to bottom, #ffad33 0%, #ff9900 65%, #b26b00 100%);
+  background: linear-gradient(to bottom, #de1b1b 0%, #b21616 65%, #8e1212 100%);
   color: #000000;
   border-radius: 5px;
-  border-top: 2px solid #D99633;
-  border-right: 2px solid #915700;
-  border-bottom: 2px solid #7C4A00;
-  border-left: 2px solid #D99633; }
+  border-top: 2px solid #E54949;
+  border-right: 2px solid #E54949;
+  border-bottom: 3px solid #7D0F0F;
+  border-left: 3px solid #B21616; }
 
 .newForm .button button:hover {
   color: #F0F0F0; }
@@ -167,47 +190,55 @@ form.newForm.ng-submitted .ng-invalid {
   margin-top: 30px;
   width: 70%;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;
+  padding: 20px;
+  border: solid 2px black;
+  box-shadow: 5px 5px 5px black;
+  background-color: white; }
 
 .detail-table td, .detail-table th {
-  border: 1px solid #4B4B4B;
-  border-collapse: collapse;
+  border-bottom: 1px solid #BEBEBE;
   padding: 3px 6px 3px 6px;
   font-size: 18px;
   font-family: "ariel" sans-serif;
-  color: white;
+  color: #2b2b2b;
   text-decoration: none; }
 
-.detail-table th, a {
+.detail-table th a {
   color: #FF9900;
-  text-decoration: none; }
+  text-decoration: none;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px #D5D5D5; }
 
 .detail-table .edit-column {
-  border: 0px; }
+  border: none;
+  width: 70px; }
 
 /****** quick inventory page ******/
 .quick-table {
   float: left;
   margin-top: 30px;
-  width: 37%; }
+  width: 37%;
+  padding: 10px 20px 20px 20px;
+  border: solid 2px black;
+  box-shadow: 5px 5px 5px black;
+  background-color: white; }
 
 .quick-table td, .quick-table th {
-  border: 1px solid #4B4B4B;
-  border-collapse: collapse;
+  border-bottom: 1px solid #BEBEBE;
   padding: 3px 6px 3px 6px;
   font-size: 18px;
   font-family: "ariel" sans-serif;
-  color: white; }
-
-.quick-table th {
-  color: #FF9900;
+  color: #2b2b2b;
   text-decoration: none; }
 
-.quick-table caption {
-  font-size: 26px;
-  font-weight: bold;
-  margin-right: 15%;
-  margin-bottom: 5px; }
+.quick-table th a {
+  color: #FF9900;
+  text-decoration: none;
+  color: #FF9900;
+  text-decoration: none;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px #D5D5D5; }
 
 .table-online {
   margin-right: 3%;
@@ -222,6 +253,13 @@ form.newForm.ng-submitted .ng-invalid {
 
 .quick-table .edit-note-field {
   height: 60px; }
+
+.quick-table .ready-title {
+  border-bottom: 0px solid #BEBEBE;
+  padding-bottom: 20px;
+  font-size: 26px;
+  color: #2b2b2b;
+  text-shadow: 1px 1px 2px #D5D5D5; }
 
 /****** maintenance log page ******/
 .maint-table {
@@ -304,69 +342,36 @@ form.newForm.ng-submitted .ng-invalid {
 .maint-table .maint-table-logs .mt-logs-date {
   width: 20%; }
 
-/* green button*/
-.table-online .ready-button {
-  background: linear-gradient(to bottom, #008c00 0%, #006e00 65%, #005000 100%);
+/****** ready buttons ******/
+.green-button {
+  background: linear-gradient(to bottom, #008c00 0%, #006d00 65%, #005000 100%);
   border-top: 1px solid #33A333;
   border-right: 1px solid #004000;
   border-bottom: 1px solid #003000;
   border-left: 1px solid #33A333; }
 
-/* red button*/
-.table-offline .ready-button {
-  background: linear-gradient(to bottom, #e10000 0%, #af0000 65%, #7d0000 100%);
-  border-top: 1px solid #CC0000;
-  border-right: 1px solid #7A0000;
-  border-bottom: 1px solid #660000;
-  border-left: 1px solid #CC0000; }
-
-/* ready button common*/
-.quick-table .ready-button {
-  padding: 2px 3px 2px 3px;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 2px; }
-
-.maint-table-bike .ready-button {
-  padding: 2px 3px 2px 5px;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 2px; }
-
-.ready-button:hover {
-  color: #FF9900; }
-
-/* playing with button color change*/
 .red-button {
-  background: linear-gradient(to bottom, #008c00 0%, #006e00 65%, #005000 100%);
-  border-top: 1px solid #33A333;
-  border-right: 1px solid #004000;
-  border-bottom: 1px solid #003000;
-  border-left: 1px solid #33A333;
-  /*common*/
-  padding: 2px 3px 2px 3px;
-  color: white;
-  text-align: center;
-  border-radius: 2px; }
+  background: linear-gradient(to bottom, #de1b1b 0%, #b21616 65%, #8e1212 100%);
+  border-top: 2px solid #E54949;
+  border-right: 2px solid #E54949;
+  border-bottom: 2px solid #7D0F0F;
+  border-left: 2px solid #B21616; }
 
-/* playing with button color change*/
-.green-button {
-  background: linear-gradient(to bottom, #e10000 0%, #af0000 65%, #7d0000 100%);
-  border-top: 1px solid #CC0000;
-  border-right: 1px solid #7A0000;
-  border-bottom: 1px solid #660000;
-  border-left: 1px solid #CC0000;
-  /*common*/
+.common-button {
   padding: 2px 3px 2px 3px;
   color: white;
+  font-weight: bold;
   text-align: center;
-  border-radius: 2px; }
+  border-radius: 2px;
+  margin: auto;
+  display: block; }
+
+.common-button:hover {
+  color: black; }
 
 /****** misc ******/
 .edit-button {
-  padding: 1px 1px 1px 1px;
+  padding: 2px 4px 4px 2px;
   background: linear-gradient(to bottom, #ffad33 0%, #ff9900 65%, #b26b00 100%);
   color: #000000;
   text-align: center;
@@ -376,6 +381,18 @@ form.newForm.ng-submitted .ng-invalid {
   border-right: 1px solid #915700;
   border-bottom: 1px solid #7C4A00;
   border-left: 1px solid #D99633; }
+
+.archive-button {
+  padding: 2px 2px 4px 2px;
+  background: linear-gradient(to bottom, #de1b1b 0%, #b21616 65%, #8e1212 100%);
+  color: #000000;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2px;
+  border-top: 2px solid #E54949;
+  border-right: 2px solid #E54949;
+  border-bottom: 2px solid #7D0F0F;
+  border-left: 2px solid #B21616; }
 
 .edit-button a {
   text-decoration: none;

@@ -42,9 +42,9 @@ body {
 .nav-frame .nav-buttons li a {
   display: inline-block;
   text-decoration: none;
-  padding: 6px 5px 6px 5px;
+  padding: 8px 5px 5px 5px;
   width: 105px;
-  height: 25px;
+  height: 30px;
   background: linear-gradient(to bottom, #ffad33 0%, #ff9900 65%, #b26b00 100%);
   color: #F0F0F0;
   text-align: center;
@@ -104,7 +104,7 @@ rect {
   padding: 5px;
   box-sizing: border-box;
   border-radius: 5px;
-  border: solid 2px #B5CA8D; }
+  border: solid 1px #808080; }
 
 .newForm input:hover, select:hover, textarea:hover {
   background: #D3DAC6; }
@@ -150,8 +150,7 @@ rect {
   margin-top: 0; }
 
 .newForm .newColumn fieldset {
-  margin-bottom: 30px;
-  border: solid 3px #B5CA8D; }
+  margin-bottom: 30px; }
 
 .newForm .button {
   text-align: center;
@@ -178,12 +177,11 @@ rect {
 
 /*** new bike form validation alerts ***/
 form.newForm.ng-submitted .ng-invalid {
-  background-color: #CCFF99;
-  font-weight: 66; }
+  /*  background-color: #CCFF99; */
+  border: solid 3px red; }
 
 .light-up {
-  border: solid #CCFF99;
-  color: #CCFF99; }
+  border: solid 4px red; }
 
 /****** detail list/inventory page ******/
 .detail-table {
@@ -273,7 +271,8 @@ form.newForm.ng-submitted .ng-invalid {
   border: 1px solid #4B4B4B;
   margin-right: auto;
   margin-left: auto;
-  padding: 5px 9px 5px 9px; }
+  padding: 5px 9px 5px 9px;
+  background: white; }
 
 .maint-table .maint-table-bike td {
   font-weight: bold;

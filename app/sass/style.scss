@@ -55,9 +55,9 @@ body {
 .nav-frame .nav-buttons li a {
   display: inline-block;
   text-decoration: none;
-  padding: 6px 5px 6px 5px;
+  padding: 8px 5px 5px 5px;
   width: 105px;
-  height: 25px;
+  height: 30px;
   background: linear-gradient(to bottom,  
     rgba(255, 173, 51, 1) 0%,
     rgba(255, 153, 0, 1) 65%,
@@ -73,7 +73,6 @@ body {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  
 }
 
 .nav-frame .nav-buttons li a:hover {
@@ -131,7 +130,7 @@ rect {
   padding: 5px;
   box-sizing: border-box;
   border-radius: 5px;
-  border: solid 2px #B5CA8D;
+  border: solid 1px #808080;
 }
 
 .newForm 
@@ -195,7 +194,6 @@ rect {
 
 .newForm .newColumn fieldset {
   margin-bottom: 30px;
-  border: solid 3px #B5CA8D;
 }
 
 .newForm .button {
@@ -230,13 +228,12 @@ rect {
   /*** new bike form validation alerts ***/
 
 form.newForm.ng-submitted .ng-invalid {
-  background-color: #CCFF99;
-  font-weight: 66;
+/*  background-color: #CCFF99; */
+  border: solid 3px red;
 }
 
 .light-up {
-  border: solid #CCFF99;
-  color: #CCFF99;
+  border: solid 4px red;
 }
 
   /****** detail list/inventory page ******/
@@ -308,7 +305,6 @@ form.newForm.ng-submitted .ng-invalid {
   text-shadow: 1px 1px 2px #D5D5D5;
 }
 
-
 .table-online{
   margin-right: 3%;
   margin-left: 10%;
@@ -350,6 +346,7 @@ form.newForm.ng-submitted .ng-invalid {
   margin-right: auto;
   margin-left: auto;
   padding: 5px 9px 5px 9px;
+  background: white;
 }
 
 .maint-table .maint-table-bike td {
@@ -519,6 +516,3 @@ form.newForm.ng-submitted .ng-invalid {
 .edit-button a:hover {
   color: #F0F0F0;
 }
-
-
-

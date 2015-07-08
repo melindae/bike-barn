@@ -1,4 +1,3 @@
-<h2 class='title'>Detail</h2>
 
 <div>
   <table class="detail-table">
@@ -51,6 +50,7 @@
           <span ng-show="sortMe == 'sn' && !sortToggle"><img src="/images/down_arrows.png"></span>
           <span ng-show="sortMe == 'sn' && sortToggle"><img src="/images/up_arrows.png"></span>
       </th>
+      <th></th>
     </tr>                             
     <tr ng-repeat="(bikeIndex, bike) in bikes | orderBy:sortMe:sortToggle" ng-hide='archived(bike.archive)'> 
       <td button-toggle></td>

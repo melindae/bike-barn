@@ -185,7 +185,7 @@ form.newForm.ng-submitted .ng-invalid {
 
 /****** detail list/inventory page ******/
 .detail-table {
-  margin-top: 30px;
+  margin-top: 10%;
   width: 70%;
   margin-right: auto;
   margin-left: auto;
@@ -209,13 +209,12 @@ form.newForm.ng-submitted .ng-invalid {
   text-shadow: 1px 1px 2px #D5D5D5; }
 
 .detail-table .edit-column {
-  border: none;
-  width: 70px; }
+  width: 90px; }
 
 /****** quick inventory page ******/
 .quick-table {
   float: left;
-  margin-top: 30px;
+  margin-top: 10%;
   width: 37%;
   padding: 10px 20px 20px 20px;
   border: solid 2px black;
@@ -239,12 +238,12 @@ form.newForm.ng-submitted .ng-invalid {
   text-shadow: 1px 1px 2px #D5D5D5; }
 
 .table-online {
-  margin-right: 3%;
-  margin-left: 10%; }
+  margin-right: 2%;
+  margin-left: 11%; }
 
 .table-offline {
-  margin-right: 10%;
-  margin-left: 3%; }
+  margin-right: 11%;
+  margin-left: 2%; }
 
 .quick-table .edit-column {
   border: 0px; }
@@ -358,6 +357,7 @@ form.newForm.ng-submitted .ng-invalid {
 
 .common-button {
   padding: 2px 3px 2px 3px;
+  width: 50px;
   color: white;
   font-weight: bold;
   text-align: center;

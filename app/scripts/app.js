@@ -69,7 +69,7 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
       var radius = Math.min(width, height) / 2;
 
       var color = d3.scale.ordinal()
-        .range(['#C63D0F', '#3B3738']);
+        .range(['#528029', '#8E1212']); // ready, offline
 
       var donutWidth = 75;
       var legendRectSize = 18;
@@ -197,9 +197,11 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   };
 
   $scope.showBikeIndex = function (time) {
+    console.log('1');
     for (i = 0; i < $scope.bikes.length; i++) {
       if ($scope.bikes[i].timestamp === time) {
         GotoLogs.giveIndex(i);
+        console.log('2');
       }
     }
   };

@@ -1,7 +1,7 @@
 
-<h2 class="title">Add New Bike</h2>
-
 <form name="newBikeForm" class="newForm" ng-submit="newBikeForm.$valid && submitForm(newBikeForm.$valid)" novalidate>
+
+  <p class="title">Add New Bike</p>
   <div class="newColumn">
     <fieldset>
     <legend>Ready?</legend>
@@ -13,11 +13,11 @@
 
 
     <label>Year:</label>
-    <input name="year"  type="number"  ng-model="bk.year" ng-minlength=4 ng-maxlength=4 required>
-    <p ng-show="newBikeForm.year.$error.minlength" class="help-block">Please enter 4 digit year.</p>
+    <input class="box-shadow" name="year"  type="number"  ng-model="bk.year" ng-minlength=4 ng-maxlength=4 required>
+    <p  ng-show="newBikeForm.year.$error.minlength" class="help-block">Please enter 4 digit year.</p>
 
     <label>Make:</label>
-    <select class="dropdown" name="make" ng-model="bk.make" required>
+    <select class="box-shadow" name="make" ng-model="bk.make" required>
       <option value="" style="display:none"> Choose </option>
       <option value="Honda"> Honda </option>
       <option value="Kawasaki"> Kawasaki </option>
@@ -27,19 +27,19 @@
     </select>
 
     <label >Model:</label>
-    <input name="model" type="text" ng-model="bk.model" required>
+    <input class="box-shadow" name="model" type="text" ng-model="bk.model" required>
 
   </div>
   <div class="newColumn">
 
-    <label>ID:</label>
-    <input name="id"  type="number" ng-model="bk.ident" required>
+    <label>Identification:</label>
+    <input class="box-shadow" name="id"  type="number" ng-model="bk.ident" required>
 
-    <label>SN:</label>
-    <input name="sn" type="text" ng-model="bk.sn" required >
+    <label>Serial Number:</label>
+    <input class="box-shadow" name="sn" type="text" ng-model="bk.sn" required >
 
     <label class="newLabel">Color:</label>
-    <input name="color" type="text" ng-model="bk.maincolor" required>
+    <input class="box-shadow" name="color" type="text" ng-model="bk.maincolor" required>
 
     <fieldset ng-class="{'light-up': !newBikeForm.maintype.$valid && newBikeForm.maintype.$pristine && newBikeForm.$submitted}">
     <legend>Type:</legend>
@@ -53,6 +53,6 @@
   </div>
 
   <div class="button">
-    <button type="submit">Add Bike</button>
+    <button class="box-shadow" type="submit">Add Bike</button>
   </div>
 </form>

@@ -30,6 +30,7 @@
           <span ng-show="sortMe == 'maintype' && !sortToggle"><img src="/images/dntriangle.png"></span>
           <span ng-show="sortMe == 'maintype' && sortToggle"><img src="/images/uptriangle.png"></span>
       </th>
+      <th></th>
     </tr>
     <tr ng-repeat="(bikeIndex, bike) in bikes | orderBy:sortMe:sortToggle" ng-show="bike.ready === 'ready' && bike.archive === false ">
       <td button-toggle></td>
@@ -38,9 +39,7 @@
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td class="edit-column">
-        <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
-          <a ui-sref="maintLog">Log</a>
-        </button>
+        <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)" ui-sref="maintLog">Log</button>
       </td>
     </tr>
   </table>
@@ -82,9 +81,7 @@
       <td>{{bike.maincolor}}</td>
       <td>{{bike.maintype}}</td>
       <td class="edit-column">
-        <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
-          <a ui-sref='maintLog'>Log</a>
-        </button>
+        <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)" ui-sref="maintLog">Log</button>
       </td>
     </tr>
   </table>

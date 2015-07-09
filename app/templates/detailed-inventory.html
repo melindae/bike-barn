@@ -51,6 +51,7 @@
           <span ng-show="sortMe == 'sn' && sortToggle"><img src="/images/up_arrows.png"></span>
       </th>
       <th></th>
+      <th></th>
     </tr>                             
     <tr ng-repeat="(bikeIndex, bike) in bikes | orderBy:sortMe:sortToggle" ng-hide='archived(bike.archive)'> 
       <td button-toggle></td>
@@ -62,10 +63,10 @@
       <td>{{bike.maintype}}</td>
       <td>{{bike.sn}}</td>
       <td class="edit-column">
-      <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)">
-        <a ui-sref='maintLog'>Log</a>
-      </button>
-      <button class='archive-button' ng-click='bikeArchive(bike.timestamp)'>[ X ]</button>
+        <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)" ui-sref='maintLog'>Log</button>
+      </td>
+      <td class="edit-column">
+        <button class='archive-button' ng-click='bikeArchive(bike.timestamp)'>[ X ]</button>
       </td>
     </tr>
   </table>

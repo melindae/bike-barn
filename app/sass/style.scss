@@ -289,7 +289,7 @@ form.newForm.ng-submitted .ng-invalid {
 .quick-table {
   float: left;
   width: 37%;
-  min-width: 475px;
+  //min-width: 475px;
   padding: .9em 1.9em 1.9em 1.9em;
   border: solid 2px black;
   box-shadow: .5em .5em .5em black;
@@ -517,4 +517,41 @@ form.newForm.ng-submitted .ng-invalid {
 .archive-button:hover {
   color: #F0F0F0;
   cursor: pointer;
+}
+
+
+  /****** responsive sizing ******/
+@media screen and (max-width: 1200px) {
+  body {
+
+  }
+
+
+  /****** quick inventory page ******/
+
+.quick-table {
+  float: none;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-online{
+
+}
+
+.table-offline{
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -1,4 +1,4 @@
-<h2 class='title'>Maintenance Log</h2>
+<h2 class='title'></h2>
 
 <div class="maint-table">
 
@@ -7,26 +7,39 @@
       <td button-toggle></td>
       <td>{{bike.year}}</td>
       <td>{{bike.maincolor}}</td>      
-      <td>{{bike.make}}</td>
+      <td class="no-mobile">{{bike.make}}</td>
       <td>{{bike.model}}</td>
     </tr>
   </table>
 
-  <form name="logForm" ng-submit="logForm.$valid && addLog(logForm.$valid)" novalidate>
-  	<table class="maint-table-input"  ng-form="logForm" ng-submit="addLog()"  novalidate>  
-      <tr >
-  			<td class='mt-input-date'><input id='datepicker' name='date' type="text" placeholder='Date' ng-model="bk.date" required></td>
-  			<td class='mt-input-note'><input class='note' name='note' type="text" placeholder='New Note' ng-model="bk.note" required></td>
-  			<td class='mt-input-button'><button class='edit-button' type="submit" >Add</button> </td>
-  		</tr>
-  	</table>
+  <form  name="logForm" ng-submit="logForm.$valid && addLog(logForm.$valid)" novalidate>
+    <table class="maint-table-input"  ng-form="logForm" ng-submit="addLog()"  novalidate>  
+      <tr class="top-row" >
+        <td class='mt-input-date'>
+          <input id='datepicker' name='date' type="text" placeholder='Date' ng-model="bk.date" required>
+        </td>
+        <td class='mt-input-mileage'>
+          <input class='mileage' name='mileage' type="numbers" placeholder='Mileage' ng-model="bk.mileage" required>
+        </td>
+        <td></td>
+        <td class='mt-input-button'>
+          <button class='edit-button' type="submit" >Add</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class='mt-input-note'>
+          <input class='note' name='note' type="text" placeholder='New Note' ng-model="bk.note" required>
+        </td>
+      </tr>
+    </table>
   </form>
 
   <table class="maint-table-logs" ng-repeat="(bikeIndex, bike) in bikes " ng-show="showSingleBike(bikeIndex)">
     <tr ng-repeat="mlog in bike.mlogs | orderObjectBy:'date':true">
       <td class='mt-logs-date'>{{mlog.date}}</td>
       <td>{{mlog.note}}</td>
+      <td>{{mlog.mileage}}</td>
     </tr>
   </table>
 
-</div> 
+</div>

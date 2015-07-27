@@ -4,15 +4,27 @@ body {
   font-family: "Tahoma", Geneva, sans-serif;
   font-size: 62.5%;
   color: #2b2b2b;
-  width: 100%; }
+  width: 100%;
+  margin: 0; }
 
 html {
   overflow-y: scroll; }
 
 /****** top navigation frame ******/
+.nav-frame {
+  background: #1E1E1E;
+  background: linear-gradient(to bottom, #353535 0%, #4C4C4C 10%, #444444 60%, #1E1E1E 90%, #353535 100%);
+  margin-top: 0px; }
+
 .nav-frame .bb-logo {
   float: left;
   margin: 0.2% 0 0 0.5%; }
+
+.nav-frame .bb-logo-mobile {
+  display: none; }
+
+.nav-frame .bb-logo-mobile {
+  display: none; }
 
 .nav-frame .nav-buttons {
   list-style: none;
@@ -38,12 +50,13 @@ html {
   color: #151515;
   text-align: center;
   border-radius: 0.3em;
-  margin: 1.5em 0.5em;
+  margin: 1.5em 0.3em 0.2em 0.3em;
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
-          transform: translateY(-50%); }
+          transform: translateY(-50%);
+  box-shadow: 0.1em 0.1em 0.1em black; }
 
 .nav-frame .nav-buttons .active {
   background: #FFC670;
@@ -53,8 +66,10 @@ html {
 .nav-frame .nav-buttons li a:hover {
   color: white; }
 
-/****** page title ******/
 /****** home page ******/
+.yes-mobile-ready {
+  display: none; }
+
 .legend text {
   font-size: 2em;
   font-weight: bold; }
@@ -81,7 +96,7 @@ rect {
   background-color: white; }
 
 .newForm .title {
-  border-bottom: 0px solid #BEBEBE;
+  border-bottom: 0 solid #BEBEBE;
   font-size: 1.6em;
   text-align: center;
   color: #2b2b2b;
@@ -212,8 +227,9 @@ form.newForm.ng-submitted .ng-invalid {
 /****** quick inventory page ******/
 .quick-table {
   float: left;
-  width: 37%;
-  padding: 0.9em 1.9em 1.9em 1.9em;
+  width: 40%;
+  min-width: 450px;
+  padding: 0.5em 1.3em 1.3em 1.3em;
   border: solid 2px black;
   box-shadow: 0.5em 0.5em 0.5em black;
   background-color: white; }
@@ -229,23 +245,23 @@ form.newForm.ng-submitted .ng-invalid {
 .quick-table th a {
   color: #E18700;
   text-decoration: none;
-  font-size: 1.1em;
+  font-size: 1em;
   text-shadow: 1px 1px 2px #D5D5D5;
   text-align: left; }
 
 .table-online {
   margin-right: 1%;
-  margin-left: 12%; }
+  margin-left: 9%; }
 
 .table-offline {
-  margin-right: 12%;
+  margin-right: 9%;
   margin-left: 1%; }
 
 .quick-table img {
-  height: 0.7em; }
+  width: 0.7em; }
 
 .quick-table .ready-title {
-  border-bottom: 0px solid #BEBEBE;
+  border-bottom: 0 solid #BEBEBE;
   padding-bottom: 2%;
   font-size: 2.5em;
   color: #2b2b2b;
@@ -255,6 +271,7 @@ form.newForm.ng-submitted .ng-invalid {
 .maint-table {
   margin-top: 1%;
   width: 60%;
+  min-width: 410px;
   margin-right: auto;
   margin-left: auto;
   padding: 0.9em 1.9em 1.9em 1.9em;
@@ -268,7 +285,7 @@ form.newForm.ng-submitted .ng-invalid {
   margin-top: 2%;
   margin-right: auto;
   margin-left: auto;
-  padding: 5px 9px 5px 9px;
+  padding: 4px 7px;
   font-size: 1.9em; }
 
 .maint-table .maint-table-bike td {
@@ -276,7 +293,7 @@ form.newForm.ng-submitted .ng-invalid {
 
 .maint-table .maint-table-input {
   width: 100%;
-  margin-top: 3%;
+  margin-top: 4%;
   margin-bottom: 1%; }
 
 .maint-table .maint-table-input td {
@@ -298,6 +315,12 @@ form.newForm.ng-submitted .ng-invalid {
   background-color: #FF9900 !important;
   border-color: black !important;
   color: black !important; }
+
+.maint-table .maint-table-input .top-row td {
+  width: 30%; }
+
+.maint-table .maint-table-input .top-row input {
+  width: 100%; }
 
 .maint-table .maint-table-input .mt-input-note {
   width: 100%; }
@@ -392,8 +415,8 @@ form.newForm.ng-submitted .ng-invalid {
   cursor: pointer; }
 
 /****** responsive sizing ******/
-@media screen and (max-width: 1200px) {
-  /****** quick inventory page ******/
+@media screen and (max-width: 1150px) {
+  /*** quick inventory page ***/
   .quick-table {
     float: none;
     position: relative;
@@ -401,3 +424,17 @@ form.newForm.ng-submitted .ng-invalid {
     margin-right: auto; }
   .table-offline {
     margin-top: 1em; } }
+
+/*** quick inventory page ***/
+.no-mobile {
+  display: none; }
+
+.nav-frame .bb-logo-mobile {
+  display: inline;
+  float: left;
+  height: 50px;
+  margin: 0.2% 0 0 0.5%; }
+
+.nav-frame .nav-buttons {
+  font-size: 1.8em;
+  width: auto; }

@@ -264,25 +264,19 @@ bikeBarn.service('GetTheDate', function() {
       d = String('0' + d);
     }
     wholedate = String( m + '/' + d + '/' + y );
+
   }
 })
 
 bikeBarn.service('GotoLogs', function() {
   this.giveIndex = function(i) {
     activeBikeIndex = i;
-    console.log('i', i)
     localStorage.setItem('rememberABI', JSON.stringify(i))
   };
 
   this.getIndex = function() {
     var activeBikeIndex = JSON.parse(localStorage.getItem('rememberABI'));
     console.log('a',activeBikeIndex);
-    //var activeBikeIndex = 1;
-    //sessionStorage.setItem('rememberABI', JSON.stringify(activeBikeIndex))
-  };
-
-  this.getIndex = function() {
-    //var activeBikeIndex = JSON.parse(sessionStorage.getItem('rememberABI'));
     return activeBikeIndex;
   };
 });

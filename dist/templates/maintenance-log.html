@@ -16,10 +16,10 @@
     <table class="maint-table-input"  ng-form="logForm" ng-submit="addLog()"  novalidate>  
       <tr class="top-row" >
         <td class='mt-input-date'>
-          <input id='datepicker' name='date' type="text" placeholder='Date' ng-model="bk.date" required>
+          <input id='datepicker' name='date' type="text" placeholder='Date' ng-model="bk.date" readonly>
         </td>
         <td class='mt-input-mileage'>
-          <input class='mileage' name='mileage' type="numbers" placeholder='Mileage' ng-model="bk.mileage" required>
+          <input class='mileage' name='mileage' type="number" placeholder='Mileage' ng-model="bk.mileage" required>
         </td>
         <td></td>
         <td class='mt-input-button'>

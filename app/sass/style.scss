@@ -5,34 +5,45 @@ body {
   font-size: 62.5%;
   color: #2b2b2b;
   width: 100%;
+  margin: 0;
 }
-
 html {
   overflow-y: scroll;
 }
 
   /****** top navigation frame ******/
-
+.nav-frame {
+  background: #1E1E1E;
+  background: -moz-linear-gradient(top,#353535 0%, #4C4C4C 10%, #444444 60%, #1E1E1E 90%, #353535 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4C4C4C), color-stop(60%,#444444), color-stop(90%,#1E1E1E), color-stop(100%,#353535));
+  background: -webkit-linear-gradient(top, #353535 0%, #4C4C4C 10%, #444444 60%, #1E1E1E 90%, #353535 100%);
+  background: -o-linear-gradient(top, #353535 0%, #4C4C4C 10%, #444444 60%, #1E1E1E 90%, #353535 100%);
+  background: -ms-linear-gradient(top, #353535 0%, #4C4C4C 10%, #444444 60%, #1E1E1E 90%, #353535 100%);
+  background: linear-gradient(to bottom, #353535 0%, #4C4C4C 10%, #444444 60%, #1E1E1E 90%, #353535 100%);
+  margin-top: 0px;
+}
 .nav-frame .bb-logo {
   float: left;
   margin: .2% 0 0 .5%;
 }
-
+.nav-frame .bb-logo-mobile {
+  display: none;
+}
+.nav-frame .bb-logo-mobile {
+  display: none;
+}
 .nav-frame .nav-buttons {
   list-style: none;
   font-size: 2.1em;
   font-weight: bold;
 }
-
 .nav-frame .nav-buttons ul {
   width: auto;
   text-align: center;
 }
-
 .nav-frame .nav-buttons li {
   display: inline-block;
 }
-
 .nav-frame .nav-buttons li a {
   display: inline-block;
   text-decoration: none;
@@ -50,57 +61,42 @@ html {
   color: #151515;
   text-align: center;
   border-radius: .3em;
-  margin: 1.5em .5em;
+  margin: 1.5em .3em .2em .3em;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  box-shadow: .1em .1em .1em black;
 }
-
 .nav-frame .nav-buttons .active {
   background: #FFC670;
   background: linear-gradient(to bottom, #FFC670 0%,#FFC670 50%,#C9974D 100%);
   color: #151515;
 }
-
 .nav-frame .nav-buttons li a:hover {
   color: white;
 }
 
-  /****** page title ******/
-
-// .title {
-//   color: #DE1B1B;
-//   font-size: 35px;
-//   text-align: center;
-//   clear: both;
-//   margin-top: 100px;
-//   margin-bottom: 40px;
-// }
- 
-
 /****** home page ******/
-
+.yes-mobile-ready {
+  display: none;
+}
 .legend text{
   font-size: 2em;
   font-weight: bold;
 }
-
 #chart {
   height: 360px;
   width: 360px;
   margin: 0 auto;
   position: relative;
 }
-
 rect {
   stroke-width: 2;
 }
 
   /****** new bike form ******/
-
 .newForm {
   width: 60%;
-  //max-width: 700px;
   font-size: 1.7em;
   margin-right: auto;
   margin-left: auto;
@@ -110,9 +106,8 @@ rect {
   box-shadow: .5em .5em .5em black;
   background-color: white;
 }
-
 .newForm .title {
-  border-bottom: 0px solid #BEBEBE;
+  border-bottom: 0 solid #BEBEBE;
   font-size: 1.6em;
   text-align: center;
   color: #2b2b2b;
@@ -120,15 +115,6 @@ rect {
   margin: .8em 0;
   text-shadow: 2px 2px 3px #D5D5D5;
 }
-
-// .quick-table .ready-title {
-//   border-bottom: 0px solid #BEBEBE;
-//   padding-bottom: 2%;
-//   font-size: 2.5em;
-//   color: #2b2b2b;
-//   text-shadow: 1px 1px 2px #D5D5D5;
-// }
-
 .newForm input, select {
   width: 98%;
   padding: .5em;
@@ -136,39 +122,29 @@ rect {
   border-radius: 5px;
   border: solid 1px #808080;
 }
-
 .newForm 
-  input:hover, 
-  select:hover, 
-  textarea:hover, {
+  input:hover, select:hover, textarea:hover, {
   background: #D3DAC6;
 }
-
 .newForm 
-  input:focus, 
-  select:focus, 
-  textarea:focus, {
+  input:focus, select:focus, textarea:focus, {
     background: #D3DAC6;
 }
-
 .newForm fieldset {
   width: 96%;
   box-sizing: border-box;
   background-color: white;
 }
-
-.newForm fieldset  ul{
+.newForm fieldset ul{
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-
 .newForm fieldset ul li {
   display: inline-block;
   margin-bottom: .5em;
   margin-right: 1em;
 }
-
 .newForm input[type="radio"] {
   padding: 0;
   height: 1.4em;
@@ -176,33 +152,27 @@ rect {
   display: table-cell;
   vertical-align: middle;
 }
-
 .newForm .newColumn {
   width: 48%;
   float: left;
 }
-
 .newForm .newColumn:first-of-type {
   margin-right: 4%;
 }
-
 .newForm .newColumn label, fieldset {
   display: block;
   margin-top: 1.2em;
 }
-
 .newForm .newColumn label:first-child, fieldset:first-child {
   margin-top: 0;
 }
-
 .newForm .newColumn fieldset {
   margin-bottom: 1.5em;
- box-shadow: .1em .1em .1em  #989898;
- -webkit-box-shadow: .1em .1em .1em  #989898;
+ box-shadow: .1em .1em .1em #989898;
+ -webkit-box-shadow: .1em .1em .1em #989898;
  -moz-box-shadow: none;
 }
-
-.newForm .box-shadow  {
+.newForm .box-shadow {
   box-shadow: .1em .1em .2em #989898;
 }
 .newForm .button {
@@ -211,7 +181,6 @@ rect {
   margin-right: auto;
   margin-left: auto;
 }
-
 .newForm .button button {
   cursor: pointer;
   width: 10em;
@@ -226,27 +195,22 @@ rect {
   background: -ms-linear-gradient(top, #DE1B1B 0%,#B21616 50%,#8E1212 100%);
   background: linear-gradient(to bottom, #DE1B1B 0%,#B21616 50%,#8E1212 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#DE1B1B', endColorstr='#8E1212',GradientType=0 );
-  color: #000000;  
+  color: #000000;
   border-radius: .3em;
 }
-
 .newForm .button button:hover {
   color: #F0F0F0;
 }
 
   /*** new bike form validation alerts ***/
-
 form.newForm.ng-submitted .ng-invalid {
-/*  background-color: #CCFF99; */
   border: solid .2em red;
 }
-
 .light-up {
   border: solid .3em red;
 }
 
   /****** detail list/inventory page ******/
-
 .detail-table{
   width: 70%;
   min-width: 915px;
@@ -258,7 +222,6 @@ form.newForm.ng-submitted .ng-invalid {
   background-color: white;
   text-align: left;
 }
-
 .detail-table td, .detail-table th {
   border-bottom: 1px solid #BEBEBE;
   padding: .2em .4em;
@@ -267,7 +230,6 @@ form.newForm.ng-submitted .ng-invalid {
   color: #2b2b2b;
   text-decoration: none;
 }
-
 .detail-table th a {
   color: #E18700;
   text-decoration: none;
@@ -275,28 +237,24 @@ form.newForm.ng-submitted .ng-invalid {
   text-shadow: 1px 1px 2px #D5D5D5;
   text-align: left;
 }
-
 .detail-table img {
   height: .7em;
 }
-
 .detail-table .edit-column {
   width: 1em;
 }
 
   /****** quick inventory page ******/
-
 .quick-table {
   float: left;
-  width: 37%;
-  //min-width: 475px;
-  padding: .9em 1.9em 1.9em 1.9em;
+  width: 40%;
+  min-width: 450px;
+  padding: .5em 1.3em 1.3em 1.3em;
   border: solid 2px black;
   box-shadow: .5em .5em .5em black;
   background-color: white;
 }
-
-.quick-table td, .quick-table th   {
+.quick-table td, .quick-table th {
   border-bottom: .1em solid #BEBEBE;
   padding: .2em .4em;
   font-size: 1.7em;
@@ -304,31 +262,26 @@ form.newForm.ng-submitted .ng-invalid {
   color: #2b2b2b;
   text-decoration: none;
 }
-
 .quick-table th a{
   color: #E18700;
   text-decoration: none;
-  font-size: 1.1em;
+  font-size: 1em;
   text-shadow: 1px 1px 2px #D5D5D5;
   text-align: left;
 }
-
 .table-online{
   margin-right: 1%;
-  margin-left: 12%;
+  margin-left: 9%;
 }
-
 .table-offline{
-  margin-right: 12%;
+  margin-right: 9%;
   margin-left: 1%;
 }
-
 .quick-table img {
-  height: .7em;
+  width: .7em;
 }
-
 .quick-table .ready-title {
-  border-bottom: 0px solid #BEBEBE;
+  border-bottom: 0 solid #BEBEBE;
   padding-bottom: 2%;
   font-size: 2.5em;
   color: #2b2b2b;
@@ -336,10 +289,10 @@ form.newForm.ng-submitted .ng-invalid {
 }
 
   /****** maintenance log page ******/
-
 .maint-table {
   margin-top: 1%;
   width: 60%;
+  min-width: 410px;
   margin-right: auto;
   margin-left: auto;
   padding: .9em 1.9em 1.9em 1.9em;
@@ -347,32 +300,27 @@ form.newForm.ng-submitted .ng-invalid {
   box-shadow: .5em .5em .5em black;
   background-color: white;
 }
-
 .maint-table .maint-table-bike {
   font-weight: bold;
   border: 1px solid #727272;
   margin-top: 2%;
   margin-right: auto;
   margin-left: auto;
-  padding: 5px 9px 5px 9px;
+  padding: 4px 7px;
   font-size: 1.9em;
 }
-
 .maint-table .maint-table-bike td {
   padding: .4em .3em;
 }
-
 .maint-table .maint-table-input {
   width: 100%;
-  margin-top: 3%;
+  margin-top: 4%;
   margin-bottom: 1%;
 }
-
 .maint-table .maint-table-input td {
   padding: .2em .3em .3em .6em;
 }
-
-.maint-table .maint-table-input  input {
+.maint-table .maint-table-input input {
   display:table-cell; 
   padding-left: .3em;
   height: 1.5em;
@@ -380,22 +328,24 @@ form.newForm.ng-submitted .ng-invalid {
   border: solid 1px #727272;
   box-shadow: .1em .1em .2em #727272;
 }
-
 .ui-datepicker { 
   font-size: 1.5em !important; 
 }
-
 .ui-widget-content .ui-state-highlight {
   background-image: none !important;
   background-color: #FF9900 !important;
   border-color: black !important;
   color: black !important;
 }
-
+.maint-table .maint-table-input .top-row td{
+  width: 30%;
+}
+.maint-table .maint-table-input .top-row input{
+  width: 100%;
+}
 .maint-table .maint-table-input .mt-input-note {
   width: 100%;
 }
-
 .maint-table .maint-table-input .mt-input-note input {
   display:table-cell; 
   padding-left: .3em;
@@ -403,17 +353,14 @@ form.newForm.ng-submitted .ng-invalid {
   height: 1.5em;
   font-size: 1.5em;
 }
-
 .maint-table .maint-table-input .mt-input-button button {
   font-size: 1.5em;
   margin-left: .5em;
   box-shadow: .1em .1em .2em #727272;
 }
-
 .maint-table .maint-table-logs {
   width: 100%;
 }
-
 .maint-table .maint-table-logs td {
   width: 100%;
   border-bottom: solid 1px #BEBEBE;
@@ -426,8 +373,7 @@ form.newForm.ng-submitted .ng-invalid {
 }
 
  /****** ready buttons ******/
-
-.green-button {  
+.green-button {
   background: #528029;
   background: -moz-linear-gradient(top, #86A669 0%,#528029 50%,#395A1D 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#86A669), color-stop(50%,#528029), color-stop(100%,#395A1D));
@@ -437,8 +383,7 @@ form.newForm.ng-submitted .ng-invalid {
   background: linear-gradient(to bottom, #86A669 0%,#528029 50%,#395A1D 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#86A669', endColorstr='#395A1D',GradientType=0 );
 }
-
-.red-button {  
+.red-button {
   background: #B21616;
   background: -moz-linear-gradient(top, #DE1B1B 0%, #B21616 50%, #8E1212 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#DE1B1B), color-stop(50%,#B21616), color-stop(100%,#8E1212));
@@ -448,7 +393,6 @@ form.newForm.ng-submitted .ng-invalid {
   background: linear-gradient(to bottom, #DE1B1B 0%,#B21616 50%,#8E1212 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#DE1B1B', endColorstr='#8E1212',GradientType=0 );
 }
-
 .common-button {
   height: 1.8em;
   width: 4.5em;
@@ -461,14 +405,12 @@ form.newForm.ng-submitted .ng-invalid {
   border: none;
   box-shadow: .1em .1em .2em #727272;
 }
-
 .common-button:hover{
   color: black;
   cursor: pointer;
 }
 
   /****** misc ******/ 
-
 .edit-button {
   height: 1.8em;
   width: 3em;
@@ -487,7 +429,6 @@ form.newForm.ng-submitted .ng-invalid {
   border: none;
   box-shadow: .1em .1em .2em #727272;
 }
-
 .archive-button {
   height: 1.8em;
   width: 3em;
@@ -508,50 +449,159 @@ form.newForm.ng-submitted .ng-invalid {
   border: none; 
   box-shadow: .1em .1em .2em #727272; 
 }
-
 .edit-button:hover {
   color: #F0F0F0;
   cursor: pointer;
 }
-
 .archive-button:hover {
   color: #F0F0F0;
   cursor: pointer;
 }
 
-
   /****** responsive sizing ******/
-@media screen and (max-width: 1200px) {
-  body {
+@media screen and (max-width: 1150px) {
 
+  /*** quick inventory page ***/
+  .quick-table {
+    float: none;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .table-offline{
+    margin-top: 1em;
   }
 
-
-  /****** quick inventory page ******/
-
-.quick-table {
-  float: none;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
+  /*** quick inventory page ***/
+  .no-mobile {
+    display: none;
+  }
+  .nav-frame .bb-logo-mobile {
+    display: inline;
+    float: left;
+    height: 50px;
+    margin: .2% 0 0 .5%;
+  }
+  .nav-frame .nav-buttons {
+    font-size:1.8em;
+    width: auto;
+  }
 }
 
-.table-online{
-
+@media screen and (max-width: 630px) {
+   .nav-frame .nav-buttons .no-mobile {
+    display: none;
+  }
 }
 
-.table-offline{
-  margin-top: 1em;
-}
+@media screen and (max-width: 400px) {
 
+  /*** nav bar ***/
+  .no-mobile-chart {
+    display: none;
+  }
+  .nav-frame .bb-logo-mobile {
+    display: inline;
+    float: left;
+    height: 30px;
+    margin: .2% 0 0 .5%;
+  } 
+  .nav-frame .nav-buttons {
+    font-size: 1.8em;
+    width: auto;
+  }
+  .nav-frame .nav-buttons ul {
+    position: relative;
+    top: 10px;
+    right: -10px;
+  }
+  .nav-frame .nav-buttons li a {
+    width: 5em;
+    height: 1.8em;
+    background: #ff9900;
+    margin: .2em .02em 0 0;
+  }
 
+  /*** quick inventory page ***/
+  .quick-table {
+    float: none;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    min-width: 210px;
+    padding: .9em 1em 1em 1em;
+  }
+  .table-offline{
+    margin-top: 1em;
+  }
+  .quick-table td, .quick-table th {
+    padding: .2em .4em;
+    font-size: 1.4em;
+  }
+  .quick-table th a{
+    font-size: 1em;
+  }
 
+    /*** buttons ***/
+  .common-button {
+    width: 4em;
+  }
 
+  /*** home page ***/
+  .yes-mobile-ready {
+    display: inline;
+    color: white;
+    font-size: 5em;
+    font-weight: bold;
+  }
+  .yes-mobile-ready table {
+     margin-right: auto;
+     margin-left: auto;
+     padding-top: 30%;
+  }
+  .yes-mobile-ready .col-mobile {
+    text-align: right;
+  }
+  .yes-mobile-ready .ready-mobile {
+    color: #528029;
+  }
+  .yes-mobile-ready .offline-mobile {
+    color: #B21616;
+  }
 
-
-
-
-
-
-
+  /*** maintenance log page ***/
+  .maint-table {
+    width: 100%;
+    padding: .9em .5em 1em .5em;
+    min-width: 300px;
+    margin-top: 50px;
+  }
+  .maint-table .maint-table-bike {
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+  .maint-table .maint-table-bike td {
+    padding: .3em .2em;
+  }
+  .maint-table .maint-table-input {
+    width: 96%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .maint-table .maint-table-input input {
+    display:table-cell; 
+    padding-left: .3em;
+    height: 1.5em;
+    font-size: 1.5em;
+    border: solid 1px #727272;
+    box-shadow: .1em .1em .2em #727272;
+  }
+  .maint-table .maint-table-input .mt-input-note input {
+    display:table-cell; 
+    padding-left: .3em;
+    width: 95%;
+    height: 1.5em;
+    font-size: 1.5em;
+  }
 }

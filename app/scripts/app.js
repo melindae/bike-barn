@@ -54,7 +54,8 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
         numOffline++;
       } 
     };
-
+    $scope.numReady = numReady;
+    $scope.numOffline = numOffline;
     var dataset = [
       { label: numReady, count: numReady }, 
       { label: numOffline, count: numOffline }
@@ -160,6 +161,7 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray, GetTheDate) {
         'archive': false,
         'timestamp': bikeTime,
         'date': wholedate,
+        'mileage': '',
         'note': 'Log created'
       }]
     });
@@ -197,17 +199,15 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   };
 
   $scope.showBikeIndex = function (time) {
-    console.log('1');
     for (i = 0; i < $scope.bikes.length; i++) {
       if ($scope.bikes[i].timestamp === time) {
         GotoLogs.giveIndex(i);
-        console.log('2');
       }
     }
   };
 
   $scope.showSingleBike = function (index) {
-    GotoLogs.getIndex(index);
+    var activeBikeIndex = JSON.parse(localStorage.getItem('rememberABI'));
     return (activeBikeIndex === index);
   };
 
@@ -237,6 +237,7 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
       'archive': false,
       'timestamp': bikeTime,      
       'date': $scope.bk.date,
+      'mileage': $scope.bk.mileage,
       'note': $scope.bk.note
     })  
 
@@ -270,9 +271,12 @@ bikeBarn.service('GetTheDate', function() {
 bikeBarn.service('GotoLogs', function() {
   this.giveIndex = function(i) {
     activeBikeIndex = i;
+    localStorage.setItem('rememberABI', JSON.stringify(i))
   };
 
   this.getIndex = function() {
+    var activeBikeIndex = JSON.parse(localStorage.getItem('rememberABI'));
+    console.log('a',activeBikeIndex);
     return activeBikeIndex;
   };
 });

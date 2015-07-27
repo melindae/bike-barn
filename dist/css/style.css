@@ -185,7 +185,6 @@ rect {
 
 /*** new bike form validation alerts ***/
 form.newForm.ng-submitted .ng-invalid {
-  /*  background-color: #CCFF99; */
   border: solid 0.2em red; }
 
 .light-up {
@@ -417,24 +416,110 @@ form.newForm.ng-submitted .ng-invalid {
 /****** responsive sizing ******/
 @media screen and (max-width: 1150px) {
   /*** quick inventory page ***/
+  /*** quick inventory page ***/
   .quick-table {
     float: none;
     position: relative;
     margin-left: auto;
     margin-right: auto; }
   .table-offline {
-    margin-top: 1em; } }
+    margin-top: 1em; }
+  .no-mobile {
+    display: none; }
+  .nav-frame .bb-logo-mobile {
+    display: inline;
+    float: left;
+    height: 50px;
+    margin: 0.2% 0 0 0.5%; }
+  .nav-frame .nav-buttons {
+    font-size: 1.8em;
+    width: auto; } }
 
-/*** quick inventory page ***/
-.no-mobile {
-  display: none; }
+@media screen and (max-width: 630px) {
+  .nav-frame .nav-buttons .no-mobile {
+    display: none; } }
 
-.nav-frame .bb-logo-mobile {
-  display: inline;
-  float: left;
-  height: 50px;
-  margin: 0.2% 0 0 0.5%; }
-
-.nav-frame .nav-buttons {
-  font-size: 1.8em;
-  width: auto; }
+@media screen and (max-width: 400px) {
+  /*** nav bar ***/
+  /*** quick inventory page ***/
+  /*** buttons ***/
+  /*** home page ***/
+  /*** maintenance log page ***/
+  .no-mobile-chart {
+    display: none; }
+  .nav-frame .bb-logo-mobile {
+    display: inline;
+    float: left;
+    height: 30px;
+    margin: 0.2% 0 0 0.5%; }
+  .nav-frame .nav-buttons {
+    font-size: 1.8em;
+    width: auto; }
+  .nav-frame .nav-buttons ul {
+    position: relative;
+    top: 10px;
+    right: -10px; }
+  .nav-frame .nav-buttons li a {
+    width: 5em;
+    height: 1.8em;
+    background: #ff9900;
+    margin: 0.2em 0.02em 0 0; }
+  .quick-table {
+    float: none;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    min-width: 210px;
+    padding: 0.9em 1em 1em 1em; }
+  .table-offline {
+    margin-top: 1em; }
+  .quick-table td, .quick-table th {
+    padding: 0.2em 0.4em;
+    font-size: 1.4em; }
+  .quick-table th a {
+    font-size: 1em; }
+  .common-button {
+    width: 4em; }
+  .yes-mobile-ready {
+    display: inline;
+    color: white;
+    font-size: 5em;
+    font-weight: bold; }
+  .yes-mobile-ready table {
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 30%; }
+  .yes-mobile-ready .col-mobile {
+    text-align: right; }
+  .yes-mobile-ready .ready-mobile {
+    color: #528029; }
+  .yes-mobile-ready .offline-mobile {
+    color: #B21616; }
+  .maint-table {
+    width: 100%;
+    padding: 0.9em 0.5em 1em 0.5em;
+    min-width: 300px;
+    margin-top: 50px; }
+  .maint-table .maint-table-bike {
+    font-weight: bold;
+    font-size: 1.5em; }
+  .maint-table .maint-table-bike td {
+    padding: 0.3em 0.2em; }
+  .maint-table .maint-table-input {
+    width: 96%;
+    margin-right: auto;
+    margin-left: auto; }
+  .maint-table .maint-table-input input {
+    display: table-cell;
+    padding-left: 0.3em;
+    height: 1.5em;
+    font-size: 1.5em;
+    border: solid 1px #727272;
+    box-shadow: 0.1em 0.1em 0.2em #727272; }
+  .maint-table .maint-table-input .mt-input-note input {
+    display: table-cell;
+    padding-left: 0.3em;
+    width: 95%;
+    height: 1.5em;
+    font-size: 1.5em; } }

@@ -1,12 +1,12 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var bikeBarn = angular.module('bikeBarn', ['ui.router', 'firebase']);
 
-bikeBarn.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+bikeBarn.config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider.state('home', {
     url: '/home',
-    controller:'homeCtrl',
+    controller: 'homeCtrl',
     templateUrl: 'templates/home.html'
   });
   $stateProvider.state('newBike', {
@@ -31,16 +31,16 @@ bikeBarn.config(['$stateProvider', '$locationProvider', function($stateProvider,
   });
   $stateProvider.state('otherwise', {
     url: '*path',
-    controller:'homeCtrl',
+    controller: 'homeCtrl',
     templateUrl: 'templates/home.html'
   });
 }]);
 
-bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
+bikeBarn.controller('homeCtrl', function ($scope, $firebaseArray) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
   $scope.bikes = $firebaseArray(bikeArray);
 
-  $scope.bikes.$loaded().then(function(bikes) {
+  $scope.bikes.$loaded().then(function (bikes) {
     var num = bikes.length;
     var numReady = 0;
     var numOffline = 0;
@@ -53,17 +53,17 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
       }
       else if (test === 'offline' && arch === false) {
         numOffline++;
-      } 
+      }
     };
     $scope.numReady = numReady;
     $scope.numOffline = numOffline;
     var dataset = [
-      { label: numReady, count: numReady }, 
+      { label: numReady, count: numReady },
       { label: numOffline, count: numOffline }
     ];
 
     // synthesized from http://zeroviscosity.com/d3-js-step-by-step/step-2-a-basic-donut-chart
-    (function(d3) {
+    (function (d3) {
       'use strict';
 
       var width = 360;
@@ -75,7 +75,7 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
 
       var donutWidth = 75;
       var legendRectSize = 18;
-      var legendSpacing = 4;  
+      var legendSpacing = 4;
 
       var svg = d3.select('#chart')
         .append('svg')
@@ -90,7 +90,7 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
         .outerRadius(radius);
 
       var pie = d3.layout.pie()
-        .value(function(d) { return d.count; })
+        .value(function (d) { return d.count; })
         .sort(null);
 
       var path = svg.selectAll('path')
@@ -98,7 +98,7 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
         .enter()
         .append('path')
         .attr('d', arc)
-        .attr('fill', function(d, i) { 
+        .attr('fill', function (d, i) {
           return color(d.data.label);
         });
 
@@ -107,9 +107,9 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
         .enter()
         .append('g')
         .attr('class', 'legend')
-        .attr('transform', function(d, i) {
+        .attr('transform', function (d, i) {
           var height = legendRectSize + legendSpacing;
-          var offset =  height * color.domain().length / 2;
+          var offset = height * color.domain().length / 2;
           var horz = -1 * legendRectSize;
           var vert = i * height - offset;
           return 'translate(' + horz + ',' + vert + ')';
@@ -120,17 +120,17 @@ bikeBarn.controller('homeCtrl', function($scope, $firebaseArray) {
         .attr('height', legendRectSize)
         .style('fill', color)
         .style('stroke', color);
-        
+
       legend.append('text')
         .attr('x', legendRectSize + legendSpacing)
         .attr('y', legendRectSize - legendSpacing)
         .style('fill', 'white')
-        .text(function(d) { return d; });
+        .text(function (d) { return d; });
     })(window.d3);
   });
 });
 
-bikeBarn.controller('addCtrl', function($scope, $firebaseArray, GetTheDate) {
+bikeBarn.controller('addCtrl', function ($scope, $firebaseArray, GetTheDate) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
   var partArray = new Firebase("https://bike-barn.firebaseio.com/parts");
   var bikeTime = Firebase.ServerValue.TIMESTAMP;
@@ -141,7 +141,7 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray, GetTheDate) {
     ready: 'ready'
   };
 
-  $scope.submitForm = function(isValid) {
+  $scope.submitForm = function (isValid) {
 
     GetTheDate.now();
 
@@ -166,12 +166,12 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray, GetTheDate) {
         'note': 'Log created'
       }]
     });
-    
+
     if (isValid) {
       alert('Motorcycle added to Barn.');
        $scope.newBikeForm.$setPristine();
     };
-    
+
     $scope.bk = "";
 
     $scope.bk = {
@@ -181,7 +181,7 @@ bikeBarn.controller('addCtrl', function($scope, $firebaseArray, GetTheDate) {
 });
 
 
-bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, ThingStates) {
+bikeBarn.controller('listCtrl', function ($scope, $firebaseArray, GotoLogs, ThingStates) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
   var partArray = new Firebase("https://bike-barn.firebaseio.com/parts");
   var bikeTime = Firebase.ServerValue.TIMESTAMP;
@@ -189,13 +189,13 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   $scope.parts = $firebaseArray(partArray);
 
   var logArray = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsWeTyYWPod0svrSH4n/mlogs");
-  
 
-  $scope.bikeReady = function(ready) {
+
+  $scope.bikeReady = function (ready) {
     return ThingStates.readyThing(ready);
   };
 
-  $scope.archived = function(bike) {
+  $scope.archived = function (bike) {
     return ThingStates.archiveThing(bike);
   };
 
@@ -226,82 +226,81 @@ bikeBarn.controller('listCtrl', function($scope, $firebaseArray, GotoLogs, Thing
   };
 
   $scope.addLog = function () {
-    GotoLogs.getIndex;   //returns activeBikeIndex
+    GotoLogs.getIndex;  //returns activeBikeIndex
     var bikeIndex = activeBikeIndex;
-    var bikekey = $scope.bikes[bikeIndex].$id; 
-    var somestring = String(bikekey + '/mlogs'); 
+    var bikekey = $scope.bikes[bikeIndex].$id;
+    var somestring = String(bikekey + '/mlogs');
     var logArray = bikeArray.child(somestring);
 
     $scope.logs = $firebaseArray(logArray);
-    
+
     $scope.logs.$add({
       'archive': false,
-      'timestamp': bikeTime,      
+      'timestamp': bikeTime,
       'date': $scope.bk.date,
       'mileage': $scope.bk.mileage,
       'note': $scope.bk.note
-    })  
+    });
 
      $scope.bk = "";
-  }
-  
-  $(function() {
+  };
+
+  $(function () {
     $( "#datepicker" ).datepicker();
     defaultDate: null;
-  }); 
+  });
 });
 
 //*************************************
-bikeBarn.service('GetTheDate', function() {
-  this.now = function() {
-    var now = new Date() ;  
+bikeBarn.service('GetTheDate', function () {
+  this.now = function () {
+    var now = new Date();
     var m = ((now.getMonth())+1);
     var d = now.getDate();
     var y = now.getFullYear();
-    if (m < 10) { 
+    if (m < 10) {
       m = String('0' + m);
     }
-    if (d < 10) { 
+    if (d < 10) {
       d = String('0' + d);
     }
     wholedate = String( m + '/' + d + '/' + y );
-
-  }
+  };
 })
 
-bikeBarn.service('GotoLogs', function() {
-  this.giveIndex = function(i) {
+bikeBarn.service('GotoLogs', function () {
+  this.giveIndex = function (i) {
     activeBikeIndex = i;
     localStorage.setItem('rememberABI', JSON.stringify(i))
   };
 
-  this.getIndex = function() {
+  this.getIndex = function () {
     var activeBikeIndex = JSON.parse(localStorage.getItem('rememberABI'));
     console.log('a',activeBikeIndex);
     return activeBikeIndex;
   };
 });
 
-bikeBarn.service('ThingStates', function() {
-  this.readyThing = function(ready) {
+bikeBarn.service('ThingStates', function () {
+  this.readyThing = function (ready) {
     if (ready === 'ready') {
       return true;
     }
   };
-  this.archiveThing = function(bike) {
+  this.archiveThing = function (bike) {
     if (bike === true) {
-        return  true;
+        return true;
     }
-  }
+  };
 });
 
-bikeBarn.directive('buttonToggle', function() {
+bikeBarn.directive('buttonToggle', function () {
   return {
-    restrict: 'A',      
+    restrict: 'A',
     template: "<button ng-class=\"bike.ready === 'offline' ? 'red-button common-button' : 'green-button common-button'\" ng-click='readyToggle(bike)'>{{bike.ready}}</button>",
 
-    link: function($scope, element, attrs) {
-      $scope.readyToggle = function(bike) {
+    link: function ($scope, element, attrs) {
+      $scope.readyToggle = function (bike) {
         var bikeIndex = $scope.bikes.indexOf(bike);
 
         if ($scope.bikes[bikeIndex].ready === 'ready') {
@@ -311,7 +310,7 @@ bikeBarn.directive('buttonToggle', function() {
         }
 
         $scope.bikes[bikeIndex].ready = bike.ready;
-        $scope.bikes.$save(bikeIndex).then(function(bikeArray) {
+        $scope.bikes.$save(bikeIndex).then(function (bikeArray) {
           bikeArray.key() === $scope.bikes[bikeIndex].$id;
         });
       };
@@ -322,17 +321,19 @@ bikeBarn.directive('buttonToggle', function() {
 
 // kudos to http://justinklemm.com/angularjs-filter-ordering-objects-ngrepeat/ 
 // for explaining filters and walking me throught this piece of code
-bikeBarn.filter('orderObjectBy', function() {
-  return function(items, field, reverse) {
+bikeBarn.filter('orderObjectBy', function () {
+  return function (items, field, reverse) {
     var filtered = [];
-    angular.forEach(items, function(item) {
+    angular.forEach(items, function (item) {
       filtered.push(item);
     });
     filtered.sort(function (a, b) {
       return (a[field] > b[field] ? 1 : -1);
     });
-    if(reverse) filtered.reverse();
-    return filtered;
+    if(reverse) {
+      filtered.reverse();
+      return filtered;
+    }
   };
 });
 },{}]},{},[1]);

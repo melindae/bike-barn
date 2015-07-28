@@ -179,16 +179,12 @@ bikeBarn.controller('addCtrl', function ($scope, $firebaseArray, GetTheDate) {
   };
 });
 
-
 bikeBarn.controller('listCtrl', function ($scope, $firebaseArray, GotoLogs, ThingStates) {
   var bikeArray = new Firebase("https://bike-barn.firebaseio.com/bikes");
   var partArray = new Firebase("https://bike-barn.firebaseio.com/parts");
   var bikeTime = Firebase.ServerValue.TIMESTAMP;
   $scope.bikes = $firebaseArray(bikeArray);
   $scope.parts = $firebaseArray(partArray);
-
-  var logArray = new Firebase("https://bike-barn.firebaseio.com/bikes/-JsWeTyYWPod0svrSH4n/mlogs");
-
 
   $scope.bikeReady = function (ready) {
     return ThingStates.readyThing(ready);
@@ -275,7 +271,6 @@ bikeBarn.service('GotoLogs', function () {
 
   this.getIndex = function () {
     var activeBikeIndex = JSON.parse(localStorage.getItem('rememberABI'));
-    console.log('a',activeBikeIndex);
     return activeBikeIndex;
   };
 });

@@ -81,17 +81,28 @@ html {
   display: none;
 }
 .legend text{
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: bold;
 }
-#chart {
-  height: 360px;
-  width: 360px;
-  margin: 0 auto;
-  position: relative;
+.no-mobile-chart {
+  margin: 30px auto;
+  width: 1200px;
+}
+.no-mobile-chart > div {
+  width: 33%;
+}
+.year-chart {
+float: left;
+}
+.ready-chart {
+margin: auto;
+}
+.type-chart {
+float: right;
 }
 rect {
   stroke-width: 2;
+  box-shadow: .5em .5em .5em black;
 }
 
   /****** new bike form ******/

@@ -10,7 +10,10 @@ module.exports = function(grunt) {
         browserify: {
             dist: {
                 files: {
-                    './dist/js/app.js': ['./app/scripts/app.js']
+                    './dist/js/app.js': ['./app/scripts/app.js'],
+                    './dist/js/controllers/addbike.js': ['./app/scripts/controllers/addbike.js'],
+                    './dist/js/controllers/homepage.js': ['./app/scripts/controllers/homepage.js'],
+                    './dist/js/controllers/listbike.js': ['./app/scripts/controllers/listbike.js'],
                 }
             }
         },

@@ -2,7 +2,7 @@ Bike Barn is a motorcycle fleet management too built by Melinda Evans at melinda
 If you have any questions or requests please contact Melinda at:
 melinda@melindacodes.com
 
-And remember... shint side up, rubber side down, stay on the black path between the trees!
+And remember... shiny side up, rubber side down, stay on the black path between the trees!
 
 
 

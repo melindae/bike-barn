@@ -59,9 +59,10 @@ html {
   box-shadow: 0.1em 0.1em 0.1em black; }
 
 .nav-frame .nav-buttons .active {
-  background: #FFC670;
-  background: linear-gradient(to bottom, #FFC670 0%, #FFC670 50%, #C9974D 100%);
-  color: #151515; }
+  background: #528029;
+  background: linear-gradient(to bottom, #92AF78 0%, #638D3E 50%, #4D6A34 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92AF78', endColorstr='#4D6A34',GradientType=0 );
+  color: #fff; }
 
 .nav-frame .nav-buttons li a:hover {
   color: white; }
@@ -213,10 +214,13 @@ form.newForm.ng-submitted .ng-invalid {
   background-color: white;
   text-align: left; }
 
+.detail-table .col-ready {
+  width: 96px; }
+
 .detail-table td, .detail-table th {
   border-bottom: 1px solid #BEBEBE;
   padding: 0.2em 0.4em;
-  font-size: 1.7em;
+  font-size: 1.6em;
   font-family: "ariel" sans-serif;
   color: #2b2b2b;
   text-decoration: none; }
@@ -230,6 +234,21 @@ form.newForm.ng-submitted .ng-invalid {
 
 .detail-table img {
   height: 0.7em; }
+
+.detail-table input {
+  width: 100%;
+  background-color: #FFC670;
+  font-weight: bold; }
+
+.detail-table select {
+  width: 80px;
+  padding: 0.1em;
+  background-color: #FFC670;
+  font-weight: bold;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: ''; }
 
 .detail-table .edit-column {
   width: 1em; }
@@ -401,6 +420,23 @@ form.newForm.ng-submitted .ng-invalid {
   border: none;
   box-shadow: 0.1em 0.1em 0.2em #727272; }
 
+.edit-button-e, .edit-button-s {
+  height: 1.8em;
+  width: 3em;
+  background: #528029;
+  background: linear-gradient(to bottom, #86A669 0%, #528029 50%, #395A1D 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#86A669', endColorstr='#395A1D',GradientType=0 );
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0.1em 0.1em 0.2em #727272; }
+
+.edit-button-s {
+  background: linear-gradient(to bottom, #94FF94 0%, #66FF66 50%, #52CC52 100%);
+  color: black; }
+
 .archive-button {
   height: 1.8em;
   width: 3em;
@@ -417,6 +453,14 @@ form.newForm.ng-submitted .ng-invalid {
   box-shadow: 0.1em 0.1em 0.2em #727272; }
 
 .edit-button:hover {
+  color: #F0F0F0;
+  cursor: pointer; }
+
+.edit-button-e:hover {
+  color: #F0F0F0;
+  cursor: pointer; }
+
+.edit-button-s:hover {
   color: #F0F0F0;
   cursor: pointer; }
 

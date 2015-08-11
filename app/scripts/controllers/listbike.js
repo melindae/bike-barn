@@ -63,4 +63,16 @@ angular.module('bikeBarn').controller('listCtrl', function($scope, $firebaseArra
     $( "#datepicker" ).datepicker();
     defaultDate: null;
   });
+
+  $scope.bikeEdit = function(bike, time) {
+    console.log(bike, time);
+  };
+  $scope.saveEdit = function(bike, time) {
+    console.log(bike, time);
+    for (i = 0; i < $scope.bikes.length; i++) {
+      if ($scope.bikes[i].timestamp === time) {
+        $scope.bikes.$save(i);
+      }
+    }
+  };
 });

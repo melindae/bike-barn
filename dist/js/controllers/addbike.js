@@ -13,6 +13,16 @@ angular.module('bikeBarn').controller('addCtrl', function($scope, $firebaseArray
   $scope.submitForm = function (isValid) {
 
     GetTheDate.now();
+    
+    // add leading zero to bike ID if needed
+    var checkZero = $scope.bk.ident2;
+    if ((checkZero.length == 1) && (0 < checkZero < 10)) {
+      addZero = '0' + checkZero;
+      $scope.bk.ident = addZero;
+      }
+    else {
+      $scope.bk.ident = checkZero;
+    };
 
     $scope.bikes.$add({
       'archive': false,

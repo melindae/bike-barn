@@ -225,6 +225,9 @@ form.newForm.ng-submitted .ng-invalid {
   color: #2b2b2b;
   text-decoration: none; }
 
+.detail-table tr:hover {
+  background-color: #C3CBBC; }
+
 .detail-table th a {
   color: #E18700;
   text-decoration: none;
@@ -277,6 +280,9 @@ form.newForm.ng-submitted .ng-invalid {
   font-size: 1em;
   text-shadow: 1px 1px 2px #D5D5D5;
   text-align: left; }
+
+.quick-table tr:hover {
+  background-color: #C3CBBC; }
 
 .table-online {
   margin-right: 1%;

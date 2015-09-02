@@ -100,7 +100,7 @@
         <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)" ui-sref='maintLog'>Log</button>
       </td>
       <td class="edit-column">
-        <button class='edit-button-e' ng-hide="editNow" ng-click='editNow = true; bikeEdit(bike, bike.timestamp)'>Edit</button>
+        <button class='edit-button-e' ng-hide="editNow" ng-click='editNow = true'>Edit</button>
         <button class='edit-button-s' ng-show="editNow" ng-click='editNow = false; saveEdit(bike, bike.timestamp)'>Save</button>
       </td>
       <td class="edit-column">

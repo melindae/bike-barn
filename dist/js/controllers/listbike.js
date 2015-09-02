@@ -60,16 +60,35 @@ angular.module('bikeBarn').controller('listCtrl', function($scope, $firebaseArra
      $scope.bk = "";
   };
 
+  $scope.saveLog = function(log, time, mIndex) {
+    GotoLogs.getIndex;  //returns activeBikeIndex
+    var bikeIndex = activeBikeIndex;
+    var bikekey = $scope.bikes[bikeIndex].$id;
+    var somestring = String(bikekey + '/mlogs');
+    var logArray = bikeArray.child(somestring);
+
+    $scope.logs = $firebaseArray(logArray);
+
+    $scope.logs.$loaded().then(function() {
+  
+      for (i = 0; i <= $scope.logs.length; i++) {
+        if ($scope.logs[i].timestamp === time) {
+
+          $scope.logs[i].note = log.note;
+          $scope.logs[i].mileage = log.mileage;
+          $scope.logs.$save(i);
+          return(i);
+        }
+      }
+    }); 
+  }
+
   $(function () {
     $( "#datepicker" ).datepicker();
     defaultDate: null;
   });
 
-  $scope.bikeEdit = function(bike, time) {
-    console.log(bike, time);
-  };
   $scope.saveEdit = function(bike, time) {
-    console.log(bike, time);
     for (i = 0; i < $scope.bikes.length; i++) {
       if ($scope.bikes[i].timestamp === time) {
         $scope.bikes.$save(i);

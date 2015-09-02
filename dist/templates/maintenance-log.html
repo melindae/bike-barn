@@ -35,10 +35,24 @@
   </form>
 
   <table class="maint-table-logs" ng-repeat="(bikeIndex, bike) in bikes " ng-show="showSingleBike(bikeIndex)">
-    <tr ng-repeat="mlog in bike.mlogs | orderObjectBy:'date':true">
+    <tr ng-repeat="(mlogIndex, mlog) in bike.mlogs | orderObjectBy:'date':true">
       <td class='mt-logs-date'>{{mlog.date}}</td>
-      <td>{{mlog.note}}</td>
-      <td>{{mlog.mileage}}</td>
+
+      <td>
+        <span ng-hide='editNow'>{{mlog.note}}</span>
+        <input ng-show='editNow' type="text" ng-model="mlog.note">
+      </td>
+
+      <td>
+        <span ng-hide='editNow'>{{mlog.mileage}}</span>
+        <input ng-show='editNow' ng-model="mlog.mileage">
+      </td>
+
+      <td class="edit-column">
+        <button class='edit-button-e' ng-hide="editNow" ng-click='editNow = true'>Edit</button>
+        <button class='edit-button-s' ng-show="editNow" ng-click='editNow = false; saveLog(mlog, mlog.timestamp, mlogIndex )'>Save</button>
+      </td>
+
     </tr>
   </table>
 

@@ -1,0 +1,61 @@
+
+<h2 class='title'>Edit Bike</h2>
+<div><img src="/images/metallt.png" class="bb-back"></div>
+
+<div>{{bike.year}}</div>
+
+<form class="newForm">
+  <div class="newColumn">
+<!--     <fieldset>
+    <legend>Ready?</legend>
+      <ul>
+        <li>Yes:<input type="radio" ng-model='bk.ready' value='yes'></li>
+        <li>No:<input type="radio" ng-model='bk.ready' value='no'></li>
+      </ul>
+    </fieldset>
+
+    <label>Year:</label>
+    <input name='year' type="text" ng-model='bk.year' value='{{bike.year}}'>
+
+    <label>Make:</label>
+    <select class='dropdown' ng-model='bk.make'>
+      <option value="Honda"> Honda </option>
+      <option value="Kawasaki"> Kawasaki </option>
+      <option value="Suzuki"> Suzuki </option>
+      <option value="Yamaha"> Yamaha </option>
+      <option value="Other"> Other </option>
+    </select> -->
+
+    <label >Model:</label>
+    <input name='model' type="text" ng-model='model' >
+
+  </div>
+<!--   <div class="newColumn">
+    <label>ID:</label>
+    <input name='id' type="text" ng-model='bk.ident'>
+
+    <label>SN:</label>
+    <input name='sn' type="text" ng-model='bk.sn'>
+
+    <label class='newLabel'>Color:</label>
+    <input name='color' type="text" ng-model='bk.maincolor'>
+
+    <fieldset>
+    <legend>Type:</legend>
+      <ul>
+        <li>Standard:<input type="radio" ng-model='bk.maintype' value='Standard'></li>
+        <li>Sport:<input type="radio" ng-model='bk.maintype' value='Sport'></li>
+        <li>Cruiser:<input type="radio" ng-model='bk.maintype' value='Cruiser'></li>
+        <li>Dual:<input type="radio" ng-model='bk.maintype' value='Dual'></li>
+      </ul>
+    </fieldset>
+  </div> -->
+  <div>
+    <label >Notes:</label>
+    <textarea ng-model='notes'></textarea>
+  </div>
+  
+  <div class="button">
+    <button ng-click="savebike()">Save Bike</button>
+  </div>
+</form>

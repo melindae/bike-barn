@@ -5,7 +5,8 @@ body {
   font-size: 62.5%;
   color: #2b2b2b;
   width: 100%;
-  margin: 0; }
+  margin: 0;
+  height: 100%; }
 
 html {
   overflow-y: scroll; }
@@ -264,7 +265,8 @@ form.newForm.ng-submitted .ng-invalid {
   padding: 0.5em 1.3em 1.3em 1.3em;
   border: solid 2px black;
   box-shadow: 0.5em 0.5em 0.5em black;
-  background-color: white; }
+  background-color: white;
+  margin-bottom: 40px; }
 
 .quick-table td, .quick-table th {
   border-bottom: 0.1em solid #BEBEBE;
@@ -411,6 +413,39 @@ form.newForm.ng-submitted .ng-invalid {
 .common-button:hover {
   color: black;
   cursor: pointer; }
+
+/****** footer / about page ******/
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #FD9800;
+  font-size: 1.5em;
+  padding: 8px 0;
+  text-align: right;
+  margin-top: -20px; }
+
+.footer a {
+  padding-right: 1em;
+  text-decoration: none;
+  color: #FD9800; }
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: 40px; }
+
+.about {
+  color: white;
+  font-size: 2em;
+  margin-left: 2em;
+  text-decoration: none; }
+
+.about h2 {
+  color: #FD9800; }
+
+.about a {
+  text-decoration: none;
+  color: #FD9800; }
 
 /****** misc ******/
 .edit-button {

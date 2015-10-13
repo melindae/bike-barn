@@ -26,20 +26,25 @@
   </head>
   
   <body>
-    <header></header>
-      <div class="nav-frame">
-        <img src="/images/bblogo_50shad.png" class="bb-logo no-mobile">
-        <img src="/images/bb_50.png" class="bb-logo-mobile">
-        <nav class="nav-buttons">
-          <ul>
-            <li><a ui-sref="home" ui-sref-active="active" >Stats</a></li>
-            <li class='no-mobile'><a ui-sref="newBike" ui-sref-active="active">New</a></li>
-            <li><a ui-sref="quickInv" ui-sref-active="active">Short List</a></li>    
-            <li class='no-mobile'><a ui-sref="detailInv" ui-sref-active="active">Long list</a></li>
-          </ul>        
-        </nav>
-      </div>  
-      <div ui-view></h2>
-      </div>
+
+    <div class="nav-frame">
+      <img src="/images/bblogo_50shad.png" class="bb-logo no-mobile">
+      <img src="/images/bb_50.png" class="bb-logo-mobile">
+      <nav class="nav-buttons">
+        <ul>
+          <li><a ui-sref="home" ui-sref-active="active" >Stats</a></li>
+          <li class='no-mobile'><a ui-sref="newBike" ui-sref-active="active">New</a></li>
+          <li><a ui-sref="quickInv" ui-sref-active="active">Short List</a></li>    
+          <li class='no-mobile'><a ui-sref="detailInv" ui-sref-active="active">Long list</a></li>
+        </ul>        
+      </nav>
+    </div>
+
+    <div class="wrapper" ui-view></div>
+
+    <footer class="footer nav-frame">
+      <span><a ui-sref="about">About</a>&#169 2015 Melinda Evans  Ver 1.2 &nbsp</span>
+    </footer>
+
   </body>
 </html> 

@@ -1,8 +1,8 @@
 
 <div>
-  <table class="detail-table wrapper">
+  <table class="detail-table">
     <tr>
-      <th class='col-ready'>
+      <th>
         <a href="#" ng-click="sortMe = 'ready'; sortToggle = !sortToggle"> Ready?
           <span ng-show="sortMe !== 'ready'"><img src="/images/pale_arrows.png"></span>
           <span ng-show="sortMe == 'ready' && !sortToggle"><img src="/images/down_arrows.png"></span>
@@ -55,53 +55,15 @@
     </tr>                             
     <tr ng-repeat="(bikeIndex, bike) in bikes | orderBy:sortMe:sortToggle" ng-hide='archived(bike.archive)'> 
       <td button-toggle></td>
-      <td>
-        <span ng-hide='editNow'>{{bike.ident}}</span>
-        <input ng-show='editNow' type='text' ng-model='bike.ident'/>
-      </td>
-      <td>
-        <span ng-hide='editNow'>{{bike.year}}</span>
-        <input ng-show='editNow' type='text' ng-model='bike.year'/>
-      </td>
-      <td>
-        <span ng-hide='editNow'>{{bike.make}}</span>
-        <select ng-show='editNow' class="box-shadow" name="make" ng-model="bike.make" required>
-          <option value="" style="display:none"> Choose </option>
-          <option value="Honda"> Honda </option>
-          <option value="Kawasaki"> Kawasaki </option>
-          <option value="Suzuki"> Suzuki </option>
-          <option value="Yamaha"> Yamaha </option>
-          <option value="Other"> Other </option>
-        </select>
-      </td>
-      <td>
-        <span ng-hide='editNow'>{{bike.model}}</span>
-        <input ng-show='editNow' type='text' ng-model='bike.model'/>
-      </td>
-      <td>
-        <span ng-hide='editNow'>{{bike.maincolor}}</span>
-        <input ng-show='editNow' type='text' ng-model='bike.maincolor'/>
-      </td>
-      <td>
-        <span ng-hide='editNow'>{{bike.maintype}}</span>
-        <select ng-show='editNow' class="box-shadow" name="make" ng-model="bike.maintype" required>
-          <option value="" style="display:none"> Choose </option>
-          <option value="Standard"> Standard </option>
-          <option value="Sport"> Sport </option>
-          <option value="Cruiser"> Cruiser </option>
-          <option value="Dual"> Dual </option>
-        </select>
-      </td>
-      <td>
-        <span ng-hide='editNow'>{{bike.sn}}</span>
-        <input ng-show='editNow' type='text' ng-model='bike.sn'/>
-      </td>
+      <td>{{bike.ident}}</td>
+      <td>{{bike.year}}</td>
+      <td>{{bike.make}}</td>
+      <td>{{bike.model}}</td>
+      <td>{{bike.maincolor}}</td>
+      <td>{{bike.maintype}}</td>
+      <td>{{bike.sn}}</td>
       <td class="edit-column">
         <button class='edit-button' type='submit' ng-click="showBikeIndex(bike.timestamp)" ui-sref='maintLog'>Log</button>
-      </td>
-      <td class="edit-column">
-        <button class='edit-button-e' ng-hide="editNow" ng-click='editNow = true'>Edit</button>
-        <button class='edit-button-s' ng-show="editNow" ng-click='editNow = false; saveEdit(bike, bike.timestamp)'>Save</button>
       </td>
       <td class="edit-column">
         <button class='archive-button' ng-click='bikeArchive(bike.timestamp)'>[ X ]</button>

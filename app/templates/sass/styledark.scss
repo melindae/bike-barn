@@ -1,0 +1,450 @@
+
+body {
+/*  background-image: url("/dist/images/gun_metal.png");*/
+  background-color: #0B0B0A;
+  font-family: "Tahoma", Geneva, sans-serif;
+  font-size: 22px;
+  color: white;
+}
+  
+
+/****** top navigation frame ******/
+
+.nav-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-image: url("/images/metallt.png");
+  background-color: #0B0B0A;
+  height: 80px;
+}
+
+.nav-frame .bb-logo {
+  float: left;
+  margin: 15px 0 0 30px;
+}
+
+.nav-frame .nav-buttons {
+  list-style:none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-frame .nav-buttons li {
+  display: inline
+}
+
+.nav-frame .nav-buttons li a {
+  text-decoration: none;
+  padding: 6px 5px 6px 5px;
+  width: 105px;
+  height: 25px;
+  background: linear-gradient(to bottom,  rgba(255, 173, 51, 1) 0%,rgba(255, 153, 0, 1) 65%,rgba(178, 107, 0, 1) 100%);
+  color: #F0F0F0;
+  float: right;
+  text-align: center;
+  border-radius: 5px;
+  border-top: 2px solid #D99633;
+  border-right: 2px solid #915700;
+  border-bottom: 2px solid #7C4A00;
+  border-left: 2px solid #D99633;
+  margin: 1px;
+  margin-right: 20px;
+}
+
+.nav-frame .nav-buttons li a:hover {
+  color: #000000
+}
+
+
+  /****** page title ******/
+
+.title {
+  color: #FF9900;
+  font-size: 35px;
+  text-align: center;
+  clear: both;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+ 
+  /****** home page ******/
+
+
+.legend text{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#chart {
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 360px;
+}
+
+rect {
+  stroke-width: 2;
+}
+
+  /****** new bike form ******/
+
+.newForm {
+  width: 60%;
+  max-width: 700px;
+  font-size: 17px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.newForm input, select {
+  width: 98%;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px black;
+}
+
+.newForm 
+  input:hover, 
+  select:hover, 
+  textarea:hover, {
+    background: #E7BE80;
+}
+
+.newForm 
+  input:focus, 
+  select:focus, 
+  textarea:focus, {
+    background: #EF9900;
+}
+
+.newForm fieldset {
+  width: 98%;
+  box-sizing: border-box;
+}
+
+.newForm fieldset  ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.newForm fieldset ul li {
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-right: 12px;
+}
+
+.newForm input[type="radio"] {
+  padding: 0;
+  height: 20px;
+  width: 20px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.newForm .newColumn {
+  width: 49%;
+  float: left;
+}
+
+.newForm .newColumn:first-of-type {
+  margin-right: 2%;
+}
+
+.newForm .newColumn label, fieldset {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 3px;
+}
+
+.newForm .newColumn label:first-child, fieldset:first-child {
+  margin-top: 0;
+}
+
+.newForm .newColumn fieldset {
+  margin-bottom: 30px;
+}
+
+.newForm .button {
+  text-align: center;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.newForm .button button {
+  cursor: pointer;
+  width: 250px;
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  background: linear-gradient(to bottom,  rgba(255, 173, 51, 1) 0%,rgba(255, 153, 0, 1) 65%,rgba(178, 107, 0, 1) 100%);
+  color: #000000;  
+  border-radius: 5px;
+  border-top: 2px solid #D99633;
+  border-right: 2px solid #915700;
+  border-bottom: 2px solid #7C4A00;
+  border-left: 2px solid #D99633;
+}
+
+.newForm .button button:hover {
+  color: #F0F0F0;
+}
+
+  /*** new bike form validation alerts ***/
+
+form.newForm.ng-submitted .ng-invalid {
+  background-color: #CCFF99;
+  font-weight: 66;
+}
+
+.light-up {
+  border: solid #CCFF99;
+  color: #CCFF99;
+}
+
+  /****** detail list/inventory page ******/
+
+.detail-table{
+  margin-top: 30px;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.detail-table td, .detail-table th {
+  border: 1px solid #4B4B4B;
+  border-collapse: collapse;
+  padding: 3px 6px 3px 6px;
+  font-size: 18px;
+  font-family: "ariel" sans-serif;
+  color: white;
+  text-decoration: none;
+}
+
+.detail-table th, a {
+  color: #FF9900;
+  text-decoration: none;
+}
+
+.detail-table .edit-column {
+  border: 0px;
+}
+
+.detail-table button {
+  
+}
+
+
+  /****** quick inventory page ******/
+
+.quick-table {
+  float: left;
+  margin-top: 30px;
+  width: 37%;
+}
+
+.quick-table td, .quick-table th   {
+  border: 1px solid #4B4B4B;
+  border-collapse: collapse;
+  padding: 3px 6px 3px 6px;
+  font-size: 18px;
+  font-family: "ariel" sans-serif;
+  color: white;
+}
+
+.quick-table th {
+  color: #FF9900;
+  text-decoration: none;
+}
+
+.quick-table caption {
+  font-size: 26px;
+  font-weight: bold;
+  margin-right: 15%;
+  margin-bottom: 5px;
+}
+
+.table-online{
+  margin-right: 3%;
+  margin-left: 10%;
+}
+
+.table-offline{
+  margin-right: 10%;
+  margin-left: 3%;
+}
+
+.quick-table .edit-column {
+  border: 0px;
+}
+
+.quick-table .edit-note-field {
+  height: 60px;
+}
+
+
+  /****** maintenance log page ******/
+
+.maint-table {
+  margin-top: 30px;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.maint-table .maint-table-bike {
+  font-weight: bold;
+  border: 1px solid #4B4B4B;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 5px 9px 5px 9px;
+}
+
+.maint-table .maint-table-bike td {
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 5px 9px 5px 9px;
+}
+
+.maint-table .maint-table-bike button {
+  font-size: 18px;
+  height: 28px;
+}
+
+.maint-table .maint-table-input {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.maint-table .maint-table-input td {
+  padding: 4px 4px 4px 6px;
+}
+
+.maint-table .maint-table-input .mt-input-date input {
+  display:table-cell; 
+  padding-left: 5px;
+  height: 24px;
+  font-size: 18px;
+}
+
+.ui-datepicker { 
+  font-size: 10pt !important; 
+}
+
+.ui-widget-content .ui-state-highlight {
+  background-image: none !important;
+  background-color: #FF9900 !important;
+  border-color: black !important;
+  color: black !important;
+}
+
+.maint-table .maint-table-input .mt-input-note {
+  display:table-cell; 
+  width: 100%;
+}
+
+.maint-table .maint-table-input .mt-input-note input {
+  display:table-cell; 
+  padding-left: 5px;
+  width: 100%;
+  height: 24px;
+  font-size: 18px;
+}
+
+.maint-table .maint-table-input .mt-input-button {
+  width: 8%;
+}
+
+.maint-table .maint-table-input .mt-input-button button {
+  font-size: 18px;
+  height: 28px;
+  width: 44px;
+  margin-left: 5px;
+}
+
+.maint-table .maint-table-logs {
+  border: 1px solid white;
+  width: 100%;
+}
+
+.maint-table .maint-table-logs td {
+  width: 100%;
+  background-color: white;
+  font-size: 18px;
+  color: black;
+  padding: 4px 4px 4px 6px;
+}
+.maint-table .maint-table-logs .mt-logs-date {
+  width:20%;
+}
+
+ /****** ready buttons ******/
+
+.green-button {  
+  background: linear-gradient(to bottom, rgba(0, 140, 0, 1) 0%,rgba(0, 110, 0, 1) 65%,rgba(0, 80, 0, 1) 100%);
+  border-top: 1px solid #33A333;
+  border-right: 1px solid #004000;
+  border-bottom: 1px solid #003000;
+  border-left: 1px solid #33A333;
+}
+
+.red-button {  
+  background: linear-gradient(to bottom, rgba(225, 0, 0, 1) 0%,rgba(175, 0, 0, 1) 65%,rgba(125, 0, 0, 1) 100%);
+  border-top: 1px solid #CC0000;
+  border-right: 1px solid #7A0000;
+  border-bottom: 1px solid #660000;
+  border-left: 1px solid #CC0000;
+}
+
+.common-button {
+  padding: 2px 3px 2px 3px;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  margin:auto;
+  display:block;
+}
+
+.common-button:hover{
+  color: black;
+}
+
+/****** misc ******/ 
+
+.edit-button {
+  padding: 1px 1px 1px 1px;
+  background: linear-gradient(to bottom,  rgba(255, 173, 51, 1) 0%,rgba(255, 153, 0, 1) 65%,rgba(178, 107, 0, 1) 100%);
+  color: #000000;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2px;
+  border-top: 1px solid #D99633;
+  border-right: 1px solid #915700;
+  border-bottom: 1px solid #7C4A00;
+  border-left: 1px solid #D99633;
+}
+
+.edit-button a {
+  text-decoration: none;
+  color: #000000;
+  padding-right: 1px;
+  margin-right: 1px;
+}
+
+.edit-button:hover {
+  color: #F0F0F0;
+}
+
+.edit-button a:hover {
+  color: #F0F0F0;
+}
+
+
+

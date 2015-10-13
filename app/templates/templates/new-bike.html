@@ -1,0 +1,58 @@
+
+<form name="newBikeForm" class="newForm" ng-submit="newBikeForm.$valid && submitForm(newBikeForm.$valid)" novalidate>
+
+  <p class="title">Add New Bike</p>
+  <div class="newColumn">
+    <fieldset>
+    <legend>Ready?</legend>
+      <ul>
+        <li>Yes:<input type="radio" name="readyradio" ng-model="bk.ready" value="ready" ></li>
+        <li>No:<input type="radio" name="readyradio" ng-model="bk.ready" value="offline" ></li>
+      </ul>
+    </fieldset>
+
+
+    <label>Year:</label>
+    <input class="box-shadow" name="year"  type="number"  ng-model="bk.year" ng-minlength=4 ng-maxlength=4 required>
+    <p  ng-show="newBikeForm.year.$error.minlength" class="help-block">Please enter 4 digit year.</p>
+
+    <label>Make:</label>
+    <select class="box-shadow" name="make" ng-model="bk.make" required>
+      <option value="" style="display:none"> Choose </option>
+      <option value="Honda"> Honda </option>
+      <option value="Kawasaki"> Kawasaki </option>
+      <option value="Suzuki"> Suzuki </option>
+      <option value="Yamaha"> Yamaha </option>
+      <option value="Other"> Other </option>
+    </select>
+
+    <label >Model:</label>
+    <input class="box-shadow" name="model" type="text" ng-model="bk.model" required>
+
+  </div>
+  <div class="newColumn">
+
+    <label>Identification:</label>
+    <input class="box-shadow" name="id"  type="text" ng-model="bk.ident" required>
+
+    <label>VIN:</label>
+    <input class="box-shadow" name="sn" type="text" ng-model="bk.sn" required >
+
+    <label class="newLabel">Color:</label>
+    <input class="box-shadow" name="color" type="text" ng-model="bk.maincolor" required>
+
+    <fieldset ng-class="{'light-up': !newBikeForm.maintype.$valid && newBikeForm.maintype.$pristine && newBikeForm.$submitted}">
+    <legend>Type:</legend>
+      <ul>
+        <li>Standard:<input type="radio" name="maintype" ng-model='bk.maintype' value='Standard' required ></li>
+        <li>Sport:<input type="radio" name="maintype" ng-model='bk.maintype' value='Sport' required></li>
+        <li>Cruiser:<input type="radio" name="maintype" ng-model='bk.maintype' value='Cruiser' required></li>
+        <li>Dual:<input type="radio" name="maintype" ng-model='bk.maintype' value='Dual' required></li>
+      </ul>
+    </fieldset>
+  </div>
+
+  <div class="button">
+    <button class="box-shadow" type="submit">Add Bike</button>
+  </div>
+</form>

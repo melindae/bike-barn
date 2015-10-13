@@ -29,6 +29,11 @@ bikeBarn.config(['$stateProvider', '$locationProvider', function ($stateProvider
     controller: 'listCtrl',
     templateUrl: 'templates/detailed-inventory.html'
   });
+  $stateProvider.state('about', {
+    url: '/about',
+    controller: '',
+    templateUrl: 'templates/about.html'
+  });
   $stateProvider.state('otherwise', {
     url: '*path',
     controller: 'homeCtrl',

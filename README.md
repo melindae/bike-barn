@@ -1,31 +1,29 @@
-Bike Barn is a motorcycle fleet management too built by Melinda Evans at melinda.codes.com 2015.
-If you have any questions or requests please contact Melinda at:
-melinda@melindacodes.com
 
-And remember... shiny side up, rubber side down, stay on the black path between the trees!
+Bike Barn is a motorcycle fleet management tool.
+	You can:
+		-Add and remove motorcycles from your fleet
+		-Edit their details, color, year, etc
+		-Mark them as ready, or not
+		-Sort by any field
+		-Add and edit individual maintenance logs for each bike
+		-See, at a glance, the composition of your fleet by year, type or ready status
+
+History
+
+ver 1.2
+	can now edit bike logs
+ver 1.1
+	can now edit bike details
+	rows hilight on hover
+	leading zero added to bike ID to help with sorting
+ver 1.0
+	Initial release
 
 
+Contact me
 
-To set up the dev environment:
-git init
-npm install -g grunt-cli
-sudo chown -R $USER /usr/local
-npm install
+Bike Barn is a motorcycle fleet management tool built by Melinda Evans at melindacodes.com, 2015.
 
-git config user.name "name"
-git config user.email "name@gmail.com"
+If you have any questions or requests please give a yell to: melinda@melindacodes.com 
 
-add and commit
-
-git remote add origin https://github.com/name/yourProjectName.git
-git push -u origin master
-
-- install heroku if needed
-wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-
-git remote add heroku git@heroku.com:your-app.git
- -or-
-heroku git:remote -a shrouded-oasis-4528
-
-git push heroku master
-* git push -f heroku master // if necessary
+And remember... shiny side up, rubber side down, stay on the black thing between the trees! 

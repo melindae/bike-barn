@@ -3,7 +3,7 @@ Bike Barn is a motorcycle fleet management tool.
 	You can:
 		-Add and remove motorcycles from your fleet
 		-Edit their details, color, year, etc
-		-Mark them as ready, or not
+		-Mark them as ready or out of service
 		-Sort by any field
 		-Add and edit individual maintenance logs for each bike
 		-See, at a glance, the composition of your fleet by year, type or ready status
@@ -14,7 +14,7 @@ ver 1.2
 	can now edit bike logs
 ver 1.1
 	can now edit bike details
-	rows hilight on hover
+	rows highlight on hover
 	leading zero added to bike ID to help with sorting
 ver 1.0
 	Initial release
